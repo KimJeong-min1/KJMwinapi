@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "jmGameObject.h"
 
 namespace JM
 {
@@ -19,10 +20,7 @@ namespace JM
 	private:
 		HWND mHwnd;
 		HDC mHdc;
-
-		float mSpeed;
-		float mX;
-		float mY;
+		jm::GameObject mPlayer;
 	};
 }
 
