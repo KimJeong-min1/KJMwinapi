@@ -19,19 +19,19 @@ namespace jm
 		// 위 -> y가 마이너스
 		// 아래 -> y가 플러스
 
-		if (Input::GetKey(eKeyCode::A))
+		if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
 		{
 			mX -= 0.01f;
 		}
-		if (Input::GetKey(eKeyCode::D))
+		if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
 		{
 			mX += 0.01f;
 		}
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
 		{
 			mY -= 0.01f;
 		}
-		if (Input::GetKey(eKeyCode::S))
+		if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
 		{
 			mY += 0.01f;
 		}
