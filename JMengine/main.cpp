@@ -7,7 +7,7 @@
 #include "JMengine.h"
 #include "..\\KJMengine_SOURCE\JMapplication.h"
 
-JM::Application application;
+jm::Application application;
 
 #define MAX_LOADSTRING 100
 

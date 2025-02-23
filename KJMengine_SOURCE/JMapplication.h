@@ -2,7 +2,7 @@
 #include "CommonInclude.h"
 #include "jmGameObject.h"
 
-namespace JM
+namespace jm
 {
 	class Application
 	{

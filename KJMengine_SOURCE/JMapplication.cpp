@@ -1,6 +1,7 @@
-#include "JMapplication.h"
+#include "jmApplication.h"
+#include "jmInput.h"
 
-namespace JM
+namespace jm
 {
 	Application::Application()
 		:mHwnd(nullptr)
@@ -18,6 +19,9 @@ namespace JM
 	{
 		mHwnd = hwnd;
 		mHdc = GetDC(hwnd);
+
+		mPlayer.SetPosition(0, 0);
+		Input::Initialize();
 	}
 	void Application::Run()
 	{
@@ -27,6 +31,7 @@ namespace JM
 	}
 	void Application::Update()
 	{
+		Input::Update();
 		mPlayer.Update();
 	}
 

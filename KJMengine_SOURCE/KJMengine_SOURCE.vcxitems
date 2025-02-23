@@ -15,11 +15,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)JMapplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmGameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmInput.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)JMapplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmGameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmInput.cpp" />
   </ItemGroup>
 </Project>

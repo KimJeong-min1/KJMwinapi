@@ -1,4 +1,5 @@
 #include "jmGameObject.h"
+#include "jmInput.h"
 
 namespace jm
 {
@@ -18,19 +19,19 @@ namespace jm
 		// 위 -> y가 마이너스
 		// 아래 -> y가 플러스
 
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+		if (Input::GetKey(eKeyCode::A))
 		{
 			mX -= 0.01f;
 		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+		if (Input::GetKey(eKeyCode::D))
 		{
 			mX += 0.01f;
 		}
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
+		if (Input::GetKey(eKeyCode::W))
 		{
 			mY -= 0.01f;
 		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+		if (Input::GetKey(eKeyCode::S))
 		{
 			mY += 0.01f;
 		}
