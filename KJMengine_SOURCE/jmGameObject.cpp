@@ -1,5 +1,6 @@
 #include "jmGameObject.h"
 #include "jmInput.h"
+#include "jmTime.h"
 
 namespace jm
 {
@@ -18,22 +19,22 @@ namespace jm
 		// 왼쪽 -> x가 마이너스
 		// 위 -> y가 마이너스
 		// 아래 -> y가 플러스
-
+		const int speed = 100.0f;
 		if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
 		{
-			mX -= 0.01f;
+			mX -= speed * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
 		{
-			mX += 0.01f;
+			mX += speed * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
 		{
-			mY -= 0.01f;
+			mY -= speed * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
 		{
-			mY += 0.01f;
+			mY += speed * Time::DeltaTime();
 		}
 	}
 	void GameObject::LateUpdate()

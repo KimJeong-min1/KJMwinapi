@@ -128,17 +128,21 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
    // 윈도우에 관한 모든 정보를 메모리에 만든 후 윈도우 핸들을 리턴 값으로 넘겨준다.
    // 어디까지나 메모리상에서만 있을 뿐 아직까지 화면에 출력되지는 않았다.
+
+   // 윈도우의 가로 세로 크기 변수를 만들어 따로 지정
+   const UINT width = 1600;
+   const UINT height = 900;
    HWND hWnd = CreateWindowW(
        szWindowClass, //생성하고자하는 윈도우의 클래스를 지정하는 문자열
        szTitle, //윈도우의 타이틀 바에 나타날 문자열
        WS_OVERLAPPEDWINDOW, //만들고자 하는 윈도우의 형태를 지정하는 인수
-       CW_USEDEFAULT, 0, 1600, 900, //윈도우의 크기와 위치를 지정하며 픽셀 단위를 사용한다.
+       CW_USEDEFAULT, 0, width, height, //윈도우의 크기와 위치를 지정하며 픽셀 단위를 사용한다.
        nullptr, //부모 윈도우가 있을 경우 부모 윈도우의 핸들을 지정해준다. 부모 윈도우가 없을 경우 NULL
        nullptr, //윈도우에서 사용할 메뉴의 핸들을 지정한다.wndclass에서 지정한 메뉴를 그대로 사용할려면 NULL 
        hInstance, //윈도우를 만드는 주체, 프로그램의 핸들을 지정한다.
        nullptr); // CREATESTRUCT라는 구조체의 번지이며 특수한 목적에 사용된다. 보통은 NULL
 
-   application.Initialize(hWnd,1600,900);
+   application.Initialize(hWnd,width,height);
 
    if (!hWnd)
    {

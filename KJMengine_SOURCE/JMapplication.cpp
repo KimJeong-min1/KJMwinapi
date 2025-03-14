@@ -1,11 +1,16 @@
 #include "jmApplication.h"
 #include "jmInput.h"
+#include "jmTime.h"
 
 namespace jm
 {
 	Application::Application()
 		:mHwnd(nullptr)
 		, mHdc(nullptr)
+		, mWidth(0)
+		, mHeight(0)
+		, mBackHdc(NULL)
+		, mBackBitmap(NULL)
 	{
 
 	}
@@ -46,6 +51,8 @@ namespace jm
 		mPlayer.SetPosition(0, 0);
 		// Input클래스를 초기화
 		Input::Initialize();
+		// Time클래스를 초기화
+		Time::Initailize();
 	}
 	void Application::Run()
 	{
@@ -57,6 +64,8 @@ namespace jm
 	{
 		// Input클래스 업데이트
 		Input::Update();
+		// Time클래스 업데이트
+		Time::Update();
 		// Player 업데이트
 		mPlayer.Update();
 	}
@@ -71,6 +80,7 @@ namespace jm
 		Rectangle(mBackHdc, 0, 0, 1600, 900);
 		
 		// 플레이어를 그려주는 함수
+		Time::Render(mBackHdc);
 		mPlayer.Render(mBackHdc);
 
 		// BackBuffer에 있는걸 원본 Buffer에 복사 (그려준다)
