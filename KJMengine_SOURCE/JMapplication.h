@@ -16,7 +16,10 @@ namespace jm
 		void Update();
 		void LateUpdate();
 		void Render();
-
+	private:
+		void adjustWindowRect(HWND hwnd, UINT width, UINT height);
+		void createBuffer(UINT width, UINT height);
+		void initializeEtc();
 	private:
 		HWND mHwnd;
 		HDC mHdc;
