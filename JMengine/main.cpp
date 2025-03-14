@@ -138,7 +138,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
        hInstance, //윈도우를 만드는 주체, 프로그램의 핸들을 지정한다.
        nullptr); // CREATESTRUCT라는 구조체의 번지이며 특수한 목적에 사용된다. 보통은 NULL
 
-   application.Initialize(hWnd);
+   application.Initialize(hWnd,1600,900);
 
    if (!hWnd)
    {
