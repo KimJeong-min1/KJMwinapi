@@ -5,7 +5,11 @@
 // 커밋 테스트
 #include "framework.h"
 #include "JMengine.h"
-#include "..\\KJMengine_SOURCE\JMapplication.h"
+#include "..\\KJMengine_SOURCE\\jmApplication.h"
+#include "..\\KJMengine\\jmLoadScenes.h"
+
+
+
 
 jm::Application application;
 
@@ -151,8 +155,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    //윈도우를 화면에 보여주는 함수
    ShowWindow(hWnd //화면으로 출력하고자하는 윈도우의 핸들
        , nCmdShow); // 윈도우를 화면에 출력하는 방법을 지정한다. 
-   UpdateWindow(hWnd); // 윈도우를 업데이트를 해주는 함수 
+   UpdateWindow(hWnd); // 윈도우를 업데이트를 해주는 함수
 
+   jm::LoadScenes();
+   
    return TRUE;
 }
 

@@ -17,6 +17,8 @@ namespace jm
 		void LateUpdate();
 		void Render();
 	private:
+		void clearRenderTarget();
+		void copyRenderTarget(HDC source, HDC dest);
 		void adjustWindowRect(HWND hwnd, UINT width, UINT height);
 		void createBuffer(UINT width, UINT height);
 		void initializeEtc();
@@ -29,8 +31,6 @@ namespace jm
 
 		UINT mWidth;
 		UINT mHeight;
-		
-		GameObject mPlayer;
 	};
 }
 

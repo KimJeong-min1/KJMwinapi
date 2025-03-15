@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="jmCutScene.cpp" />
+    <ClCompile Include="jmMenuScene.cpp" />
+    <ClCompile Include="jmPlayScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="jmCutScene.h" />
+    <ClInclude Include="jmLoadScenes.h" />
+    <ClInclude Include="jmMenuScene.h" />
+    <ClInclude Include="jmPlayScene.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -131,8 +142,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

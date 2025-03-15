@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KJMengine", "KJMengine\KJMe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KJMengine_SOURCE", "KJMengine_SOURCE\KJMengine_SOURCE.vcxitems", "{20032FFA-9574-461C-A77B-130CC1A24B03}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KJMEngine_Window", "KJMEngine_Window\KJMEngine_Window.vcxitems", "{2EB1DFC7-5738-4D98-A482-B5D6F4AC281A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -37,8 +39,12 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0CE8C91-955B-4CF4-97BC-E67A49CC0D26}
+	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		KJMengine_SOURCE\KJMengine_SOURCE.vcxitems*{1cc94ee7-8a89-408a-a2dc-be6987b2b8fc}*SharedItemsImports = 4
 		KJMengine_SOURCE\KJMengine_SOURCE.vcxitems*{20032ffa-9574-461c-a77b-130cc1a24b03}*SharedItemsImports = 9
+		KJMEngine_Window\KJMEngine_Window.vcxitems*{2eb1dfc7-5738-4d98-a482-b5d6f4ac281a}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

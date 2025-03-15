@@ -1,6 +1,7 @@
 #include "jmApplication.h"
 #include "jmInput.h"
 #include "jmTime.h"
+#include "jmSceneManager.h"
 
 namespace jm
 {
@@ -30,7 +31,7 @@ namespace jm
 		initializeEtc();
 
 		// 플레이어의 위치를 해줌
-		mPlayer.SetPosition(0, 0);
+		SceneManager::Initialize();
 	}
 	void Application::Run()
 	{
@@ -45,7 +46,7 @@ namespace jm
 		// Time클래스 업데이트
 		Time::Update();
 		// Player 업데이트
-		mPlayer.Update();
+		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
@@ -55,14 +56,24 @@ namespace jm
 	void Application::Render()
 	{
 		// 뒤에 핸들에 사각형을 그려주는 함수
-		Rectangle(mBackHdc, 0, 0, 1600, 900);
+		clearRenderTarget();
 		
 		// 플레이어를 그려주는 함수
 		Time::Render(mBackHdc);
-		mPlayer.Render(mBackHdc);
+		SceneManager::Render(mBackHdc);
 
 		// BackBuffer에 있는걸 원본 Buffer에 복사 (그려준다)
-		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
+		
+		copyRenderTarget(mBackHdc, mHdc);
+	}
+
+	void Application::clearRenderTarget()
+	{
+		Rectangle(mBackHdc, -1, -1, 1601, 901);
+	}
+	void Application::copyRenderTarget(HDC source, HDC dest)
+	{
+		BitBlt(dest, 0, 0, mWidth, mHeight, source, 0, 0, SRCCOPY);
 	}
 	void Application::adjustWindowRect(HWND hwnd, UINT width, UINT height)
 	{
