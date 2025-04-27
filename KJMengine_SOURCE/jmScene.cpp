@@ -3,7 +3,7 @@
 namespace jm
 {
 	Scene::Scene()
-		:mGameObjects()
+		:mLayers()
 	{
 
 	}
@@ -18,27 +18,37 @@ namespace jm
 	}
 	void Scene::Update()
 	{
-		for (GameObject* gameobj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameobj->Update();
+			if (layer == nullptr)
+				continue;
+			layer->Update();
 		}
 	}
 	void Scene::LateUpdate()
 	{
-		for (GameObject* gameobj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameobj->LateUpdate();
+			if (layer == nullptr)
+				continue;
+			layer->LateUpdate();
 		}
 	}
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* gameobj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameobj->Render(hdc);
+			if (layer == nullptr)
+				continue;
+			layer->Render(hdc);
 		}
 	}
-	void Scene::AddGameObject(GameObject* gameObject)
+	void Scene::OnExit()
 	{
-		mGameObjects.push_back(gameObject);
+
+	}
+	void Scene::OnEnter()
+	{
+
 	}
 }

@@ -5,59 +5,43 @@
 namespace jm
 {
 	GameObject::GameObject()
-		:mX(0)
-		,mY(0)
+
 	{
 	}
 	GameObject::~GameObject()
 	{
+		for (Component* comp : mComponents)
+		{
+			delete comp;
+			comp = nullptr;
+		}
+	}
+	void GameObject::Initialize()
+	{
+		for (Component* comp : mComponents)
+		{
+			comp->Initialize();
+		}
 	}
 	void GameObject::Update()
 	{
-
-		// 오른쪽 -> x가 플러스
-		// 왼쪽 -> x가 마이너스
-		// 위 -> y가 마이너스
-		// 아래 -> y가 플러스
-		const int speed = 100.0f;
-		if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
+		for (Component* comp : mComponents)
 		{
-			mX -= speed * Time::DeltaTime();
-		}
-		if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
-		{
-			mX += speed * Time::DeltaTime();
-		}
-		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
-		{
-			mY -= speed * Time::DeltaTime();
-		}
-		if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
-		{
-			mY += speed * Time::DeltaTime();
+			comp->Update();
 		}
 	}
 	void GameObject::LateUpdate()
 	{
-
+		for (Component* comp : mComponents)
+		{
+			comp->LateUpdate();
+		}
 	}
 	void GameObject::Render(HDC hdc)
 	{
-		// 파란색 브러쉬 생성
-		HBRUSH bluebrush = CreateSolidBrush(RGB(rand()%255, rand()%255, rand()%255));
-
-		// 파란색 브러쉬에 DC에 선택 그리고 흰색 브러쉬 반환값 반환
-		HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, bluebrush);
-
-		HPEN redpen = CreatePen(PS_SOLID, 2, RGB(rand()%255, rand()%255, rand()%255));
-		HPEN oldpen = (HPEN)SelectObject(hdc, redpen);
-		SelectObject(hdc, oldpen);
-
-		//Rectangle(hdc, 100 + mX, 100 + mY, 200 + mX, 200 + mY);
-		Ellipse(hdc, mX, mY, 100 + mX, 100 + mY);
-
-		SelectObject(hdc, oldbrush);
-		DeleteObject(bluebrush);
-		DeleteObject(redpen);
+		for (Component* comp : mComponents)
+		{
+			comp->Render(hdc);
+		}
 	}
 }

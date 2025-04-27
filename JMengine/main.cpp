@@ -13,6 +13,9 @@
 
 jm::Application application;
 
+ULONG_PTR gpToken;
+Gdiplus::GdiplusStartupInput gpsi;
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -85,6 +88,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
             application.Run();
         }
     }
+    Gdiplus::GdiplusShutdown(gpToken);
 
     return (int) msg.wParam;
 }
@@ -156,6 +160,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd //화면으로 출력하고자하는 윈도우의 핸들
        , nCmdShow); // 윈도우를 화면에 출력하는 방법을 지정한다. 
    UpdateWindow(hWnd); // 윈도우를 업데이트를 해주는 함수
+
+   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
 
    jm::LoadScenes();
    

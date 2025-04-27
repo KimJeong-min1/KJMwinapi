@@ -1,5 +1,8 @@
 #include "jmPlayScene.h"
 #include "jmGameObject.h"
+#include "jmPlayer.h"
+#include "jmTransform.h"
+#include "jmSpriteRenderer.h"
 
 namespace jm
 {
@@ -11,12 +14,14 @@ namespace jm
 	}
 	void PlayScene::Initialize()
 	{
-		for (size_t i = 0; i < 100; i++)
-		{
-			GameObject* obj = new GameObject();
-			obj->SetPosition(rand() % 1600, rand() % 900);
-			AddGameObject(obj);
-		}
+		Player* bg = new Player();
+		Transform* tr = bg->AddComponent<Transform>();
+		tr->SetPos(Vector2(0, 0));
+		tr->SetName(L"TR");
+
+		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
+		sr->SetName(L"SR");
+		sr->ImageLoad(L"D:\\Winapi\\HelltakerSprite\\Sprite\\assets100V20053.png");
 	}
 	void PlayScene::Update()
 	{
@@ -29,5 +34,13 @@ namespace jm
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+	}
+	void PlayScene::OnEnter()
+	{
+
+	}
+	void PlayScene::OnExit()
+	{
+	
 	}
 }

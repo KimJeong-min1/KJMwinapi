@@ -75,7 +75,7 @@ namespace jm
 	{
 		BitBlt(dest, 0, 0, mWidth, mHeight, source, 0, 0, SRCCOPY);
 	}
-	void Application::adjustWindowRect(HWND hwnd, UINT width, UINT height)
+	void Application::adjustWindowRect(HWND hwnd, UINT width, UINT height) //윈도우창생성
 	{
 		mHwnd = hwnd;
 		mHdc = GetDC(hwnd);
@@ -89,7 +89,7 @@ namespace jm
 		SetWindowPos(hwnd, nullptr, 0, 0, mWidth, mHeight, 0);
 		ShowWindow(hwnd, true);
 	}
-	void Application::createBuffer(UINT width, UINT height)
+	void Application::createBuffer(UINT width, UINT height) //버퍼생성
 	{
 		// 윈도우 해상도에 맞는 백버퍼(도화지) 생성
 		mBackBitmap = CreateCompatibleBitmap(mHdc, width, height);

@@ -1,6 +1,8 @@
 #pragma once
 #include "jmEntity.h"
 #include "jmGameObject.h"
+#include "jmLayer.h"
+#include "jmEnums.h"
 
 namespace jm
 {
@@ -15,10 +17,14 @@ namespace jm
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void AddGameObject(GameObject* gameObject);
-	
+		virtual void OnEnter();
+		virtual void OnExit();
+				
 	private:
-		std::vector<GameObject*> mGameObjects;
+	
+
+	private:
+		std::vector<Layer*> mLayers;
 	};
 }
 
