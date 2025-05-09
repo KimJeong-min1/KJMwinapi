@@ -18,7 +18,7 @@ namespace jm
 		void OnExit() override;
 	
 	private:
-		
+		class Player* bg;
 	};
 }
 

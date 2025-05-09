@@ -23,6 +23,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jmInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmScene.h" />

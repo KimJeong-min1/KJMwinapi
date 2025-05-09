@@ -9,6 +9,8 @@ namespace jm
 	void LoadScenes()
 	{
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		SceneManager::CreateScene<CutScene>(L"CutScene");
+		SceneManager::CreateScene<MenuScene>(L"MenuScene");
 		
 		SceneManager::LoadScene(L"PlayScene");
 	}

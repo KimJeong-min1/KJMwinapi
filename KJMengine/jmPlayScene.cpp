@@ -3,6 +3,9 @@
 #include "jmPlayer.h"
 #include "jmTransform.h"
 #include "jmSpriteRenderer.h"
+#include "jmInput.h"
+#include "jmTime.h"
+#include "jmObject.h"
 
 namespace jm
 {
@@ -14,14 +17,12 @@ namespace jm
 	}
 	void PlayScene::Initialize()
 	{
-		Player* bg = new Player();
-		Transform* tr = bg->AddComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
-		tr->SetName(L"TR");
-
+		bg = object::Instantiate<Player>
+			(enums::eLayerType::BackGround, Vector2(100.0f, 100.0f));
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->SetName(L"SR");
-		sr->ImageLoad(L"D:\\Winapi\\HelltakerSprite\\Sprite\\assets100V20053.png");
+		sr->ImageLoad(L"D:\\Winapi\\KJMwinapi\\Resources\\Sprite\\chapterBG0001.png");
+
+		Scene::Initialize();
 	}
 	void PlayScene::Update()
 	{

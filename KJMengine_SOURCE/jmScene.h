@@ -19,8 +19,13 @@ namespace jm
 
 		virtual void OnEnter();
 		virtual void OnExit();
-				
+
+		void AddGameObject(GameObject* gameobj, const enums::eLayerType type);
+		Layer* GetLayer(const enums::eLayerType type) { return mLayers[(UINT)type]; }
+	
 	private:
+		void createLayers();
+	
 	
 
 	private:

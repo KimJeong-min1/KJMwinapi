@@ -1,6 +1,6 @@
 #pragma once
 
-namespace jm
+namespace jm::enums
 {
 	enum class eLayerType
 	{
@@ -8,5 +8,13 @@ namespace jm
 		BackGround,
 		Player,
 		Max = 16
+	};
+
+	enum class eResourceType
+	{
+		Texture,
+		AudioClip,
+		Prefab,
+		End,
 	};
 }
