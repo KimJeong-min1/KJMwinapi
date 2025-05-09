@@ -6,6 +6,8 @@
 #include "jmInput.h"
 #include "jmTime.h"
 #include "jmObject.h"
+#include "jmTexture.h"
+#include "jmResources.h"
 
 namespace jm
 {
@@ -18,9 +20,15 @@ namespace jm
 	void PlayScene::Initialize()
 	{
 		bg = object::Instantiate<Player>
-			(enums::eLayerType::BackGround, Vector2(100.0f, 100.0f));
+		(enums::eLayerType::BackGround);
+		player = object::Instantiate<Player>
+			(enums::eLayerType::Player);
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->ImageLoad(L"D:\\Winapi\\KJMwinapi\\Resources\\Sprite\\chapterBG0001.png");
+		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BG01");
+		sr->SetTexture(bg);
+		sr = player->AddComponent<SpriteRenderer>();
+		graphcis::Texture* player = Resources::Find<graphcis::Texture>(L"Player");
+		sr->SetTexture(player);
 
 		Scene::Initialize();
 	}
@@ -31,6 +39,19 @@ namespace jm
 	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		if (Input::GetKeyDown(eKeyCode::One))
+		{
+			SceneManager::LoadScene(L"MenuScene");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Three))
+		{
+			SceneManager::LoadScene(L"CutScene");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Four))
+		{
+			SceneManager::LoadScene(L"DeadScene");
+		}
 	}
 	void PlayScene::Render(HDC hdc)
 	{

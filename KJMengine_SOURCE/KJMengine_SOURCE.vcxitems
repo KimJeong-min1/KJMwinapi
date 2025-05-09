@@ -29,6 +29,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jmScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmSpriteRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmTransform.h" />
   </ItemGroup>
@@ -45,6 +46,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jmScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmSpriteRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmTransform.cpp" />
   </ItemGroup>

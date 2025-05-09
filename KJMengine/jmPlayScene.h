@@ -19,6 +19,7 @@ namespace jm
 	
 	private:
 		class Player* bg;
+		class Player* player;
 	};
 }
 

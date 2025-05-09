@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Contents">
       <UniqueIdentifier>{d98e4188-ad78-4002-8ca5-879514decb72}</UniqueIdentifier>
     </Filter>
@@ -22,6 +18,12 @@
     <ClCompile Include="jmPlayScene.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
+    <ClCompile Include="jmMonster.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmDeadScene.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jmCutScene.h">
@@ -37,6 +39,15 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmPlayScene.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmLoadResources.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmMonster.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmDeadScene.h">
       <Filter>Contents</Filter>
     </ClInclude>
   </ItemGroup>

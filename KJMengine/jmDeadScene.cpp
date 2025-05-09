@@ -1,4 +1,4 @@
-#include "jmMenuScene.h"
+#include "jmDeadScene.h"
 #include "jmGameObject.h"
 #include "jmPlayer.h"
 #include "jmTransform.h"
@@ -11,28 +11,28 @@
 
 namespace jm
 {
-	MenuScene::MenuScene()
+	DeadScene::DeadScene()
 	{
 	}
-	MenuScene::~MenuScene()
+	DeadScene::~DeadScene()
 	{
 	}
-	void MenuScene::Initialize()
+	void DeadScene::Initialize()
 	{
 		bg = object::Instantiate<Player>
 			(enums::eLayerType::BackGround);
 
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BGMenu");
+		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BGDeadScene01");
 		sr->SetTexture(bg);
 
 		Scene::Initialize();
 	}
-	void MenuScene::Update()
+	void DeadScene::Update()
 	{
 		Scene::Update();
 	}
-	void MenuScene::LateUpdate()
+	void DeadScene::LateUpdate()
 	{
 		Scene::LateUpdate();
 
@@ -44,21 +44,19 @@ namespace jm
 		{
 			SceneManager::LoadScene(L"CutScene");
 		}
-		else if (Input::GetKeyDown(eKeyCode::Four))
+		else if (Input::GetKeyDown(eKeyCode::One))
 		{
-			SceneManager::LoadScene(L"DeadScene");
+			SceneManager::LoadScene(L"MenuScene");
 		}
 	}
-	void MenuScene::Render(HDC hdc)
+	void DeadScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-		wchar_t str[50] = L"MenuScene";
-		TextOut(hdc, 0, 0, str, 11);
 	}
-	void MenuScene::OnEnter()
+	void DeadScene::OnEnter()
 	{
 	}
-	void MenuScene::OnExit()
+	void DeadScene::OnExit()
 	{
 	}
 }

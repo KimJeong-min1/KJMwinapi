@@ -3,6 +3,7 @@
 #include "jmPlayScene.h"
 #include "jmCutScene.h"
 #include "jmMenuScene.h"
+#include "jmDeadScene.h"
 
 namespace jm
 {
@@ -11,8 +12,9 @@ namespace jm
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<CutScene>(L"CutScene");
 		SceneManager::CreateScene<MenuScene>(L"MenuScene");
+		SceneManager::CreateScene<DeadScene>(L"DeadScene");
 		
-		SceneManager::LoadScene(L"PlayScene");
+		SceneManager::LoadScene(L"MenuScene");
 	}
 }
 

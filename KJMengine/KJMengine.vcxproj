@@ -20,14 +20,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="jmCutScene.cpp" />
+    <ClCompile Include="jmDeadScene.cpp" />
     <ClCompile Include="jmMenuScene.cpp" />
+    <ClCompile Include="jmMonster.cpp" />
     <ClCompile Include="jmPlayer.cpp" />
     <ClCompile Include="jmPlayScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jmCutScene.h" />
+    <ClInclude Include="jmDeadScene.h" />
+    <ClInclude Include="jmLoadResources.h" />
     <ClInclude Include="jmLoadScenes.h" />
     <ClInclude Include="jmMenuScene.h" />
+    <ClInclude Include="jmMonster.h" />
     <ClInclude Include="jmPlayer.h" />
     <ClInclude Include="jmPlayScene.h" />
   </ItemGroup>

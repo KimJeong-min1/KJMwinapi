@@ -1,6 +1,5 @@
 #pragma once
 #include "CommonInclude.h"
-#include "jmEnums.h"
 
 namespace jm
 {
@@ -10,8 +9,8 @@ namespace jm
 		Entity();
 		virtual ~Entity();
 
-		void SetName(const std::wstring& name) { mName = name; }
 		std::wstring& GetName() { return mName; }
+		void SetName(const std::wstring& name) { mName = name; }
 	private:
 		std::wstring mName;
 	};

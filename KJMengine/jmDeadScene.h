@@ -3,11 +3,11 @@
 
 namespace jm
 {
-	class CutScene : public Scene
+	class DeadScene : public Scene
 	{
 	public:
-		CutScene();
-		~CutScene();
+		DeadScene();
+		~DeadScene();
 
 		void Initialize() override;
 		void Update() override;
@@ -16,9 +16,10 @@ namespace jm
 
 		void OnEnter() override;
 		void OnExit() override;
-	
+
 	private:
 		class Player* bg;
 	};
 }
+
 

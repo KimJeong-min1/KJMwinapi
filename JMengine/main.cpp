@@ -6,6 +6,7 @@
 #include "framework.h"
 #include "JMengine.h"
 #include "..\\KJMengine_SOURCE\\jmApplication.h"
+#include "..\\KJMengine\\jmLoadResources.h"
 #include "..\\KJMengine\\jmLoadScenes.h"
 
 
@@ -163,8 +164,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
 
-   jm::LoadScenes();
+   jm::LoadResources();
    
+   jm::LoadScenes();
+
    return TRUE;
 }
 
