@@ -22,7 +22,7 @@ namespace jm
 		bg = object::Instantiate<Player>
 		(enums::eLayerType::BackGround);
 		player = object::Instantiate<Player>
-			(enums::eLayerType::Player);
+		(enums::eLayerType::Player);
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BG01");
 		sr->SetTexture(bg);
