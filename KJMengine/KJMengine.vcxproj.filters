@@ -24,6 +24,12 @@
     <ClCompile Include="jmDeadScene.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
+    <ClCompile Include="jmPlayerScript.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmBackGround.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jmCutScene.h">
@@ -48,6 +54,12 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmDeadScene.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmPlayerScript.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmBackGround.h">
       <Filter>Contents</Filter>
     </ClInclude>
   </ItemGroup>

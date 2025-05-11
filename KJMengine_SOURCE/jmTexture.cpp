@@ -45,6 +45,7 @@ namespace jm::graphcis
 		{
 			mType = eTextureType::Png;
 			mImage = Gdiplus::Image::FromFile(path.c_str());
+			
 			if (mImage == nullptr)
 				return S_FALSE;
 

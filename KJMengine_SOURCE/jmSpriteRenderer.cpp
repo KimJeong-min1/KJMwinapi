@@ -1,11 +1,12 @@
 #include "jmSpriteRenderer.h"
 #include "jmGameObject.h"
 #include "jmTransform.h"
+#include "jmRenderer.h"
 
 namespace jm
 {
 	SpriteRenderer::SpriteRenderer()
-		:Component()
+		:Component(enums::eComponentType::SpriteRenderer)
 		,mTexture(nullptr)
 		,mSize(Vector2::One)
 	{
@@ -29,6 +30,8 @@ namespace jm
 		
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+
+		/*pos = renderer::mainCamera->CaluatePosition(pos);*/
 		
 		if (mTexture->GetTexturetype() == graphcis::Texture::eTextureType::Bmp)
 		{

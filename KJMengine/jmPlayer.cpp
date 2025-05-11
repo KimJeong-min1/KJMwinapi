@@ -16,35 +16,6 @@ namespace jm
 	void Player::LateUpdate()
 	{
 		GameObject::LateUpdate();
-
-		if (Input::GetKey(eKeyCode::Right))
-		{
-			Transform* tr = GetComponent<Transform>();
-			Vector2 pos = tr->GetPosition();
-			pos.x += 100.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Left))
-		{
-			Transform* tr = GetComponent<Transform>();
-			Vector2 pos = tr->GetPosition();
-			pos.x -= 100.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Up))
-		{
-			Transform* tr = GetComponent<Transform>();
-			Vector2 pos = tr->GetPosition();
-			pos.y -= 100.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Down))
-		{
-			Transform* tr = GetComponent<Transform>();
-			Vector2 pos = tr->GetPosition();
-			pos.y += 100.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
 	}
 	void Player::Render(HDC hdc)
 	{

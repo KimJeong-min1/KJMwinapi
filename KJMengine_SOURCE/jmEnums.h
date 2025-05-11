@@ -14,7 +14,18 @@ namespace jm::enums
 	{
 		Texture,
 		AudioClip,
+		Animation,
 		Prefab,
+		End,
+	};
+
+	enum class eComponentType
+	{
+		Transform,
+		SpriteRenderer,
+		Animator,
+		Script,
+		Camera,
 		End,
 	};
 }

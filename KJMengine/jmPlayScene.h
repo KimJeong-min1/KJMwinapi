@@ -18,8 +18,9 @@ namespace jm
 		void OnExit() override;
 	
 	private:
-		class Player* bg;
-		class Player* player;
+		class Player* mPlayer;
+		class BackGround* mBG;
+		class Animator* mAnimator;
 	};
 }
 

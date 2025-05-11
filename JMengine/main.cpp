@@ -115,7 +115,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance) //윈도우 정보 세팅
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_JMENGINE)); //윈도우가 최소화 되었을경우 출력될 아이콘
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW); //윈도우가 사용할 마우스커서
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1); //윈도우 배경 색상을 지정한다
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_JMENGINE); //이 프로그램이 사용할 메뉴를 지정한다. 사용하지않을 경우 멤버에 NULL대입
+    wcex.lpszMenuName   = NULL;//MAKEINTRESOURCEW(IDC_JMENGINE); //이 프로그램이 사용할 메뉴를 지정한다. 사용하지않을 경우 멤버에 NULL대입
     wcex.lpszClassName  = szWindowClass; //윈도우 클래스의 이름을 정의한다. 윈도우 클래스의 이름은 보통 실행파일의 이름과 일치한다.
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL)); // 창 이름옆에 작은 아이콘을 지정
 

@@ -15,7 +15,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmEnums.h" />
@@ -24,27 +27,34 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jmLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jmScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jmTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmResources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jmScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jmTime.cpp" />
