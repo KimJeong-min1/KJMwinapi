@@ -3,7 +3,7 @@
 
 namespace jm
 {
-	class Monster : public GameObject
+	class NPC : public GameObject
 	{
 	public:
 		void Initialize() override;

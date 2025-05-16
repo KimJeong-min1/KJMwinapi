@@ -1,6 +1,8 @@
 #include "jmBackGround.h"
+#include "jmInput.h"
 #include "jmTransform.h"
 #include "jmTime.h"
+#include "jmGameObject.h"
 
 namespace jm
 {

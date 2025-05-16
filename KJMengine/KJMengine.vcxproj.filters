@@ -30,6 +30,9 @@
     <ClCompile Include="jmBackGround.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
+    <ClCompile Include="jmNPC.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jmCutScene.h">
@@ -60,6 +63,9 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmBackGround.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmNPC.h">
       <Filter>Contents</Filter>
     </ClInclude>
   </ItemGroup>

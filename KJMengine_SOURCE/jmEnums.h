@@ -7,6 +7,8 @@ namespace jm::enums
 		None,
 		BackGround,
 		Player,
+		Monster,
+		NPC,
 		Max = 16
 	};
 

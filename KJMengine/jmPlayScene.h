@@ -18,9 +18,14 @@ namespace jm
 		void OnExit() override;
 	
 	private:
-		class Player* mPlayer;
 		class BackGround* mBG;
-		class Animator* mAnimator;
+		class Player* mPlayer;
+		class Monster* mMonster;
+		class NPC* Azazel;
+		class NPC* Cerberus;
+		class Animator* PlayerAnimator;
+		class Animator* MonsterAnimator;
+		class Animator* NPCAnimator;
 	};
 }
 

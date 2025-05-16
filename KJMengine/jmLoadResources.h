@@ -11,5 +11,8 @@ namespace jm
 		Resources::Load<graphcis::Texture>(L"BGMenu", L"..\\Resources\\Texture2D\\dialogueBG_abyss.png");
 		Resources::Load<graphcis::Texture>(L"BGCutScene01", L"..\\Resources\\Texture2D\\cutscene_0008_Group-5.png");
 		Resources::Load<graphcis::Texture>(L"BGDeadScene01", L"..\\Resources\\Texture2D\\dialogueDeathExport0009.png");
+		Resources::Load<graphcis::Texture>(L"Azazel", L"..\\Resources\\Sprite\\Azazel.bmp");
+		Resources::Load<graphcis::Texture>(L"Monster", L"..\\Resources\\Sprite\\Monster.bmp");
+		Resources::Load<graphcis::Texture>(L"Cerberus", L"..\\Resources\\Sprite\\Cerberus.bmp");
 	}
 }

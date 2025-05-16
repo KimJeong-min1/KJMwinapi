@@ -24,6 +24,7 @@
     <ClCompile Include="jmDeadScene.cpp" />
     <ClCompile Include="jmMenuScene.cpp" />
     <ClCompile Include="jmMonster.cpp" />
+    <ClCompile Include="jmNPC.cpp" />
     <ClCompile Include="jmPlayer.cpp" />
     <ClCompile Include="jmPlayerScript.cpp" />
     <ClCompile Include="jmPlayScene.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="jmLoadScenes.h" />
     <ClInclude Include="jmMenuScene.h" />
     <ClInclude Include="jmMonster.h" />
+    <ClInclude Include="jmNPC.h" />
     <ClInclude Include="jmPlayer.h" />
     <ClInclude Include="jmPlayerScript.h" />
     <ClInclude Include="jmPlayScene.h" />

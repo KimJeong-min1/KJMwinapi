@@ -1,22 +1,22 @@
-#include "jmMonster.h"
+#include "jmNPC.h"
 #include "jmTransform.h"
 #include "jmTime.h"
 
 namespace jm
 {
-	void Monster::Initialize()
+	void NPC::Initialize()
 	{
 		GameObject::Initialize();
 	}
-	void Monster::Update()
+	void NPC::Update()
 	{
 		GameObject::Update();
 	}
-	void Monster::LateUpdate()
+	void NPC::LateUpdate()
 	{
 		GameObject::LateUpdate();
 	}
-	void Monster::Render(HDC hdc)
+	void NPC::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
 	}
