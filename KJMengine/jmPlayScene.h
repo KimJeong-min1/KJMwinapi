@@ -23,6 +23,13 @@ namespace jm
 		class Monster* mMonster;
 		class NPC* Azazel;
 		class NPC* Cerberus;
+		class NPC* Judgement;
+		class NPC* Justice;
+		class NPC* Lucifer;
+		class NPC* Malina;
+		class NPC* Modeus;
+		class NPC* Pandemonica;
+		class NPC* Zdrada;
 		class Animator* PlayerAnimator;
 		class Animator* MonsterAnimator;
 		class Animator* NPCAnimator;

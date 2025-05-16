@@ -14,5 +14,12 @@ namespace jm
 		Resources::Load<graphcis::Texture>(L"Azazel", L"..\\Resources\\Sprite\\Azazel.bmp");
 		Resources::Load<graphcis::Texture>(L"Monster", L"..\\Resources\\Sprite\\Monster.bmp");
 		Resources::Load<graphcis::Texture>(L"Cerberus", L"..\\Resources\\Sprite\\Cerberus.bmp");
+		Resources::Load<graphcis::Texture>(L"Judgement", L"..\\Resources\\Sprite\\Judgement.bmp");
+		Resources::Load<graphcis::Texture>(L"Justice", L"..\\Resources\\Sprite\\Justice.bmp");
+		Resources::Load<graphcis::Texture>(L"Lucifer", L"..\\Resources\\Sprite\\Lucifer.bmp");
+		Resources::Load<graphcis::Texture>(L"Malina", L"..\\Resources\\Sprite\\Malina.bmp");
+		Resources::Load<graphcis::Texture>(L"Modeus", L"..\\Resources\\Sprite\\Modeus.bmp");
+		Resources::Load<graphcis::Texture>(L"Pandemonica", L"..\\Resources\\Sprite\\Pandemonica.bmp");
+		Resources::Load<graphcis::Texture>(L"Zdrada", L"..\\Resources\\Sprite\\Zdrada.bmp");
 	}
 }

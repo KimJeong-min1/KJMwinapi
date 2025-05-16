@@ -88,10 +88,96 @@ namespace jm
 
 		NPCAnimator->PlayAnimation(L"CerberusIdel", true);
 
+		Judgement = object::Instantiate<NPC>(enums::eLayerType::NPC);
+		Judgement->AddComponent<PlayerScript>();
+
+		NPCTexture = Resources::Find<graphcis::Texture>(L"Judgement");
+		NPCAnimator = Judgement->AddComponent<Animator>();
+		NPCAnimator->CreateAnimation(L"JudgementIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+			Vector2::Zero, 12, 0.1f);
+		NPCAnimator->CreateAnimation(L"Judgementappeared", NPCTexture, Vector2(0.0f, 100.0f), Vector2(100.0f, 260.0f),
+			Vector2::Zero, 9, 0.1f);
+
+		NPCAnimator->PlayAnimation(L"JudgementIdel", true);
+
+		Justice = object::Instantiate<NPC>(enums::eLayerType::NPC);
+		Justice->AddComponent<PlayerScript>();
+
+		NPCTexture = Resources::Find<graphcis::Texture>(L"Justice");
+		NPCAnimator = Justice->AddComponent<Animator>();
+		NPCAnimator->CreateAnimation(L"JusticeIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+			Vector2::Zero, 12, 0.1f);
+
+		NPCAnimator->PlayAnimation(L"JusticeIdel", true);
+
+		Lucifer = object::Instantiate<NPC>(enums::eLayerType::NPC);
+		Lucifer->AddComponent<PlayerScript>();
+
+		NPCTexture = Resources::Find<graphcis::Texture>(L"Lucifer");
+		NPCAnimator = Lucifer->AddComponent<Animator>();
+		NPCAnimator->CreateAnimation(L"LuciferIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+			Vector2::Zero, 12, 0.1f);
+
+		NPCAnimator->PlayAnimation(L"LuciferIdel", true);
+
+		Malina = object::Instantiate<NPC>(enums::eLayerType::NPC);
+		Malina->AddComponent<PlayerScript>();
+
+		NPCTexture = Resources::Find<graphcis::Texture>(L"Malina");
+		NPCAnimator = Malina->AddComponent<Animator>();
+		NPCAnimator->CreateAnimation(L"MalinaIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+			Vector2::Zero, 12, 0.1f);
+
+		NPCAnimator->PlayAnimation(L"MalinaIdel", true);
+
+		Modeus = object::Instantiate<NPC>(enums::eLayerType::NPC);
+		Modeus->AddComponent<PlayerScript>();
+
+		NPCTexture = Resources::Find<graphcis::Texture>(L"Modeus");
+		NPCAnimator = Modeus->AddComponent<Animator>();
+		NPCAnimator->CreateAnimation(L"ModeusIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+			Vector2::Zero, 12, 0.1f);
+
+		NPCAnimator->PlayAnimation(L"ModeusIdel", true);
+
+		Pandemonica = object::Instantiate<NPC>(enums::eLayerType::NPC);
+		Pandemonica->AddComponent<PlayerScript>();
+
+		NPCTexture = Resources::Find<graphcis::Texture>(L"Pandemonica");
+		NPCAnimator = Pandemonica->AddComponent<Animator>();
+		NPCAnimator->CreateAnimation(L"PandemonicaIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+			Vector2::Zero, 12, 0.1f);
+
+		NPCAnimator->PlayAnimation(L"PandemonicaIdel", true);
+
+		Zdrada = object::Instantiate<NPC>(enums::eLayerType::NPC);
+		Zdrada->AddComponent<PlayerScript>();
+
+		NPCTexture = Resources::Find<graphcis::Texture>(L"Zdrada");
+		NPCAnimator = Zdrada->AddComponent<Animator>();
+		NPCAnimator->CreateAnimation(L"ZdradaIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+			Vector2::Zero, 12, 0.1f);
+
+		NPCAnimator->PlayAnimation(L"ZdradaIdel", true);
+
 		Transform* npctr = Azazel->GetComponent<Transform>();
 		npctr->SetPosition(Vector2(400.0f, 200.0f));
 		npctr = Cerberus->GetComponent<Transform>();
 		npctr->SetPosition(Vector2(500.0f, 200.0f));
+		npctr = Judgement->GetComponent<Transform>();
+		npctr->SetPosition(Vector2(600.0f, 300.0f));
+		npctr = Justice->GetComponent<Transform>();
+		npctr->SetPosition(Vector2(600.0f, 500.0f));
+		npctr = Lucifer->GetComponent<Transform>();
+		npctr->SetPosition(Vector2(700.0f, 300.0f));
+		npctr = Malina->GetComponent<Transform>();
+		npctr->SetPosition(Vector2(700.0f, 400.0f));
+		npctr = Modeus->GetComponent<Transform>();
+		npctr->SetPosition(Vector2(600.0f, 400.0f));
+		npctr = Pandemonica->GetComponent<Transform>();
+		npctr->SetPosition(Vector2(800.0f, 100.0f));
+		npctr = Zdrada->GetComponent<Transform>();
+		npctr->SetPosition(Vector2(800.0f, 200.0f));
 		
 		Scene::Initialize();
 	}
@@ -119,11 +205,13 @@ namespace jm
 		{
 			PlayerAnimator->PlayAnimation(L"PlayerKick", true);
 			MonsterAnimator->PlayAnimation(L"Monstergetkicked", true);
+			NPCAnimator->PlayAnimation(L"Judgementappeared", true);
 		}
 		if (Input::GetKeyDown(eKeyCode::O))
 		{
 			PlayerAnimator->PlayAnimation(L"PlayerIdel", true);
 			MonsterAnimator->PlayAnimation(L"MonsterIdel", true);
+			NPCAnimator->PlayAnimation(L"JudgementIdel", true);
 		}	
 	}
 	void PlayScene::Render(HDC hdc)
