@@ -6,6 +6,13 @@ namespace jm
 	class PlayerScript : public Script
 	{
 	public:
+		enum class eState
+		{
+			Move,
+			Dead,
+			Kick,
+			Idle,
+		};
 		PlayerScript();
 		~PlayerScript();
 
@@ -16,6 +23,15 @@ namespace jm
 
 
 	private:
+		void Move();
+		void Kick();
+		void Dead();
+		void Idle();
+	
+	private:
+		eState mState;
+		class Animator* mAnimator;
+		class Time* mTime;
 	};
 }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 
 namespace jm::math
 {
@@ -6,6 +7,16 @@ namespace jm::math
 	{
 		static Vector2 One;
 		static Vector2 Zero;
+		static Vector2 Lerp(const Vector2& a, const Vector2& b, float t)
+		{
+			t = std::clamp(t, 0.0f, 1.0f);
+
+			return
+			{
+				a.x + (b.x - a.x) * t,
+				a.y + (b.y - a.y) * t,
+			};
+		}
 
 		float x;
 		float y;

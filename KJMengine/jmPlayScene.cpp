@@ -15,6 +15,7 @@
 #include "jmAnimator.h"
 #include "jmMonster.h"
 #include "jmNPC.h"
+#include "jmMonsterScript.h"
 
 namespace jm
 {
@@ -33,7 +34,6 @@ namespace jm
 		mBG = object::Instantiate<BackGround>(enums::eLayerType::BackGround);
 		SpriteRenderer* bgsr = mBG->AddComponent<SpriteRenderer>();
 		bgsr->SetSize(Vector2(1.0f, 1.0f));
-		mBG->AddComponent<PlayerScript>(); // PlayerScript 대신에 BackGround를 넣어야하는게 아닌가 안되는이유
 		
 		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BG01");
 		bgsr->SetTexture(bg);
@@ -43,122 +43,113 @@ namespace jm
 		
 		graphcis::Texture* HelltakerTexture = Resources::Find<graphcis::Texture>(L"Player");
 		PlayerAnimator = mPlayer->AddComponent<Animator>();
-		PlayerAnimator->CreateAnimation(L"PlayerIdel", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 195.0f),
+		PlayerAnimator->CreateAnimation(L"PlayerIdle", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 195.0f),
 			Vector2::Zero, 12, 0.1f);
 		PlayerAnimator->CreateAnimation(L"PlayerKick", HelltakerTexture, Vector2(0.0f,195.0f), Vector2(100.0f,195.0f),
 			Vector2::Zero, 13, 0.1f);
 
-		PlayerAnimator->PlayAnimation(L"PlayerIdel", true);
+		PlayerAnimator->PlayAnimation(L"PlayerIdle", true);
 		
 		Transform* pltr = mPlayer->GetComponent<Transform>();
 		pltr->SetPosition(Vector2(100.0f, 100.0f));
 		
 		mMonster = object::Instantiate<Monster>(enums::eLayerType::Monster);
-		mMonster->AddComponent<PlayerScript>();
+		mMonster->AddComponent<MonsterScript>();
 
 		graphcis::Texture* MonsterTexture = Resources::Find<graphcis::Texture>(L"Monster");
 		MonsterAnimator = mMonster->AddComponent<Animator>();
-		MonsterAnimator->CreateAnimation(L"MonsterIdel", MonsterTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 220.0f),
+		MonsterAnimator->CreateAnimation(L"MonsterIdle", MonsterTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 220.0f),
 			Vector2::Zero, 12, 0.1f);
 		MonsterAnimator->CreateAnimation(L"Monstergetkicked", MonsterTexture, Vector2(0.0f, 220.0f), Vector2(100.0f, 220.0f),
 			Vector2::Zero, 6, 0.1f);
 
-		MonsterAnimator->PlayAnimation(L"MonsterIdel", true);
+		MonsterAnimator->PlayAnimation(L"MonsterIdle", true);
 
 		Transform* motr = mMonster->GetComponent<Transform>();
 		motr->SetPosition(Vector2(200.0f, 100.0f));
 		
 		Azazel = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Azazel->AddComponent<PlayerScript>();
 
 		graphcis::Texture* NPCTexture = Resources::Find<graphcis::Texture>(L"Azazel");
 		NPCAnimator = Azazel->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"AzazelIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"AzazelIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 		
-		NPCAnimator->PlayAnimation(L"AzazelIdel", true);
+		NPCAnimator->PlayAnimation(L"AzazelIdle", true);
 
 		Cerberus = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Cerberus->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Cerberus");
 		NPCAnimator = Cerberus->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"CerberusIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"CerberusIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"CerberusIdel", true);
+		NPCAnimator->PlayAnimation(L"CerberusIdle", true);
 
 		Judgement = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Judgement->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Judgement");
 		NPCAnimator = Judgement->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"JudgementIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"JudgementIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 		NPCAnimator->CreateAnimation(L"Judgementappeared", NPCTexture, Vector2(0.0f, 100.0f), Vector2(100.0f, 260.0f),
 			Vector2::Zero, 9, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"JudgementIdel", true);
+		NPCAnimator->PlayAnimation(L"JudgementIdle", true);
 
 		Justice = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Justice->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Justice");
 		NPCAnimator = Justice->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"JusticeIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"JusticeIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"JusticeIdel", true);
+		NPCAnimator->PlayAnimation(L"JusticeIdle", true);
 
 		Lucifer = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Lucifer->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Lucifer");
 		NPCAnimator = Lucifer->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"LuciferIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"LuciferIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"LuciferIdel", true);
+		NPCAnimator->PlayAnimation(L"LuciferIdle", true);
 
 		Malina = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Malina->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Malina");
 		NPCAnimator = Malina->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"MalinaIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"MalinaIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"MalinaIdel", true);
+		NPCAnimator->PlayAnimation(L"MalinaIdle", true);
 
 		Modeus = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Modeus->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Modeus");
 		NPCAnimator = Modeus->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"ModeusIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"ModeusIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"ModeusIdel", true);
+		NPCAnimator->PlayAnimation(L"ModeusIdle", true);
 
 		Pandemonica = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Pandemonica->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Pandemonica");
 		NPCAnimator = Pandemonica->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"PandemonicaIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"PandemonicaIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"PandemonicaIdel", true);
+		NPCAnimator->PlayAnimation(L"PandemonicaIdle", true);
 
 		Zdrada = object::Instantiate<NPC>(enums::eLayerType::NPC);
-		Zdrada->AddComponent<PlayerScript>();
 
 		NPCTexture = Resources::Find<graphcis::Texture>(L"Zdrada");
 		NPCAnimator = Zdrada->AddComponent<Animator>();
-		NPCAnimator->CreateAnimation(L"ZdradaIdel", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+		NPCAnimator->CreateAnimation(L"ZdradaIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f);
 
-		NPCAnimator->PlayAnimation(L"ZdradaIdel", true);
+		NPCAnimator->PlayAnimation(L"ZdradaIdle", true);
 
 		Transform* npctr = Azazel->GetComponent<Transform>();
 		npctr->SetPosition(Vector2(400.0f, 200.0f));
@@ -200,18 +191,6 @@ namespace jm
 		else if (Input::GetKeyDown(eKeyCode::Four))
 		{
 			SceneManager::LoadScene(L"DeadScene");
-		}
-		if (Input::GetKeyDown(eKeyCode::H))
-		{
-			PlayerAnimator->PlayAnimation(L"PlayerKick", true);
-			MonsterAnimator->PlayAnimation(L"Monstergetkicked", true);
-			NPCAnimator->PlayAnimation(L"Judgementappeared", true);
-		}
-		if (Input::GetKeyDown(eKeyCode::O))
-		{
-			PlayerAnimator->PlayAnimation(L"PlayerIdel", true);
-			MonsterAnimator->PlayAnimation(L"MonsterIdel", true);
-			NPCAnimator->PlayAnimation(L"JudgementIdel", true);
 		}	
 	}
 	void PlayScene::Render(HDC hdc)
