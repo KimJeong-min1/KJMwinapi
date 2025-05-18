@@ -10,6 +10,8 @@ namespace jm
 	PlayerScript::PlayerScript()
 		:mState(PlayerScript::eState::Idle)
 		,mAnimator(nullptr)
+		,mdir(0)
+		,mTime(0.0f)
 	{
 	}
 	PlayerScript::~PlayerScript()
@@ -52,31 +54,37 @@ namespace jm
 	void PlayerScript::Move()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
-
-		if (Input::GetKey(eKeyCode::Right))
-		{
-			pos = Vector2::Lerp(pos, Vector2(pos.x + 100.0f, pos.y), 0.05f);
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Left))
-		{
-			pos = Vector2::Lerp(pos, Vector2(pos.x - 100.0f, pos.y), 0.05f);
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Up))
-		{
-			pos = Vector2::Lerp(pos, Vector2(pos.x, pos.y - 100.0f), 0.05f);
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Down))
-		{
-			pos = Vector2::Lerp(pos, Vector2(pos.x, pos.y + 100.0f), 0.05f);
-			tr->SetPosition(pos);
-		}
-
-		//mState = PlayerScript::eState::Idle;
+		Pos = tr->GetPosition();
+		mTime += Time::DeltaTime();
 		
+		if (mdir == 1)
+		{
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x + 100.0f, Prevpos.y), 0.05f);
+			tr->SetPosition(Pos);
+		}
+		else if (mdir == 2)
+		{
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x - 100.0f, Prevpos.y), 0.05f);
+			tr->SetPosition(Pos);
+		}
+		else if (mdir == 3)
+		{
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y - 100.0f), 0.05f);
+			tr->SetPosition(Pos);
+		}
+		else if (mdir == 4)
+		{
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y + 100.0f), 0.05f);
+			tr->SetPosition(Pos);
+		}
+		
+
+		if (mTime > 1.0f)
+		{
+			mState = PlayerScript::eState::Idle;
+			mAnimator->PlayAnimation(L"PlayerIdle");
+			mTime = 0;
+		}
 		// 선형보간 공부해오기
 		// 좌,우,상,하
 		// idle상태
@@ -87,31 +95,39 @@ namespace jm
 	}
 	void PlayerScript::Dead()
 	{
+		// 0번누르면 죽게만들기
 	}
 	void PlayerScript::Idle()
 	{
-		if (mState == PlayerScript::eState::Idle)
-		{
-			mAnimator->PlayAnimation(L"PlayerIdel");
-		}
-
 		if (Input::GetKeyDown(eKeyCode::Right))
 		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 1;
+			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::Move;
 			mAnimator->PlayAnimation(L"PlayerKick");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Left))
 		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 2;
+			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::Move;
-			mAnimator->PlayAnimation(L"PlayerKick");
+			mAnimator->PlayAnimation(L"PlayerLeftKick");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Up))
 		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 3;
+			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::Move;
 			mAnimator->PlayAnimation(L"PlayerKick");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Down))
 		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 4;
+			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::Move;
 			mAnimator->PlayAnimation(L"PlayerKick");
 		}

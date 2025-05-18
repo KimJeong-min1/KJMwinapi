@@ -47,6 +47,10 @@ namespace jm
 			Vector2::Zero, 12, 0.1f);
 		PlayerAnimator->CreateAnimation(L"PlayerKick", HelltakerTexture, Vector2(0.0f,195.0f), Vector2(100.0f,195.0f),
 			Vector2::Zero, 13, 0.1f);
+		PlayerAnimator->CreateAnimation(L"PlayerLeftIdle", HelltakerTexture, Vector2(1300.0f, 0.0f), Vector2(100.0f, 195.0f),
+			Vector2::Zero, 12, 0.1f);
+		PlayerAnimator->CreateAnimation(L"PlayerLeftKick", HelltakerTexture, Vector2(1200.0f, 195.0f), Vector2(100.0f, 195.0f),
+			Vector2::Zero, 13, 0.1f);
 
 		PlayerAnimator->PlayAnimation(L"PlayerIdle", true);
 		

@@ -31,7 +31,11 @@ namespace jm
 	private:
 		eState mState;
 		class Animator* mAnimator;
-		class Time* mTime;
+		float mTime;
+		int mdir;
+		class Vector2 Prevpos;
+		class Vector2 Pos;
 	};
+
 }
 
