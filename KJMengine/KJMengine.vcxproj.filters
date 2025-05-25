@@ -21,7 +21,7 @@
     <ClCompile Include="jmMonster.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="jmDeadScene.cpp">
+    <ClCompile Include="jmBadendScene.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="jmPlayerScript.cpp">
@@ -34,6 +34,9 @@
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="jmMonsterScript.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmDeadScene.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +62,7 @@
     <ClInclude Include="jmMonster.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="jmDeadScene.h">
+    <ClInclude Include="jmBadendScene.h">
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmPlayerScript.h">
@@ -72,6 +75,9 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmMonsterScript.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmDeadScene.h">
       <Filter>Contents</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,6 +7,8 @@ namespace jm::math
 	{
 		static Vector2 One;
 		static Vector2 Zero;
+		static Vector2 Half;
+
 		static Vector2 Lerp(const Vector2& a, const Vector2& b, float t)
 		{
 			t = std::clamp(t, 0.0f, 1.0f);

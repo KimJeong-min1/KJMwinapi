@@ -7,8 +7,11 @@ namespace jm
 	void LoadResources()
 	{
 		Resources::Load<graphcis::Texture>(L"BG01", L"..\\Resources\\Sprite\\chapterBG0001.png");
-		Resources::Load<graphcis::Texture>(L"Player", L"..\\Resources\\Sprite\\Helltaker.bmp");
-		Resources::Load<graphcis::Texture>(L"Player", L"..\\Resources\\Sprite\\Helltaker Left.bmp");
+		Resources::Load<graphcis::Texture>(L"PlayerDeath", L"..\\Resources\\Sprite\\HelltakerDeath.bmp");
+		Resources::Load<graphcis::Texture>(L"PlayerRight", L"..\\Resources\\Sprite\\HelltakerRight.bmp");
+		Resources::Load<graphcis::Texture>(L"PlayerRightKick", L"..\\Resources\\Sprite\\HelltakerRightKick.bmp");
+		Resources::Load<graphcis::Texture>(L"PlayerLeft", L"..\\Resources\\Sprite\\HelltakerLeftIdle.bmp");
+		Resources::Load<graphcis::Texture>(L"PlayerLeftKick", L"..\\Resources\\Sprite\\HelltakerLeftKick2.bmp");
 		Resources::Load<graphcis::Texture>(L"BGMenu", L"..\\Resources\\Texture2D\\dialogueBG_abyss.png");
 		Resources::Load<graphcis::Texture>(L"BGCutScene01", L"..\\Resources\\Texture2D\\cutscene_0008_Group-5.png");
 		Resources::Load<graphcis::Texture>(L"BGDeadScene01", L"..\\Resources\\Texture2D\\dialogueDeathExport0009.png");

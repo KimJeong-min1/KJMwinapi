@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="jmBackGround.cpp" />
     <ClCompile Include="jmCutScene.cpp" />
+    <ClCompile Include="jmBadendScene.cpp" />
     <ClCompile Include="jmDeadScene.cpp" />
     <ClCompile Include="jmMenuScene.cpp" />
     <ClCompile Include="jmMonster.cpp" />
@@ -33,6 +34,7 @@
   <ItemGroup>
     <ClInclude Include="jmBackGround.h" />
     <ClInclude Include="jmCutScene.h" />
+    <ClInclude Include="jmBadendScene.h" />
     <ClInclude Include="jmDeadScene.h" />
     <ClInclude Include="jmLoadResources.h" />
     <ClInclude Include="jmLoadScenes.h" />

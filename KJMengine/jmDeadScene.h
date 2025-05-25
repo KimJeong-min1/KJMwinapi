@@ -1,11 +1,9 @@
 #pragma once
 #include "..\\KJMengine_SOURCE\\jmScene.h"
-
 namespace jm
 {
 	class DeadScene : public Scene
 	{
-	public:
 		DeadScene();
 		~DeadScene();
 
@@ -16,9 +14,6 @@ namespace jm
 
 		void OnEnter() override;
 		void OnExit() override;
-
-	private:
-		class Player* bg;
 	};
 }
 

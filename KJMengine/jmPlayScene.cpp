@@ -41,18 +41,24 @@ namespace jm
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		mPlayer->AddComponent<PlayerScript>();
 		
-		graphcis::Texture* HelltakerTexture = Resources::Find<graphcis::Texture>(L"Player");
+		graphcis::Texture* HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerRight");
 		PlayerAnimator = mPlayer->AddComponent<Animator>();
-		PlayerAnimator->CreateAnimation(L"PlayerIdle", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 195.0f),
+		PlayerAnimator->CreateAnimation(L"RightIdle", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 148.0f),
 			Vector2::Zero, 12, 0.1f);
-		PlayerAnimator->CreateAnimation(L"PlayerKick", HelltakerTexture, Vector2(0.0f,195.0f), Vector2(100.0f,195.0f),
+		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerRightKick");
+		PlayerAnimator->CreateAnimation(L"RightKick", HelltakerTexture, Vector2(0.0f,0.0f), Vector2(100.0f,148.0f),
 			Vector2::Zero, 13, 0.1f);
-		PlayerAnimator->CreateAnimation(L"PlayerLeftIdle", HelltakerTexture, Vector2(1300.0f, 0.0f), Vector2(100.0f, 195.0f),
+		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerLeft");
+		PlayerAnimator->CreateAnimation(L"LeftIdle", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 148.0f),
 			Vector2::Zero, 12, 0.1f);
-		PlayerAnimator->CreateAnimation(L"PlayerLeftKick", HelltakerTexture, Vector2(1200.0f, 195.0f), Vector2(100.0f, 195.0f),
+		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerLeftKick");
+		PlayerAnimator->CreateAnimation(L"LeftKick", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 148.0f),
 			Vector2::Zero, 13, 0.1f);
-
-		PlayerAnimator->PlayAnimation(L"PlayerIdle", true);
+		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerDeath");
+		PlayerAnimator->CreateAnimation(L"PlayerDead", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(720.0f, 1232.0f),
+			Vector2::Half, 18, 0.1f);
+		 
+		PlayerAnimator->PlayAnimation(L"RightIdle", true);
 		
 		Transform* pltr = mPlayer->GetComponent<Transform>();
 		pltr->SetPosition(Vector2(100.0f, 100.0f));
@@ -194,7 +200,7 @@ namespace jm
 		}
 		else if (Input::GetKeyDown(eKeyCode::Four))
 		{
-			SceneManager::LoadScene(L"DeadScene");
+			SceneManager::LoadScene(L"BadendScene");
 		}	
 	}
 	void PlayScene::Render(HDC hdc)

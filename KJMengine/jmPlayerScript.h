@@ -8,10 +8,13 @@ namespace jm
 	public:
 		enum class eState
 		{
-			Move,
+			RightMove,
+			LeftMove,
+			RightKick,
+			LeftKick,
+			RightIdle,
+			LeftIdle,
 			Dead,
-			Kick,
-			Idle,
 		};
 		PlayerScript();
 		~PlayerScript();
@@ -23,10 +26,13 @@ namespace jm
 
 
 	private:
-		void Move();
-		void Kick();
+		void RightMove();
+		void LeftMove();
+		void RightKick();
 		void Dead();
-		void Idle();
+		void RightIdle();
+		void LeftKick();
+		void LeftIdle();
 	
 	private:
 		eState mState;

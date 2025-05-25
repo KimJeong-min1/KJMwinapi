@@ -8,10 +8,10 @@
 namespace jm
 {
 	PlayerScript::PlayerScript()
-		:mState(PlayerScript::eState::Idle)
-		,mAnimator(nullptr)
-		,mdir(0)
-		,mTime(0.0f)
+		:mState(PlayerScript::eState::RightIdle)
+		, mAnimator(nullptr)
+		, mdir(0)
+		, mTime(0.0f)
 	{
 	}
 	PlayerScript::~PlayerScript()
@@ -29,15 +29,23 @@ namespace jm
 
 		switch (mState)
 		{
-		case jm::PlayerScript::eState::Idle:
-			Idle();
+		case jm::PlayerScript::eState::RightMove:
+			RightMove();
 			break;
-		case jm::PlayerScript::eState::Move:
-			Move();
+		case jm::PlayerScript::eState::LeftMove:
+			LeftMove();
 			break;
-
-		case jm::PlayerScript::eState::Kick:
-			Kick();
+		case jm::PlayerScript::eState::RightKick:
+			RightKick();
+			break;
+		case jm::PlayerScript::eState::LeftKick:
+			LeftKick();
+			break;
+		case jm::PlayerScript::eState::RightIdle:
+			RightIdle();
+			break;
+		case jm::PlayerScript::eState::LeftIdle:
+			LeftIdle();
 			break;
 		case jm::PlayerScript::eState::Dead:
 			Dead();
@@ -51,20 +59,15 @@ namespace jm
 	void PlayerScript::Render(HDC hdc)
 	{
 	}
-	void PlayerScript::Move()
+	void PlayerScript::RightMove()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Pos = tr->GetPosition();
 		mTime += Time::DeltaTime();
-		
+
 		if (mdir == 1)
 		{
 			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x + 100.0f, Prevpos.y), 0.05f);
-			tr->SetPosition(Pos);
-		}
-		else if (mdir == 2)
-		{
-			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x - 100.0f, Prevpos.y), 0.05f);
 			tr->SetPosition(Pos);
 		}
 		else if (mdir == 3)
@@ -77,12 +80,12 @@ namespace jm
 			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y + 100.0f), 0.05f);
 			tr->SetPosition(Pos);
 		}
-		
+
 
 		if (mTime > 1.0f)
 		{
-			mState = PlayerScript::eState::Idle;
-			mAnimator->PlayAnimation(L"PlayerIdle");
+			mState = PlayerScript::eState::RightIdle;
+			mAnimator->PlayAnimation(L"RightIdle");
 			mTime = 0;
 		}
 		// 선형보간 공부해오기
@@ -90,46 +93,134 @@ namespace jm
 		// idle상태
 		// monster 스크립트 구현
 	}
-	void PlayerScript::Kick()
+	void PlayerScript::LeftMove()
+	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Pos = tr->GetPosition();
+		mTime += Time::DeltaTime();
+		
+		if (mdir == 2)
+		{
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x - 100.0f, Prevpos.y), 0.05f);
+			tr->SetPosition(Pos);	
+		}
+		else if (mdir == 3)
+		{
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y - 100.0f), 0.05f);
+			tr->SetPosition(Pos);
+		}
+		else if (mdir == 4)
+		{
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y + 100.0f), 0.05f);
+			tr->SetPosition(Pos);
+		}
+
+		if (mTime > 1.0f)
+		{
+			mState = PlayerScript::eState::LeftIdle;
+			mAnimator->PlayAnimation(L"LeftIdle");
+			mTime = 0;
+		}
+	}
+	void PlayerScript::RightKick()
 	{
 	}
-	void PlayerScript::Dead()
+	void PlayerScript::LeftKick()
 	{
-		// 0번누르면 죽게만들기
+
 	}
-	void PlayerScript::Idle()
+	void PlayerScript::LeftIdle()
 	{
 		if (Input::GetKeyDown(eKeyCode::Right))
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			mdir = 1;
 			Prevpos = tr->GetPosition();
-			mState = PlayerScript::eState::Move;
-			mAnimator->PlayAnimation(L"PlayerKick");
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightKick");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Left))
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			mdir = 2;
 			Prevpos = tr->GetPosition();
-			mState = PlayerScript::eState::Move;
-			mAnimator->PlayAnimation(L"PlayerLeftKick");
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftKick");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Up))
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
+
 			mdir = 3;
 			Prevpos = tr->GetPosition();
-			mState = PlayerScript::eState::Move;
-			mAnimator->PlayAnimation(L"PlayerKick");
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftKick");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Down))
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			mdir = 4;
 			Prevpos = tr->GetPosition();
-			mState = PlayerScript::eState::Move;
-			mAnimator->PlayAnimation(L"PlayerKick");
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftKick");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Zero))
+		{
+			mState = PlayerScript::eState::Dead;
+			mAnimator->PlayAnimation(L"PlayerDead");
+		}
+	}
+	void PlayerScript::RightIdle()
+	{
+		if (Input::GetKeyDown(eKeyCode::Right))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 1;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightKick");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Left))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 2;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftKick");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Up))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+
+			mdir = 3;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightKick");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Down))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 4;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightKick");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Zero))
+		{
+			mState = PlayerScript::eState::Dead;
+			mAnimator->PlayAnimation(L"PlayerDead");
+		}
+	}
+	void PlayerScript::Dead()
+	{
+		// 0번누르면 죽게만들기
+		mTime += Time::DeltaTime();
+		
+		if (mTime > 1.0f)
+		{
+			mState = PlayerScript::eState::RightIdle;
+			mAnimator->PlayAnimation(L"RightIdle");
+			mTime = 0;
 		}
 	}
 }

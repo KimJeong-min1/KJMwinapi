@@ -46,7 +46,7 @@ namespace jm
 		}
 		else if (Input::GetKeyDown(eKeyCode::Four))
 		{
-			SceneManager::LoadScene(L"DeadScene");
+			SceneManager::LoadScene(L"BadendScene");
 		}
 	}
 	void MenuScene::Render(HDC hdc)
