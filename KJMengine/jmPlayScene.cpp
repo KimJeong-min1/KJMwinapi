@@ -39,7 +39,7 @@ namespace jm
 		bgsr->SetTexture(bg);
 		
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		mPlayer->AddComponent<PlayerScript>();
+		PlayerScript* plscript = mPlayer->AddComponent<PlayerScript>();
 		
 		graphcis::Texture* HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerRight");
 		PlayerAnimator = mPlayer->AddComponent<Animator>();
@@ -57,13 +57,14 @@ namespace jm
 		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerDeath");
 		PlayerAnimator->CreateAnimation(L"PlayerDead", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(720.0f, 1232.0f),
 			Vector2::Half, 18, 0.1f);
+		PlayerAnimator->GetCompleteEvent(L"RightKick") = std::bind(&PlayerScript::AttackEffect, plscript);
 		 
 		PlayerAnimator->PlayAnimation(L"RightIdle", true);
 		
 		Transform* pltr = mPlayer->GetComponent<Transform>();
 		pltr->SetPosition(Vector2(100.0f, 100.0f));
 		
-		mMonster = object::Instantiate<Monster>(enums::eLayerType::Monster);
+		/*mMonster = object::Instantiate<Monster>(enums::eLayerType::Monster);
 		mMonster->AddComponent<MonsterScript>();
 
 		graphcis::Texture* MonsterTexture = Resources::Find<graphcis::Texture>(L"Monster");
@@ -179,7 +180,7 @@ namespace jm
 		npctr->SetPosition(Vector2(800.0f, 100.0f));
 		npctr = Zdrada->GetComponent<Transform>();
 		npctr->SetPosition(Vector2(800.0f, 200.0f));
-		
+		*/
 		Scene::Initialize();
 	}
 	void PlayScene::Update()

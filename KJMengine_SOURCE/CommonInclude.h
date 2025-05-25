@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <string>
 #include <map>
+#include <functional>
 
 #include "jmMath.h"
 
@@ -20,3 +21,4 @@
 #pragma comment(lib, "gdiplus.lib")
 
 #include "jmEnums.h"
+

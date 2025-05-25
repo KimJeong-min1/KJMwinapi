@@ -59,6 +59,9 @@ namespace jm
 	void PlayerScript::Render(HDC hdc)
 	{
 	}
+	void PlayerScript::AttackEffect()
+	{
+	}
 	void PlayerScript::RightMove()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -82,7 +85,7 @@ namespace jm
 		}
 
 
-		if (mTime > 1.0f)
+		if (mTime > 2.0f)
 		{
 			mState = PlayerScript::eState::RightIdle;
 			mAnimator->PlayAnimation(L"RightIdle");
