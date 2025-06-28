@@ -162,11 +162,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
        , nCmdShow); // 윈도우를 화면에 출력하는 방법을 지정한다. 
    UpdateWindow(hWnd); // 윈도우를 업데이트를 해주는 함수
 
-   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL); // windows에서 gdi+ 라이브러리를 초기화하는데 사용하는 함수
 
-   jm::LoadResources();
+   jm::LoadResources(); // Resources로드함수
    
-   jm::LoadScenes();
+   jm::LoadScenes(); // Scene로드함수
 
    return TRUE;
 }

@@ -15,15 +15,19 @@ namespace jm
 	
 	void Input::Initialize()
 	{
+		// 키를 만드는 함수
 		creatKeys();
 	}
 	void Input::Update()
 	{
+		// 키를 업데이트하는 함수
 		updateKeys();
 	}
 
 	void Input::creatKeys()
 	{
+		// for문을 통하여 내가 명시한 키보드의 키들의
+		// 상태나 이름을 벡터자료형 Keys에 삽입한다.
 		for (size_t i = 0; i < (UINT)eKeyCode::End; i++)
 		{
 			Key key = {};
@@ -36,9 +40,13 @@ namespace jm
 	}
 	void Input::updateKeys()
 	{
+		//Keys의 변수의 처음부터 끝까지를
+		//업데이트를 계속해준다.
 		std::for_each(Keys.begin(), Keys.end(),
 			[](Key& key) -> void
 			{
+				// for문과 비슷하게 Keys변수의 처음부터 끝까지 입력되어있는
+				// 키를 인자로 받는다.
 				updateKey(key);
 			});
 	}

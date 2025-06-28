@@ -9,6 +9,7 @@ namespace jm::math
 		static Vector2 Zero;
 		static Vector2 Half;
 
+		// 선형보간 함수 이다. 이는 a 와 b사이의 거리를 부드럽게 움직이게 해주는 효과가있다.
 		static Vector2 Lerp(const Vector2& a, const Vector2& b, float t)
 		{
 			t = std::clamp(t, 0.0f, 1.0f);

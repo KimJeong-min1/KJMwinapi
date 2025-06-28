@@ -14,6 +14,7 @@ namespace jm
 	}
 	void Transform::Update()
 	{
+		// Component 클래스의 업데이트로 인하여 Transform클래스의 업데이트를 진행한다.
 	}
 	void Transform::LateUpdate()
 	{

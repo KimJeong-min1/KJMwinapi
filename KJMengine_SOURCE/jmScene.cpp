@@ -24,6 +24,7 @@ namespace jm
 	}
 	void Scene::Update()
 	{
+		// Layer클래스의 Layer들을 업데이트시킨다
 		for (Layer* layer : mLayers)
 		{
 			if (layer == nullptr)
@@ -33,6 +34,7 @@ namespace jm
 	}
 	void Scene::LateUpdate()
 	{
+		// Scene클래스의 LateUpdate함수를 통해서 Layer 클래스를 LateUpdate를 활성화한다.
 		for (Layer* layer : mLayers)
 		{
 			if (layer == nullptr)
@@ -42,6 +44,7 @@ namespace jm
 	}
 	void Scene::Render(HDC hdc)
 	{
+		// Scene클래스의 Render함수를 통해서 Layer 클래스의 Render를 활성화한다
 		for (Layer* layer : mLayers)
 		{
 			if (layer == nullptr)

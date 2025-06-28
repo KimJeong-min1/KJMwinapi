@@ -22,6 +22,7 @@ namespace jm
 	}
 	void PlayerScript::Update()
 	{
+		// GameObject를 통해서 PlayerScript 클래스의 업데이트를 활성화시킨다.
 		if (mAnimator == nullptr)
 		{
 			mAnimator = GetOwner()->GetComponent<Animator>();

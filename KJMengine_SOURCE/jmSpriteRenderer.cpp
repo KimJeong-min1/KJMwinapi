@@ -19,9 +19,11 @@ namespace jm
 	}
 	void SpriteRenderer::Update()
 	{
+		// Component 클래스의 업데이트로 인하여 SpriteRenderer클래스의 업데이트를 진행한다.
 	}
 	void SpriteRenderer::LateUpdate()
 	{
+		// Component 클래스의 LateUpdate로 인하여 SpriteRenderer클래스의 LateUpdate를 진행한다.
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{ 

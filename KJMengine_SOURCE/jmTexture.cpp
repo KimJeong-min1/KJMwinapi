@@ -14,8 +14,10 @@ namespace jm::graphcis
 	{
 
 	}
+	// 리소스들을 로드할때 실행이 되는 함수이다.
 	HRESULT Texture::Load(const std::wstring& path)
 	{
+		// ext의 변수에 끝에 bmp인지 png인지 구분하기 위해서 대입을한다.
 		std::wstring ext
 			= path.substr(path.find_last_of(L".") + 1);
 
@@ -41,6 +43,7 @@ namespace jm::graphcis
 			HBITMAP oldBitmap = (HBITMAP)SelectObject(mHdc, mBitmap);
 			DeleteObject(oldBitmap);
 		}
+		// png일때
 		else if (ext == L"png")
 		{
 			mType = eTextureType::Png;

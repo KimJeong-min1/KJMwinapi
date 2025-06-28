@@ -8,20 +8,24 @@ namespace jm
 
 	void Time::Initailize()
 	{
-		// Cpu 고유 진동수
+		// Cpu 고유 진동수를 대입
 		QueryPerformanceFrequency(&CpuFrequency);
 
-		// 프로그램이 시작 했을 때 현재 진동수
+		// 프로그램이 시작 했을 때 현재 진동수를 대입
 		QueryPerformanceCounter(&PrevFrequency);
 	}
 
 	void Time::Update()
 	{
+		// 현재의 진동수를 대입한다.
 		QueryPerformanceCounter(&CurrentFrequency);
 
+		// 현재의 고유 진동수와 전의 고유진동수를 통하여 현재와 과거의 진동수의 차이를 구한다.
 		float differenceFrequency
 			= static_cast<float>(CurrentFrequency.QuadPart - PrevFrequency.QuadPart);
+		// 진동수의 차이 값을 cpu 고유 진동수로 나누어서 Deltatimevalue 값을 구한다.
 		DeltaTimeValue = differenceFrequency / static_cast<float>(CpuFrequency.QuadPart);
+		// 그리고 과거의 고유 진동수에 현재의 고유진동수를 대입한다.
 		PrevFrequency.QuadPart = CurrentFrequency.QuadPart;
 	}
 

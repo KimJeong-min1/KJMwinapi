@@ -43,6 +43,8 @@ namespace jm
 	}
 	void Animation::Render(HDC hdc)
 	{
+		// 애니메이션을 그려주는 함수
+		// 만약 텍스쳐가 null이면 그냥 반환 방어코드
 		if (mTexture == nullptr)
 			return;
 
@@ -64,9 +66,11 @@ namespace jm
 
 		/*AlphaBlend(hdc, pos.x, pos.y, sprite.size.x, sprite.size.y, imgHdc, sprite.lefttop.x, sprite.lefttop.y,
 			sprite.size.x, sprite.size.y, func);*/
+		// 특정크기만큼 이색을 제외한 모든 곳을 그려주는 함수
 		TransparentBlt(hdc, pos.x, pos.y, sprite.size.x, sprite.size.y, imgHdc, sprite.lefttop.x, sprite.lefttop.y,
 			sprite.size.x, sprite.size.y, RGB(255, 0, 255));
 	}
+	// 애니메이션을 만들어주는 함수
 	void Animation::CreateAnimation(const std::wstring& name, graphcis::Texture* spriteSheet, 
 		Vector2 lefttop, Vector2 Size, Vector2 offset, UINT spriteLength, float duration)
 	{
@@ -86,6 +90,8 @@ namespace jm
 	}
 	void Animation::Reset()
 	{
+		// 애니메이션이 처음부터 끝까지 작동되었을 때
+		// 다시 처음으로 돌려주는 함수
 		mTime = 0.0f;
 		mIndex = 0;
 		mbComplete = false;

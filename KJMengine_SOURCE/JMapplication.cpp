@@ -51,6 +51,7 @@ namespace jm
 
 	void Application::LateUpdate()
 	{
+		// Player Late업데이트
 		SceneManager::LateUpdate();
 	}
 	void Application::Render()
@@ -58,12 +59,12 @@ namespace jm
 		// 뒤에 핸들에 사각형을 그려주는 함수
 		clearRenderTarget();
 		
-		// 플레이어를 그려주는 함수
+		// 주사율을 표기해주는 함수
 		Time::Render(mBackHdc);
+		// 플레이어를 그려주는 함수
 		SceneManager::Render(mBackHdc);
 
 		// BackBuffer에 있는걸 원본 Buffer에 복사 (그려준다)
-		
 		copyRenderTarget(mBackHdc, mHdc);
 	}
 
@@ -73,20 +74,29 @@ namespace jm
 	}
 	void Application::copyRenderTarget(HDC source, HDC dest)
 	{
+		// 비트맵파일로 이미지를 화면에 출력해주는 함수
 		BitBlt(dest, 0, 0, mWidth, mHeight, source, 0, 0, SRCCOPY);
 	}
 	void Application::adjustWindowRect(HWND hwnd, UINT width, UINT height) //윈도우창생성
 	{
+		// 윈도우창 핸들
 		mHwnd = hwnd;
+		// 윈도우창 그리기위한 핸들
 		mHdc = GetDC(hwnd);
 
+		// 사각형의 크기 정보를 담을 변수를 만들어서 대입
 		RECT rect = { 0,0,width,height };
+		// 윈도우창을 생성
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
+		// 가로값
 		mWidth = rect.right - rect.left;
+		// 세로값
 		mHeight = rect.bottom - rect.top;
 
+		// 내가 정한크기로 윈도우를 세팅
 		SetWindowPos(hwnd, nullptr, 0, 0, mWidth, mHeight, 0);
+		// 윈도우를 화면상에 보여주게함
 		ShowWindow(hwnd, true);
 	}
 	void Application::createBuffer(UINT width, UINT height) //버퍼생성
@@ -102,7 +112,9 @@ namespace jm
 	}
 	void Application::initializeEtc()
 	{
+		// Input클래스안에 초기화함수에 들어감
 		Input::Initialize();
+		// Time클래스안에 초기화함수에 들어감
 		Time::Initailize();
 	}
 }

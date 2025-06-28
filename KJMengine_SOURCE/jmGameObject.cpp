@@ -30,6 +30,7 @@ namespace jm
 	}
 	void GameObject::Update()
 	{
+		// GameObject 클래스를 통하여 Component클래스의 Update를 활성화 시킨다.
 		for (Component* comp : mComponents)
 		{
 			if (comp == nullptr)
@@ -40,6 +41,7 @@ namespace jm
 	}
 	void GameObject::LateUpdate()
 	{
+		// GameObject 클래스를 통하여 Component클래스의 LateUpdate를 활성화 시킨다.
 		for (Component* comp : mComponents)
 		{
 			if (comp == nullptr)
@@ -50,6 +52,7 @@ namespace jm
 	}
 	void GameObject::Render(HDC hdc)
 	{
+		// GameObject 클래스를 통하여 Component클래스의 Render를 활성화 시킨다.
 		for (Component* comp : mComponents)
 		{
 			if (comp == nullptr)
@@ -59,6 +62,7 @@ namespace jm
 		}
 	}
 
+	// 지속적으로 위치를 초기화시켜준다? (잘모르겠음)
 	void GameObject::initializeTransform()
 	{
 		AddComponent<Transform>();
