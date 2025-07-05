@@ -45,6 +45,11 @@ namespace jm
 		PlayerAnimator = mPlayer->AddComponent<Animator>();
 		PlayerAnimator->CreateAnimation(L"RightIdle", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 148.0f),
 			Vector2::Zero, 12, 0.1f);
+		
+		/*PlayerAnimator = mPlayer->AddComponent<Animator>();
+		PlayerAnimator->CreateAnimationByFolder(L"RightIdle", L"..\\Resources\\HelltakerRightIdle", Vector2::Zero, 0.1f);
+		PlayerAnimator->PlayAnimation(L"RightIdle", true);*/
+		
 		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerRightKick");
 		PlayerAnimator->CreateAnimation(L"RightKick", HelltakerTexture, Vector2(0.0f,0.0f), Vector2(100.0f,148.0f),
 			Vector2::Zero, 13, 0.1f);

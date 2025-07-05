@@ -29,11 +29,13 @@ namespace jm
 		Animation();
 		~Animation();
 
+		// 파일경로를 인자로 하여 이미지를 로드해오는 함수
 		HRESULT Load(const std::wstring& path) override;
 
 		void Update();
 		void Render(HDC hdc);
 
+		// 애니메이션을 만들어주는 함수
 		void CreateAnimation(const std::wstring& name,
 			graphcis::Texture* spriteSheet,
 			Vector2 lefttop,
@@ -41,10 +43,11 @@ namespace jm
 			Vector2 offset,
 			UINT spriteLength,
 			float duration);
-
+		// 애니메이션 재생이 끝났음으로 다시 처음으로 돌려주는 함수
 		void Reset();
-
+		// 애니메이션 재생이 끝났는지 구분해주는 함수
 		bool IsComplete() { return mbComplete; }
+		// 애니메이션 세팅
 		void SetAnimator(class Animator* animator) { mAnimator = animator; }
 		
 	private:

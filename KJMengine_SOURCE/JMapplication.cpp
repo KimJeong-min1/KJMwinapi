@@ -2,6 +2,7 @@
 #include "jmInput.h"
 #include "jmTime.h"
 #include "jmSceneManager.h"
+#include "jmResources.h"
 
 namespace jm
 {
@@ -38,6 +39,7 @@ namespace jm
 		Update();
 		LateUpdate();
 		Render();
+		Destroy();
 	}
 	void Application::Update()
 	{
@@ -67,7 +69,15 @@ namespace jm
 		// BackBuffer에 있는걸 원본 Buffer에 복사 (그려준다)
 		copyRenderTarget(mBackHdc, mHdc);
 	}
-
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
+	}
+	void Application::Release()
+	{
+		SceneManager::Release();
+		Resources::Release();
+	}
 	void Application::clearRenderTarget()
 	{
 		Rectangle(mBackHdc, -1, -1, 1601, 901);

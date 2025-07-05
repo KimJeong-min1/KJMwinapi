@@ -1,12 +1,38 @@
 #include "jmTexture.h"
 #include "jmApplication.h"
+#include "jmResources.h"
 
 extern jm::Application application;
 
 namespace jm::graphcis
 {
+	Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
+	{
+		Texture* image = Resources::Find<Texture>(name);
+		if (image)
+			return image;
+
+		image = new Texture();
+		image->SetName(name);
+		image->SetWidth(width);
+		image->SetHeight(height);
+
+		HDC hdc = application.GetHdc();
+		HWND hwnd = application.GetHwnd();
+
+		image->mBitmap = CreateCompatibleBitmap(hdc, width, height);
+		image->mHdc = CreateCompatibleDC(hdc);
+
+		HBITMAP oldbitmap = (HBITMAP)SelectObject(image->mHdc, image->mBitmap);
+		DeleteObject(oldbitmap);
+
+		Resources::Insert(name + L"Image", image);
+
+		return image;
+	}
 	Texture::Texture()
-		:Resource(enums::eResourceType::Texture)
+		: Resource(enums::eResourceType::Texture)
+		, mbAlpha(false)
 	{
 
 	}

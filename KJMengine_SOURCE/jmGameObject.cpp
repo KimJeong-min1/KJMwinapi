@@ -6,6 +6,7 @@
 namespace jm
 {
 	GameObject::GameObject()
+		:mState(eState::Active)
 	{
 		mComponents.resize((UINT)enums::eComponentType::End);
 		initializeTransform();
@@ -14,6 +15,9 @@ namespace jm
 	{
 		for (Component* comp : mComponents)
 		{
+			if (comp == nullptr)
+				continue;
+
 			delete comp;
 			comp = nullptr;
 		}

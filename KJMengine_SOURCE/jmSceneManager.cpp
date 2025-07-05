@@ -51,4 +51,16 @@ namespace jm
 		// 현재 활성화 되어있는 Scene을 그린다.
 		mActiveScene->Render(hdc);
 	}
+	void SceneManager::Release()
+	{
+		for (auto& iter : mScene)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
+	}
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
+	}
 }

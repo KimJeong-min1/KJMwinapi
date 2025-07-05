@@ -32,4 +32,12 @@ namespace jm::object
 
 		return gameObject;
 	}
+
+	static void Destroy(GameObject* obj)
+	{
+		if (obj == nullptr)
+			return;
+
+		obj->Death();
+	}
 }

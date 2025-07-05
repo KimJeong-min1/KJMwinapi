@@ -43,6 +43,23 @@ namespace jm
 			// 리소스를 리턴해준다.
 			return resource;
 		}
+		static void Release()
+		{
+			for (auto& iter : mResources)
+			{
+				delete iter.second;
+				iter.second = nullptr;
+			}
+		}
+		static void Insert(const std::wstring& key, Resource* resource)
+		{
+			if (key == L"")
+				return;
+			if (resource == nullptr)
+				return;
+
+			mResources.insert(std::make_pair(key, resource));
+		}
 	private:
 		static std::map<std::wstring, Resource*> mResources;
 	};
