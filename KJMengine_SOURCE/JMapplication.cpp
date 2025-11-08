@@ -3,6 +3,7 @@
 #include "jmTime.h"
 #include "jmSceneManager.h"
 #include "jmResources.h"
+#include "jmCollisionManager.h"
 
 namespace jm
 {
@@ -33,6 +34,7 @@ namespace jm
 
 		// 플레이어의 위치를 해줌
 		SceneManager::Initialize();
+		CollisionManager::Initialize();
 	}
 	void Application::Run()
 	{
@@ -49,12 +51,14 @@ namespace jm
 		Time::Update();
 		// Player 업데이트
 		SceneManager::Update();
+		CollisionManager::Update();
 	}
 
 	void Application::LateUpdate()
 	{
 		// Player Late업데이트
 		SceneManager::LateUpdate();
+		CollisionManager::LateUpdate();
 	}
 	void Application::Render()
 	{
@@ -63,6 +67,7 @@ namespace jm
 		
 		// 주사율을 표기해주는 함수
 		Time::Render(mBackHdc);
+		CollisionManager::Render(mBackHdc);
 		// 플레이어를 그려주는 함수
 		SceneManager::Render(mBackHdc);
 

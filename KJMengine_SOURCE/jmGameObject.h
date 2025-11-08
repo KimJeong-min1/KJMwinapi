@@ -1,6 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 #include "jmComponent.h"
+#include "jmCollider.h"
 
 namespace jm
 {
@@ -49,7 +50,6 @@ namespace jm
 		}
 
 		eState GetActive() { return mState; }
-
 		void SetActive(bool power)
 		{
 			if (power == true)
@@ -57,14 +57,19 @@ namespace jm
 			if (power == false)
 				mState = eState::Paused;
 		}
+		bool IsActive() const { return mState == eState::Active; }
 		
 		void Death() { mState = eState::Dead; }
+
+		void SetLayerType(eLayerType type) { mLayerType = type; }
+		eLayerType GetLayerType() { return mLayerType; }
 	private:
 		void initializeTransform();
 
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
+		eLayerType mLayerType;
 	};
 }
 

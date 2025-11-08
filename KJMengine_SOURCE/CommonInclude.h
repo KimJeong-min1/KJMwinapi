@@ -11,6 +11,7 @@
 #include <functional>
 #include <filesystem>
 #include <math.h>
+#include <bitset>
 
 #include "jmMath.h"
 

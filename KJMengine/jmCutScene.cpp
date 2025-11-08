@@ -40,11 +40,15 @@ namespace jm
 		}
 		else if (Input::GetKeyDown(eKeyCode::Two))
 		{
-			SceneManager::LoadScene(L"PlayScene");
+			SceneManager::LoadScene(L"StageOne");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Four))
 		{
 			SceneManager::LoadScene(L"BadendScene");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Five))
+		{
+			SceneManager::LoadScene(L"StageTwo");
 		}
 
 		Scene::LateUpdate();

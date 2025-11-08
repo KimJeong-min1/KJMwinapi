@@ -9,6 +9,8 @@ namespace jm::enums
 		Player,
 		Monster,
 		NPC,
+		Object,
+		Character,
 		Max = 16
 	};
 
@@ -21,6 +23,13 @@ namespace jm::enums
 		End,
 	};
 
+	enum class eColliderType
+	{
+		Circle2D,
+		Rect2D,
+		End,
+	};
+
 	enum class eComponentType
 	{
 		Transform,
@@ -28,6 +37,7 @@ namespace jm::enums
 		Animator,
 		Script,
 		Camera,
+		Collider,
 		End,
 	};
 }

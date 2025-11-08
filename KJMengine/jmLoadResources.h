@@ -7,16 +7,25 @@ namespace jm
 	void LoadResources()
 	{
 		Resources::Load<graphcis::Texture>(L"BG01", L"..\\Resources\\Sprite\\chapterBG0001.png");
+		Resources::Load<graphcis::Texture>(L"BG02", L"..\\Resources\\Sprite\\chapterBG0002.png");
+		Resources::Load<graphcis::Texture>(L"BG03", L"..\\Resources\\Sprite\\chapterBG0003.png");
+		Resources::Load<graphcis::Texture>(L"BG04", L"..\\Resources\\Sprite\\chapterBG0004.png");
+		Resources::Load<graphcis::Texture>(L"BG05", L"..\\Resources\\Sprite\\chapterBG0005.png");
+		Resources::Load<graphcis::Texture>(L"BG06", L"..\\Resources\\Sprite\\chapterBG0006.png");
+		Resources::Load<graphcis::Texture>(L"BG07", L"..\\Resources\\Sprite\\chapterBG0007.png");
+		Resources::Load<graphcis::Texture>(L"BG08", L"..\\Resources\\Sprite\\chapterBG0008.png");
+		Resources::Load<graphcis::Texture>(L"BG09", L"..\\Resources\\Sprite\\chapterSketches_EXPORT_throne.png");
 		Resources::Load<graphcis::Texture>(L"PlayerDeath", L"..\\Resources\\Sprite\\HelltakerDeath.bmp");
 		Resources::Load<graphcis::Texture>(L"PlayerRight", L"..\\Resources\\Sprite\\HelltakerRight.bmp");
 		Resources::Load<graphcis::Texture>(L"PlayerRightKick", L"..\\Resources\\Sprite\\HelltakerRightKick.bmp");
 		Resources::Load<graphcis::Texture>(L"PlayerLeft", L"..\\Resources\\Sprite\\HelltakerLeftIdle.bmp");
-		Resources::Load<graphcis::Texture>(L"PlayerLeftKick", L"..\\Resources\\Sprite\\HelltakerLeftKick2.bmp");
+		Resources::Load<graphcis::Texture>(L"PlayerLeftKick", L"..\\Resources\\Sprite\\HelltakerLeftKick.bmp");
 		Resources::Load<graphcis::Texture>(L"BGMenu", L"..\\Resources\\Texture2D\\dialogueBG_abyss.png");
 		Resources::Load<graphcis::Texture>(L"BGCutScene01", L"..\\Resources\\Texture2D\\cutscene_0008_Group-5.png");
 		Resources::Load<graphcis::Texture>(L"BGDeadScene01", L"..\\Resources\\Texture2D\\dialogueDeathExport0009.png");
-		Resources::Load<graphcis::Texture>(L"Azazel", L"..\\Resources\\Sprite\\Azazel.bmp");
+		Resources::Load<graphcis::Texture>(L"KeyBox", L"..\\Resources\\Texture2D\\KeyBox.bmp");
 		Resources::Load<graphcis::Texture>(L"Monster", L"..\\Resources\\Sprite\\Monster.bmp");
+		Resources::Load<graphcis::Texture>(L"Azazel", L"..\\Resources\\Sprite\\Azazel.bmp");
 		Resources::Load<graphcis::Texture>(L"Cerberus", L"..\\Resources\\Sprite\\Cerberus.bmp");
 		Resources::Load<graphcis::Texture>(L"Judgement", L"..\\Resources\\Sprite\\Judgement.bmp");
 		Resources::Load<graphcis::Texture>(L"Justice", L"..\\Resources\\Sprite\\Justice.bmp");
@@ -25,5 +34,32 @@ namespace jm
 		Resources::Load<graphcis::Texture>(L"Modeus", L"..\\Resources\\Sprite\\Modeus.bmp");
 		Resources::Load<graphcis::Texture>(L"Pandemonica", L"..\\Resources\\Sprite\\Pandemonica.bmp");
 		Resources::Load<graphcis::Texture>(L"Zdrada", L"..\\Resources\\Sprite\\Zdrada.bmp");
+		Resources::Load<graphcis::Texture>(L"BeelFly", L"..\\Resources\\Sprite\\beel_fly.png");
+		Resources::Load<graphcis::Texture>(L"Cp01BG", L"..\\Resources\\Sprite\\dialogueBG_hell.png");
+		Resources::Load<graphcis::Texture>(L"Cp02BG", L"..\\Resources\\Sprite\\dialogueBG_throne2.png");
+		Resources::Load<graphcis::Texture>(L"Cp03BG", L"..\\Resources\\Sprite\\dialogueBG_sin.png");
+		Resources::Load<graphcis::Texture>(L"PandeCh", L"..\\Resources\\Sprite\\pand_idle.png");
+		Resources::Load<graphcis::Texture>(L"ModeCh", L"..\\Resources\\Sprite\\mod_idle.png");
+		Resources::Load<graphcis::Texture>(L"CerCh", L"..\\Resources\\Sprite\\cer_idle.png");
+		Resources::Load<graphcis::Texture>(L"MaliCh", L"..\\Resources\\Sprite\\mal_idle.png");
+		Resources::Load<graphcis::Texture>(L"ZdraCh", L"..\\Resources\\Sprite\\z_idle.png");
+		Resources::Load<graphcis::Texture>(L"AzaCh", L"..\\Resources\\Sprite\\az_idle.png");
+		Resources::Load<graphcis::Texture>(L"JusCh", L"..\\Resources\\Sprite\\jus_idle.png");
+		Resources::Load<graphcis::Texture>(L"LusiCh", L"..\\Resources\\Sprite\\LH_idle.png");
+		Resources::Load<graphcis::Texture>(L"HPJusCh", L"..\\Resources\\Sprite\\J_introAnim4.png");
+		Resources::Load<graphcis::Texture>(L"wall00", L"..\\Resources\\Texture2D\\wall00.bmp");
+		Resources::Load<graphcis::Texture>(L"wall01", L"..\\Resources\\Texture2D\\wall01.bmp");
+		Resources::Load<graphcis::Texture>(L"wall02", L"..\\Resources\\Texture2D\\wall02.bmp");
+		Resources::Load<graphcis::Texture>(L"wall03", L"..\\Resources\\Texture2D\\wall03.bmp");
+		Resources::Load<graphcis::Texture>(L"wall04", L"..\\Resources\\Texture2D\\wall04.bmp");
+		Resources::Load<graphcis::Texture>(L"wall05", L"..\\Resources\\Texture2D\\wall05.bmp");
+		Resources::Load<graphcis::Texture>(L"wall06", L"..\\Resources\\Texture2D\\wall06.bmp");
+		Resources::Load<graphcis::Texture>(L"wall07", L"..\\Resources\\Texture2D\\wall07.bmp");
+		Resources::Load<graphcis::Texture>(L"wall08", L"..\\Resources\\Texture2D\\wall08.bmp");
+		Resources::Load<graphcis::Texture>(L"wall09", L"..\\Resources\\Texture2D\\wall09.bmp");
+		Resources::Load<graphcis::Texture>(L"wall10", L"..\\Resources\\Texture2D\\wall10.bmp");
+		Resources::Load<graphcis::Texture>(L"wall11", L"..\\Resources\\Texture2D\\wall11.bmp");
+		Resources::Load<graphcis::Texture>(L"flamebase0", L"..\\Resources\\Texture2D\\FLAMEbase0002.png");
+		Resources::Load<graphcis::Texture>(L"flamebase1", L"..\\Resources\\Texture2D\\FLAMEbase0001.png");
 	}
 }

@@ -19,12 +19,14 @@ namespace jm
 		void ImageLoad(const std::wstring& path);
 		void SetTexture(graphcis::Texture* texture) { mTexture = texture; }
 		void SetSize(math::Vector2 size) { mSize = size; }
+		void SetPosition(math::Vector2 pos) { mPos.x = pos.x; mPos.y = pos.y; }
 	private:
 		Gdiplus::Image* mImage;
 		UINT mWidth;
 		UINT mHeight;
 		graphcis::Texture* mTexture;
 		math::Vector2 mSize;
+		math::Vector2 mPos;
 	};
 }
 

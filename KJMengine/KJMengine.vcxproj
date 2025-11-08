@@ -19,23 +19,60 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="jmChapterEight.cpp" />
+    <ClCompile Include="jmChapterFive.cpp" />
+    <ClCompile Include="jmChapterFour.cpp" />
+    <ClCompile Include="jmChapterNine.cpp" />
+    <ClCompile Include="jmChapterSeven.cpp" />
+    <ClCompile Include="jmChapterSix.cpp" />
+    <ClCompile Include="jmChapterThree.cpp" />
     <ClCompile Include="jmBackGround.cpp" />
+    <ClCompile Include="jmChapterOne.cpp" />
+    <ClCompile Include="jmChapterTwo.cpp" />
+    <ClCompile Include="jmCharacter.cpp" />
     <ClCompile Include="jmCutScene.cpp" />
     <ClCompile Include="jmBadendScene.cpp" />
     <ClCompile Include="jmDeadScene.cpp" />
+    <ClCompile Include="jmFire.cpp" />
+    <ClCompile Include="jmKey.cpp" />
+    <ClCompile Include="jmKeyBox.cpp" />
     <ClCompile Include="jmMenuScene.cpp" />
     <ClCompile Include="jmMonster.cpp" />
     <ClCompile Include="jmMonsterScript.cpp" />
     <ClCompile Include="jmNPC.cpp" />
     <ClCompile Include="jmPlayer.cpp" />
     <ClCompile Include="jmPlayerScript.cpp" />
-    <ClCompile Include="jmPlayScene.cpp" />
+    <ClCompile Include="jmStageEight.cpp" />
+    <ClCompile Include="jmStageFive.cpp" />
+    <ClCompile Include="jmStageFour.cpp" />
+    <ClCompile Include="jmStageNine.cpp" />
+    <ClCompile Include="jmStageOne.cpp" />
+    <ClCompile Include="jmStageSeven.cpp" />
+    <ClCompile Include="jmStageSix.cpp" />
+    <ClCompile Include="jmStageThree.cpp" />
+    <ClCompile Include="jmStageTwo.cpp" />
+    <ClCompile Include="jmTestScene.cpp" />
+    <ClCompile Include="jmTrap.cpp" />
+    <ClCompile Include="jmWall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="jmChapterEight.h" />
+    <ClInclude Include="jmChapterFive.h" />
+    <ClInclude Include="jmChapterFour.h" />
+    <ClInclude Include="jmChapterNine.h" />
+    <ClInclude Include="jmChapterSeven.h" />
+    <ClInclude Include="jmChapterSix.h" />
+    <ClInclude Include="jmChapterThree.h" />
     <ClInclude Include="jmBackGround.h" />
+    <ClInclude Include="jmChapterOne.h" />
+    <ClInclude Include="jmChapterTwo.h" />
+    <ClInclude Include="jmCharacter.h" />
     <ClInclude Include="jmCutScene.h" />
     <ClInclude Include="jmBadendScene.h" />
     <ClInclude Include="jmDeadScene.h" />
+    <ClInclude Include="jmFire.h" />
+    <ClInclude Include="jmKey.h" />
+    <ClInclude Include="jmKeyBox.h" />
     <ClInclude Include="jmLoadResources.h" />
     <ClInclude Include="jmLoadScenes.h" />
     <ClInclude Include="jmMenuScene.h" />
@@ -44,7 +81,18 @@
     <ClInclude Include="jmNPC.h" />
     <ClInclude Include="jmPlayer.h" />
     <ClInclude Include="jmPlayerScript.h" />
-    <ClInclude Include="jmPlayScene.h" />
+    <ClInclude Include="jmStageEight.h" />
+    <ClInclude Include="jmStageFive.h" />
+    <ClInclude Include="jmStageFour.h" />
+    <ClInclude Include="jmStageNine.h" />
+    <ClInclude Include="jmStageOne.h" />
+    <ClInclude Include="jmStageSeven.h" />
+    <ClInclude Include="jmStageSix.h" />
+    <ClInclude Include="jmStageThree.h" />
+    <ClInclude Include="jmStageTwo.h" />
+    <ClInclude Include="jmTestScene.h" />
+    <ClInclude Include="jmTrap.h" />
+    <ClInclude Include="jmWall.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -106,6 +154,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -122,6 +171,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -138,6 +188,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -154,6 +205,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>

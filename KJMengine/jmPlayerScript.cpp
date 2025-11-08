@@ -63,6 +63,16 @@ namespace jm
 	void PlayerScript::AttackEffect()
 	{
 	}
+	void PlayerScript::OnCollisionEnter(Collider* other)
+	{
+		
+	}
+	void PlayerScript::OnCollisionStay(Collider* other)
+	{
+	}
+	void PlayerScript::OnCollisionExit(Collider* other)
+	{
+	}
 	void PlayerScript::RightMove()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -71,22 +81,22 @@ namespace jm
 
 		if (mdir == 1)
 		{
-			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x + 100.0f, Prevpos.y), 0.05f);
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x + 84.0f, Prevpos.y), 0.5f);
 			tr->SetPosition(Pos);
 		}
 		else if (mdir == 3)
 		{
-			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y - 100.0f), 0.05f);
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y - 84.0f), 0.5f);
 			tr->SetPosition(Pos);
 		}
 		else if (mdir == 4)
 		{
-			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y + 100.0f), 0.05f);
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y + 84.0f), 0.5f);
 			tr->SetPosition(Pos);
 		}
 
 
-		if (mTime > 2.0f)
+		if (mTime > 1.0f)
 		{
 			mState = PlayerScript::eState::RightIdle;
 			mAnimator->PlayAnimation(L"RightIdle");
@@ -105,17 +115,17 @@ namespace jm
 		
 		if (mdir == 2)
 		{
-			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x - 100.0f, Prevpos.y), 0.05f);
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x - 84.0f, Prevpos.y), 0.5f);
 			tr->SetPosition(Pos);	
 		}
 		else if (mdir == 3)
 		{
-			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y - 100.0f), 0.05f);
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y - 84.0f), 0.5f);
 			tr->SetPosition(Pos);
 		}
 		else if (mdir == 4)
 		{
-			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y + 100.0f), 0.05f);
+			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x, Prevpos.y + 84.0f), 0.5f);
 			tr->SetPosition(Pos);
 		}
 

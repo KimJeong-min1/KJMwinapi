@@ -1,9 +1,11 @@
 #include "jmSceneManager.h"
+#include "jmDontDestroyOnLoad.h"
 
 namespace jm
 {
 	std::map<std::wstring, Scene*> SceneManager::mScene = {};
 	Scene* SceneManager::mActiveScene = nullptr;
+	Scene* SceneManager::mDontDestroyOnLoad = nullptr;
 
 	// 내가 원하는Scene을 들고오게 해주는 함수
 	Scene* SceneManager::LoadScene(const std::wstring& name)
@@ -35,21 +37,25 @@ namespace jm
 	
 	void SceneManager::Initialize()
 	{
+		mDontDestroyOnLoad = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");
 	}
 	void SceneManager::Update()
 	{
 		// 현재 활성화 되어있는 Scene을 업데이트한다.
 		mActiveScene->Update();
+		mDontDestroyOnLoad->Update();
 	}
 	void SceneManager::LateUpdate()
 	{
 		// 현재 활성화 되어있는 Scene을 레이트업데이트한다.
 		mActiveScene->LateUpdate();
+		mDontDestroyOnLoad->LateUpdate();
 	}
 	void SceneManager::Render(HDC hdc)
 	{
 		// 현재 활성화 되어있는 Scene을 그린다.
 		mActiveScene->Render(hdc);
+		mDontDestroyOnLoad->Render(hdc);
 	}
 	void SceneManager::Release()
 	{

@@ -49,6 +49,8 @@ namespace jm
 	}
 	void Animation::Render(HDC hdc)
 	{
+		float widthRatio = 0.833333333;
+		float heightRatio = 0.833333333;
 		// 애니메이션을 그려주는 함수
 		// 만약 텍스쳐가 null이면 그냥 반환 방어코드
 		if (mTexture == nullptr)
@@ -79,7 +81,9 @@ namespace jm
 		/*AlphaBlend(hdc, pos.x, pos.y, sprite.size.x, sprite.size.y, imgHdc, sprite.lefttop.x, sprite.lefttop.y,
 			sprite.size.x, sprite.size.y, func);*/
 		// 특정크기만큼 이 색을 제외한 모든 곳을 그려주는 함수
-		TransparentBlt(hdc, pos.x, pos.y, sprite.size.x, sprite.size.y, imgHdc, sprite.lefttop.x, sprite.lefttop.y,
+		TransparentBlt(hdc, pos.x, pos.y,
+			sprite.size.x * widthRatio, sprite.size.y * heightRatio,
+			imgHdc, sprite.lefttop.x, sprite.lefttop.y,
 			sprite.size.x, sprite.size.y, RGB(255, 0, 255));
 	}
 	// 애니메이션을 만들어주는 함수

@@ -18,7 +18,9 @@ namespace jm
 		virtual void Destroy();
 
 		void AddGameObject(GameObject* gameObject);
+		void EraseGameObject(GameObject* eraseGameobj);
 
+		const std::vector<GameObject*> GetGameObjects() { return mGameObjects; }
 	private:
 		std::vector<GameObject*> mGameObjects;
 	};

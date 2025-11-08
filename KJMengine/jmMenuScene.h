@@ -18,7 +18,8 @@ namespace jm
 		void OnExit() override;
 
 	private:
-		class Player* bg;
+		class BackGround* bg;
+		class Character* beelfly;
 	};
 }
 

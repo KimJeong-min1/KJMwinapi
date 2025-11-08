@@ -114,7 +114,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance) //윈도우 정보 세팅
     wcex.hInstance      = hInstance; //윈도우 클래스를 사용하는 프로그램의 번호 값은 Winmain의 인수다.
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_JMENGINE)); //윈도우가 최소화 되었을경우 출력될 아이콘
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW); //윈도우가 사용할 마우스커서
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1); //윈도우 배경 색상을 지정한다
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW+1); //윈도우 배경 색상을 지정한다
     wcex.lpszMenuName   = NULL;//MAKEINTRESOURCEW(IDC_JMENGINE); //이 프로그램이 사용할 메뉴를 지정한다. 사용하지않을 경우 멤버에 NULL대입
     wcex.lpszClassName  = szWindowClass; //윈도우 클래스의 이름을 정의한다. 윈도우 클래스의 이름은 보통 실행파일의 이름과 일치한다.
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL)); // 창 이름옆에 작은 아이콘을 지정
@@ -202,19 +202,29 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             }
         }
         break;
+    case WM_ERASEBKGND:
+        return 1;
+
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+           // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+            RECT rc;
+            GetClientRect(hWnd, &rc);
+
+            HBRUSH blackBrush = CreateSolidBrush(RGB(0, 0, 0));
+            FillRect(hdc, &rc, blackBrush);
+            DeleteObject(blackBrush);
 
             // 그림을 그릴수 있어야한다.
-            //HBRUSH redbrush = CreateSolidBrush(RGB(120, 0, 0)); // 도형의 안의 색깔을 담당하는 기능
-            //HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, redbrush); // 색깔적용을 해주는 기능
+            //HBRUSH blackbrush = CreateSolidBrush(RGB(0, 0, 0)); // 도형의 안의 색깔을 담당하는 기능
+            //HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, blackbrush); // 색깔적용을 해주는 기능
 
             //HPEN bluepen = CreatePen(PS_SOLID, 5, RGB(0, 120, 0));
             //HPEN oldpen = (HPEN)SelectObject(hdc, bluepen);
-            //Rectangle(hdc, 100, 100, 300, 300); // 사각형
+            //Rectangle(hdc, 800, 450, 800, 450); // 사각형
             //Ellipse(hdc, 500, 500, 600, 600); // 원
             //Ellipse(hdc, 300, 300, 100, 100);
 

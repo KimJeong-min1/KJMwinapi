@@ -6,14 +6,16 @@ extern jm::Application application;
 namespace jm
 {
 	std::vector<Input::Key> Input::Keys = {};
+	math::Vector2 Input::mMousePosition = {};
 	
 	int ASCII[(UINT)eKeyCode::End] =
 	{
-		'0','1','2','3','4',
+		'0','1','2','3','4','5','6','7','8','9',
 		'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
 		'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
 		'Z', 'X', 'C', 'V', 'B', 'N', 'M',
-		VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP
+		VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP,
+		VK_LBUTTON,VK_RBUTTON
 	};
 	
 	void Input::Initialize()
@@ -63,6 +65,8 @@ namespace jm
 		{
 			updateKeyUp(key);
 		}
+
+		getMousePositionByWindow();
 	}
 	bool Input::isKeyDown(eKeyCode code)
 	{
@@ -93,5 +97,22 @@ namespace jm
 		}
 
 		key.bPressed = false;
+	}
+	void Input::getMousePositionByWindow()
+	{
+		POINT mousePos = {};
+		GetCursorPos(&mousePos);
+		ScreenToClient(application.GetHwnd(), &mousePos);
+
+		UINT width = application.GetWidth();
+		UINT height = application.GetHeight();
+
+		mMousePosition.x = -1.0f;
+		mMousePosition.y = -1.0f;
+
+		if (static_cast<UINT>(mousePos.x) >= 0 && static_cast<UINT>(mousePos.x) < width)
+			mMousePosition.x = static_cast<float>(mousePos.x);
+		if (static_cast<UINT>(mousePos.y) >= 0 && static_cast<UINT>(mousePos.y) < height)
+			mMousePosition.y = static_cast<float>(mousePos.y);
 	}
 }

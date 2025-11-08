@@ -79,6 +79,12 @@ namespace jm
 		}
 	}
 	
+	void Scene::EraseGameObject(GameObject* gameobj)
+	{
+		eLayerType layerType = gameobj->GetLayerType();
+		mLayers[(UINT)layerType]->EraseGameObject(gameobj);
+	}
+
 	void Scene::OnExit()
 	{
 

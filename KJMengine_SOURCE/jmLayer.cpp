@@ -105,4 +105,11 @@ namespace jm
 
 		mGameObjects.push_back(gameObject);
 	}
+	void Layer::EraseGameObject(GameObject* eraseGameobj)
+	{
+		std::erase_if(mGameObjects,[=](GameObject* gameobj)
+			{
+				return gameobj == eraseGameobj;
+			});
+	}
 }

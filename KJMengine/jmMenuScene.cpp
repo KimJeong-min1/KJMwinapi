@@ -1,6 +1,6 @@
 #include "jmMenuScene.h"
 #include "jmGameObject.h"
-#include "jmPlayer.h"
+#include "jmBackGround.h"
 #include "jmTransform.h"
 #include "jmSpriteRenderer.h"
 #include "jmInput.h"
@@ -8,6 +8,8 @@
 #include "jmObject.h"
 #include "jmTexture.h"
 #include "jmResources.h"
+#include "jmCharacter.h"
+#include "jmPlayer.h"
 
 namespace jm
 {
@@ -19,12 +21,20 @@ namespace jm
 	}
 	void MenuScene::Initialize()
 	{
-		bg = object::Instantiate<Player>
+		bg = object::Instantiate<BackGround>
 			(enums::eLayerType::BackGround);
 
-		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BGMenu");
-		sr->SetTexture(bg);
+		bgsr->SetTexture(bg);
+
+		beelfly = object::Instantiate<Character>
+			(enums::eLayerType::Character);
+
+		SpriteRenderer* chsr = beelfly->AddComponent<SpriteRenderer>();
+		graphcis::Texture* ch = Resources::Find<graphcis::Texture>(L"BeelFly");
+		chsr->SetTexture(ch);
+		
 
 		Scene::Initialize();
 	}
@@ -40,7 +50,7 @@ namespace jm
 		// 만약 내가 특정키를 눌렀을때 내가 설정한 이름의 Scene을 불러오게한다.
 		if (Input::GetKeyDown(eKeyCode::Two))
 		{
-			SceneManager::LoadScene(L"PlayScene");
+			SceneManager::LoadScene(L"StageOne");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Three))
 		{
@@ -49,6 +59,10 @@ namespace jm
 		else if (Input::GetKeyDown(eKeyCode::Four))
 		{
 			SceneManager::LoadScene(L"BadendScene");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Five))
+		{
+			SceneManager::LoadScene(L"StageTwo");
 		}
 	}
 	void MenuScene::Render(HDC hdc)

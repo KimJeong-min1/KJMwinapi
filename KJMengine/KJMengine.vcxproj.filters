@@ -15,7 +15,7 @@
     <ClCompile Include="jmPlayer.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="jmPlayScene.cpp">
+    <ClCompile Include="jmStageOne.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="jmMonster.cpp">
@@ -39,6 +39,78 @@
     <ClCompile Include="jmDeadScene.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
+    <ClCompile Include="jmKey.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmTestScene.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageTwo.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageThree.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageSix.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageSeven.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageNine.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageFour.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageFive.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmStageEight.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmCharacter.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterOne.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterTwo.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterThree.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterFour.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterFive.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterSix.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterSeven.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterEight.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmChapterNine.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmTrap.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmKeyBox.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmFire.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="jmWall.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jmCutScene.h">
@@ -53,7 +125,7 @@
     <ClInclude Include="jmPlayer.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="jmPlayScene.h">
+    <ClInclude Include="jmStageOne.h">
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmLoadResources.h">
@@ -78,6 +150,78 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmDeadScene.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmKey.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmTestScene.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageTwo.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageThree.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageSix.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageSeven.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageNine.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageFour.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageFive.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmStageEight.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmCharacter.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterOne.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterTwo.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterThree.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterFour.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterFive.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterSix.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterSeven.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterEight.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmChapterNine.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmTrap.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmKeyBox.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmFire.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmWall.h">
       <Filter>Contents</Filter>
     </ClInclude>
   </ItemGroup>

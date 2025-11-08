@@ -38,7 +38,7 @@ namespace jm
 
 		if (Input::GetKeyDown(eKeyCode::Two))
 		{
-			SceneManager::LoadScene(L"PlayScene");
+			SceneManager::LoadScene(L"StageOne");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Three))
 		{
@@ -47,6 +47,10 @@ namespace jm
 		else if (Input::GetKeyDown(eKeyCode::One))
 		{
 			SceneManager::LoadScene(L"MenuScene");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Five))
+		{
+			SceneManager::LoadScene(L"StageTwo");
 		}
 	}
 	void BadendScene::Render(HDC hdc)

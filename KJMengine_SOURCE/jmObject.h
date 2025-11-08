@@ -23,6 +23,7 @@ namespace jm::object
 	static T* Instantiate(jm::enums::eLayerType type, math::Vector2 position)
 	{
 		T* gameObject = new T();
+		gameObject->SetLayerType(type);
 		Scene* activeScene = SceneManager::GetActiveScene();
 		Layer* layer = activeScene->GetLayer(type);
 		layer->AddGameObject(gameObject);
@@ -39,5 +40,14 @@ namespace jm::object
 			return;
 
 		obj->Death();
+	}
+
+	static void DontDestroyOnLoad(GameObject* gameobj)
+	{
+		Scene* activeScene = SceneManager::GetActiveScene();
+		activeScene->EraseGameObject(gameobj);
+
+		Scene* dontDestroyOnload = SceneManager::GetDontDestroyOnLoad();
+		dontDestroyOnload->AddGameObject(gameobj, gameobj->GetLayerType());
 	}
 }

@@ -1,4 +1,6 @@
 #include "jmScript.h"
+#include "jmCollider.h"
+
 namespace jm
 {
 	Script::Script()
@@ -18,6 +20,15 @@ namespace jm
 	{
 	}
 	void Script::Render(HDC hdc)
+	{
+	}
+	void Script::OnCollisionEnter(Collider* other)
+	{
+	}
+	void Script::OnCollisionStay(Collider* other)
+	{
+	}
+	void Script::OnCollisionExit(Collider* other)
 	{
 	}
 }

@@ -37,16 +37,23 @@ namespace jm
 		
 		if (mTexture->GetTexturetype() == graphcis::Texture::eTextureType::Bmp)
 		{
-			TransparentBlt(hdc, pos.x, pos.y, mTexture->GetWidth() * mSize.x, mTexture->GetHeight() * mSize.y,
-				mTexture->GetHdc(), 0, 0, mTexture->GetWidth(), mTexture->GetHeight(), RGB(255, 0, 255));
+			float widthRatio = 0.833333333;
+			float heightRatio = 0.833333333;
+			TransparentBlt(hdc, pos.x, pos.y,
+				mTexture->GetWidth() * mSize.x * widthRatio,
+				mTexture->GetHeight() * mSize.y * heightRatio,
+				mTexture->GetHdc(), 0, 0, mTexture->GetWidth(),
+				mTexture->GetHeight(), RGB(255, 0, 255));
 		}
 		else if (mTexture->GetTexturetype() == graphcis::Texture::eTextureType::Png)
 		{
+			float widthRatio = 0.833333333;
+			float heightRatio = 0.833333333;
 			Gdiplus::Graphics graphcis(hdc);
 			graphcis.DrawImage(mTexture->GetImage(),
 				Gdiplus::Rect(pos.x, pos.y,
-					mTexture->GetWidth() * mSize.x,
-					mTexture->GetHeight() * mSize.y));
+					mTexture->GetWidth() * mSize.x * widthRatio,
+					mTexture->GetHeight() * mSize.y * heightRatio));
 		}
 	}
 
