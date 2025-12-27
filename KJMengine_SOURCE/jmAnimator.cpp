@@ -55,13 +55,13 @@ namespace jm
 			mActiveAnimation->Render(hdc);
 	}
 	void Animator::CreateAnimation(const std::wstring& name, graphcis::Texture* spriteSheet,
-		Vector2 lefttop, Vector2 Size, Vector2 offset, UINT spriteLength, float duration)
+		Vector2 lefttop, Vector2 Size, Vector2 offset, UINT spriteLength, float duration, Vector2 scale)
 	{
 		Animation* animation = nullptr;
 		animation = FindAnimation(name);
 		if (animation != nullptr)
 			return;
-
+		animation->SetScale(scale);
 		animation = new Animation();
 		animation->SetName(name);
 		animation->CreateAnimation(name, spriteSheet, lefttop, Size, offset, spriteLength, duration);
@@ -73,7 +73,7 @@ namespace jm
 
 		mAnimations.insert(std::make_pair(name, animation));
 	}
-	void Animator::CreateAnimationByFolder(const std::wstring& name, const std::wstring& path, Vector2 offset, float duration)
+	void Animator::CreateAnimationByFolder(const std::wstring& name, const std::wstring& path, Vector2 offset, float duration, Vector2 scale)
 	{
 		Animation* animation = nullptr;
 		animation = FindAnimation(name);
@@ -109,7 +109,7 @@ namespace jm
 
 		CreateAnimation(name, spriteSheet
 			, Vector2(0.0f, 0.0f), Vector2(imageWidth, imageHeight)
-			, offset, filecnt, duration);
+			, offset, filecnt, duration, scale);
 	}
 	Animation* Animator::FindAnimation(const std::wstring& name)
 	{

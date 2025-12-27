@@ -41,7 +41,8 @@ namespace jm
 		
 		class Wall* mWall;
 
-		class Fire* mFire;
+		class Fire* mFire01;
+		class Fire* mFire02;
 		class Fire* mFlamebase0;
 		class Fire* mFlamebase1;
 		class Fire* mFlamebase2;

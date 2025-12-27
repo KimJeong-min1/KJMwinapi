@@ -44,9 +44,10 @@ namespace jm
 			Vector2 Size,
 			Vector2 offset,
 			UINT spriteLength,
-			float duration);
+			float duration,
+			Vector2 scale = Vector2::One);
 		void CreateAnimationByFolder(const std::wstring& name, const std::wstring& path
-			, Vector2 offset, float duration);
+			, Vector2 offset, float duration, Vector2 scale = Vector2::One);
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = true);
 		Events* FindEvents(const std::wstring& name);

@@ -49,7 +49,8 @@ namespace jm
 		bool IsComplete() { return mbComplete; }
 		// 애니메이션 세팅
 		void SetAnimator(class Animator* animator) { mAnimator = animator; }
-		
+		Vector2 GetScale() { return mScale; }
+		void SetScale(Vector2 scale) { mScale = scale; }
 	private:
 		class Animator* mAnimator;
 		graphcis::Texture* mTexture;
@@ -58,6 +59,7 @@ namespace jm
 		int mIndex;
 		float mTime;
 		bool mbComplete;
+		Vector2 mScale;
 	};
 }
 

@@ -16,6 +16,7 @@ namespace jm
 		,mIndex(-1)
 		,mTime(0.0f)
 		,mbComplete(false)
+		,mScale(Vector2::One)
 	{
 	}
 	Animation::~Animation()
@@ -49,8 +50,8 @@ namespace jm
 	}
 	void Animation::Render(HDC hdc)
 	{
-		float widthRatio = 0.833333333;
-		float heightRatio = 0.833333333;
+		float widthRatio = 0.833333333 * mScale.x;
+		float heightRatio = 0.833333333 * mScale.y;
 		// 애니메이션을 그려주는 함수
 		// 만약 텍스쳐가 null이면 그냥 반환 방어코드
 		if (mTexture == nullptr)
