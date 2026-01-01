@@ -89,7 +89,7 @@ namespace jm
 	}
 	// 애니메이션을 만들어주는 함수
 	void Animation::CreateAnimation(const std::wstring& name, graphcis::Texture* spriteSheet, 
-		Vector2 lefttop, Vector2 Size, Vector2 offset, UINT spriteLength, float duration)
+		Vector2 lefttop, Vector2 Size, Vector2 offset, UINT spriteLength, float duration, Vector2 scale)
 	{
 		// graphcis 라이브러리를 이용한 Texture포인터에 지금 내가 만들 시트를 대입
 		mTexture = spriteSheet;

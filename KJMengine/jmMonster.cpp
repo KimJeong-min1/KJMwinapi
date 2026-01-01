@@ -4,6 +4,10 @@
 
 namespace jm
 {
+	Monster::Monster()
+	{
+		SetGameObjectType(eGameObjectType::Monster);
+	}
 	void Monster::Initialize()
 	{
 		GameObject::Initialize();

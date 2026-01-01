@@ -61,10 +61,10 @@ namespace jm
 		animation = FindAnimation(name);
 		if (animation != nullptr)
 			return;
-		animation->SetScale(scale);
 		animation = new Animation();
 		animation->SetName(name);
-		animation->CreateAnimation(name, spriteSheet, lefttop, Size, offset, spriteLength, duration);
+		animation->SetScale(scale);
+		animation->CreateAnimation(name, spriteSheet, lefttop, Size, offset, spriteLength, duration, scale);
 
 		animation->SetAnimator(this);
 

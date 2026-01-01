@@ -5,6 +5,7 @@ namespace jm
 	class Wall : public GameObject
 	{
 	public:
+		Wall();
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;

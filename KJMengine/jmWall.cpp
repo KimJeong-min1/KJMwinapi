@@ -4,6 +4,10 @@
 
 namespace jm
 {
+	Wall::Wall()
+	{
+		
+	}
 	void Wall::Initialize()
 	{
 		GameObject::Initialize();

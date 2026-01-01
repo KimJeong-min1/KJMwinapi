@@ -42,7 +42,8 @@ namespace jm
 			Vector2 Size,
 			Vector2 offset,
 			UINT spriteLength,
-			float duration);
+			float duration,
+			Vector2 scale);
 		// 애니메이션 재생이 끝났음으로 다시 처음으로 돌려주는 함수
 		void Reset();
 		// 애니메이션 재생이 끝났는지 구분해주는 함수

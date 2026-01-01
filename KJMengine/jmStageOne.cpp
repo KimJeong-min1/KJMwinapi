@@ -51,7 +51,7 @@ namespace jm
 		object::DontDestroyOnLoad(mPlayer);
 		PlayerScript* plscript = mPlayer->AddComponent<PlayerScript>();
 		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();
-		collider->Setoffset(Vector2(1100.0f, 200.0f));
+		collider->Setoffset(Vector2(0.0f, 30.0f));
 
 		graphcis::Texture* HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerRight");
 		PlayerAnimator = mPlayer->AddComponent<Animator>();
@@ -77,23 +77,23 @@ namespace jm
 		Transform* pltr = mPlayer->GetComponent<Transform>();
 		pltr->SetPosition(Vector2(924.0f, 168.0f));
 		
-		mFire01 = object::Instantiate<Fire>(enums::eLayerType::Object);
+		mFire01 = object::Instantiate<Fire>(enums::eLayerType::Fire);
 		graphcis::Texture* ObjectTexture = Resources::Find<graphcis::Texture>(L"Fire");
 		FireAnimator = mFire01->AddComponent<Animator>();
 		FireAnimator->CreateAnimationByFolder(L"Fire", L"..\\Resources\\HelltakerFire", Vector2::Zero, 0.1f, Vector2(0.5f, 0.5f));
 		FireAnimator->PlayAnimation(L"Fire", true);
 
 		Transform* Firetr = mFire01->GetComponent<Transform>();
-		Firetr->SetPosition(Vector2(520.0f, 220.0f));
+		Firetr->SetPosition(Vector2(530.0f, 200.0f));
 
-		mFire02 = object::Instantiate<Fire>(enums::eLayerType::Object);
+		mFire02 = object::Instantiate<Fire>(enums::eLayerType::Fire);
 		ObjectTexture = Resources::Find<graphcis::Texture>(L"Fire");
 		FireAnimator = mFire02->AddComponent<Animator>();
 		FireAnimator->CreateAnimationByFolder(L"Fire", L"..\\Resources\\HelltakerFire", Vector2::Zero, 0.1f,Vector2(0.5f, 0.5f));
 		FireAnimator->PlayAnimation(L"Fire", true);
 
 		Firetr = mFire02->GetComponent<Transform>();
-		Firetr->SetPosition(Vector2(620.0f, 220.0f));
+		Firetr->SetPosition(Vector2(1030.0f, 410.0f));
 
 		mFlamebase0 = object::Instantiate<Fire>(enums::eLayerType::Object);
 		SpriteRenderer* Flamesr = mFlamebase0->AddComponent<SpriteRenderer>();
@@ -129,11 +129,13 @@ namespace jm
 		Flamesr->SetTexture(ObjectTexture);
 
 		Flametr = mFlamebase3->GetComponent<Transform>();
-		Flametr->SetPosition(Vector2(520.0f, 220.0f));
+		Flametr->SetPosition(Vector2(1020.0f, 430.0f));
 
 		Pandemonica = object::Instantiate<NPC>(enums::eLayerType::NPC);
 		graphcis::Texture* NPCTexture = Resources::Find<graphcis::Texture>(L"Pandemonica");
 		NPCAnimator = Pandemonica->AddComponent<Animator>();
+		collider = Pandemonica->AddComponent<BoxCollider2D>();
+		collider->Setoffset(Vector2(0.0f, 0.0f));
 		NPCAnimator->CreateAnimation(L"PandemonicaIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 			Vector2::Zero, 12, 0.1f, Vector2(1.0f,1.0f));
 
@@ -180,64 +182,72 @@ namespace jm
 
 		if (Input::GetKeyDown(eKeyCode::One))
 		{
-			mPickObjectType = eGameObjectType::Wall01;
+			mPickObjectType = PickGameObjectType::Wall01;
 		}
 		else if (Input::GetKeyDown(eKeyCode::Two))
 		{
-			mPickObjectType = eGameObjectType::Wall03;
+			mPickObjectType = PickGameObjectType::Wall03;
 		}
 		else if (Input::GetKeyDown(eKeyCode::Three))
 		{
-			mPickObjectType = eGameObjectType::Wall04;
+			mPickObjectType = PickGameObjectType::Wall04;
 		}
 		else if (Input::GetKeyDown(eKeyCode::Four))
 		{
-			mPickObjectType = eGameObjectType::Wall08;
+			mPickObjectType = PickGameObjectType::Wall08;
 		}
 		else if (Input::GetKeyDown(eKeyCode::Five))
 		{
-			mPickObjectType = eGameObjectType::Monster;
+			mPickObjectType = PickGameObjectType::Monster;
 		}
 		
 		if (Input::GetKeyDown(eKeyCode::LButton))
 		{
-			if (mPickObjectType == eGameObjectType::Wall01)
+			if (mPickObjectType == PickGameObjectType::Wall01)
 			{
-				mWall = object::Instantiate<Wall>(enums::eLayerType::Object);
-				Wallsr = mWall->AddComponent<SpriteRenderer>();
+				Wall01 = object::Instantiate<Wall>(enums::eLayerType::Object);
+				eGameObjectType Wall01Type = enums::eGameObjectType::Wall01;
+				Wall01->SetGameObjectType(Wall01Type);
+				Wallsr = Wall01->AddComponent<SpriteRenderer>();
 				Wallsr->SetSize(Vector2(1.0f, 1.0f));
 				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall01");
 				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(mWall);
+				mObj.push_back(Wall01);
 			}
-			else if (mPickObjectType == eGameObjectType::Wall03)
+			else if (mPickObjectType == PickGameObjectType::Wall03)
 			{
-				mWall = object::Instantiate<Wall>(enums::eLayerType::Object);
-				Wallsr = mWall->AddComponent<SpriteRenderer>();
+				Wall03 = object::Instantiate<Wall>(enums::eLayerType::Object);
+				eGameObjectType Wall03Type = enums::eGameObjectType::Wall03;
+				Wall03->SetGameObjectType(Wall03Type);
+				Wallsr = Wall03->AddComponent<SpriteRenderer>();
 				Wallsr->SetSize(Vector2(1.0f, 1.0f));
 				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall03");
 				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(mWall);
+				mObj.push_back(Wall03);
 			}
-			else if (mPickObjectType == eGameObjectType::Wall04)
+			else if (mPickObjectType == PickGameObjectType::Wall04)
 			{
-				mWall = object::Instantiate<Wall>(enums::eLayerType::Object);
-				Wallsr = mWall->AddComponent<SpriteRenderer>();
+				Wall04 = object::Instantiate<Wall>(enums::eLayerType::Object);
+				eGameObjectType Wall04Type = enums::eGameObjectType::Wall04;
+				Wall04->SetGameObjectType(Wall04Type);
+				Wallsr = Wall04->AddComponent<SpriteRenderer>();
 				Wallsr->SetSize(Vector2(1.0f, 1.0f));
 				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall04");
 				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(mWall);
+				mObj.push_back(Wall04);
 			}
-			else if (mPickObjectType == eGameObjectType::Wall08)
+			else if (mPickObjectType == PickGameObjectType::Wall08)
 			{
-				mWall = object::Instantiate<Wall>(enums::eLayerType::Object);
-				Wallsr = mWall->AddComponent<SpriteRenderer>();
+				Wall08 = object::Instantiate<Wall>(enums::eLayerType::Object);
+				eGameObjectType Wall08Type = enums::eGameObjectType::Wall08;
+				Wall08->SetGameObjectType(Wall08Type);
+				Wallsr = Wall08->AddComponent<SpriteRenderer>();
 				Wallsr->SetSize(Vector2(1.0f, 1.0f));
 				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall08");
 				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(mWall);
+				mObj.push_back(Wall08);
 			}
-			else if (mPickObjectType == eGameObjectType::Monster)
+			else if (mPickObjectType == PickGameObjectType::Monster)
 			{
 				mMonster = object::Instantiate<Monster>(enums::eLayerType::Monster);
 				mMonster->AddComponent<MonsterScript>();
@@ -252,6 +262,7 @@ namespace jm
 					Vector2::Zero, 6, 0.1f);
 
 				MonsterAnimator->PlayAnimation(L"MonsterIdle", true);
+				mObj.push_back(mMonster);
 			}
 			
 			mMousePosition = Input::GetMousePosition();
@@ -262,13 +273,27 @@ namespace jm
 
 			mMousePosition.x = mMousepositionX;
 			mMousePosition.y = mMousepositionY;
-			if (mPickObjectType == eGameObjectType::Wall01 || mPickObjectType == eGameObjectType::Wall03 ||
-				mPickObjectType == eGameObjectType::Wall04 || mPickObjectType == eGameObjectType::Wall08)
+			if (mPickObjectType == PickGameObjectType::Wall01)
 			{
-				Transform* Walltr = mWall->GetComponent<Transform>();
+				Transform* Walltr = Wall01->GetComponent<Transform>();
 				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
 			}
-			if (mPickObjectType == eGameObjectType::Monster)
+			if (mPickObjectType == PickGameObjectType::Wall03)
+			{
+				Transform* Walltr = Wall03->GetComponent<Transform>();
+				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
+			}
+			if (mPickObjectType == PickGameObjectType::Wall04)
+			{
+				Transform* Walltr = Wall04->GetComponent<Transform>();
+				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
+			}
+			if (mPickObjectType == PickGameObjectType::Wall08)
+			{
+				Transform* Walltr = Wall08->GetComponent<Transform>();
+				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
+			}
+			if (mPickObjectType == PickGameObjectType::Monster)
 			{
 				Transform* Montr = mMonster->GetComponent<Transform>();
 				Montr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84))));
@@ -343,9 +368,12 @@ namespace jm
 		{
 			SpriteRenderer* spr = gameobj->GetComponent<SpriteRenderer>();
 			Transform* tr = gameobj->GetComponent<Transform>();
-
+			eGameObjectType gameobjtype = gameobj->GetObjectType();
 			Vector2 position = tr->GetPosition();
 
+
+			int type = (int)gameobjtype;
+			fwrite(&type, sizeof(int), 1, pFile);
 			int x = position.x;
 			fwrite(&x, sizeof(int), 1, pFile);
 			int y = position.y;
@@ -381,19 +409,74 @@ namespace jm
 
 		while (true)
 		{
+			int type = -1;
 			int posX = 0;
 			int posY = 0;
-
+			if (fread(&type, sizeof(int), 1, pFile) == NULL)
+				break;
 			if (fread(&posX, sizeof(int), 1, pFile) == NULL)
 				break;
 			if (fread(&posY, sizeof(int), 1, pFile) == NULL)
 				break;
 
-			Wall* wall = object::Instantiate<Wall>(eLayerType::Object);
-			SpriteRenderer* spr = wall->AddComponent<SpriteRenderer>();
-			spr->SetTexture(Resources::Find<graphcis::Texture>(L"wall01"));
-			wall->GetComponent<Transform>()->SetPosition(Vector2(posX, posY));
-			mObj.push_back(wall);
+			switch ((eGameObjectType)type)
+			{
+			case enums::eGameObjectType::Wall01:
+			{
+				Wall* wall = object::Instantiate<Wall>(eLayerType::Object);
+				SpriteRenderer* spr = wall->AddComponent<SpriteRenderer>();
+				spr->SetTexture(Resources::Find<graphcis::Texture>(L"wall01"));
+				wall->GetComponent<Transform>()->SetPosition(Vector2(posX, posY));
+				mObj.push_back(wall);
+				break;
+			}
+			case enums::eGameObjectType::Wall03:
+			{
+				Wall* wall = object::Instantiate<Wall>(eLayerType::Object);
+				SpriteRenderer* spr = wall->AddComponent<SpriteRenderer>();
+				spr->SetTexture(Resources::Find<graphcis::Texture>(L"wall03"));
+				wall->GetComponent<Transform>()->SetPosition(Vector2(posX, posY));
+				mObj.push_back(wall);
+				break;
+			}
+			case enums::eGameObjectType::Wall04:
+			{
+				Wall* wall = object::Instantiate<Wall>(eLayerType::Object);
+				SpriteRenderer* spr = wall->AddComponent<SpriteRenderer>();
+				spr->SetTexture(Resources::Find<graphcis::Texture>(L"wall04"));
+				wall->GetComponent<Transform>()->SetPosition(Vector2(posX, posY));
+				mObj.push_back(wall);
+				break;
+			}
+			case enums::eGameObjectType::Wall08:
+			{
+				Wall* wall = object::Instantiate<Wall>(eLayerType::Object);
+				SpriteRenderer* spr = wall->AddComponent<SpriteRenderer>();
+				spr->SetTexture(Resources::Find<graphcis::Texture>(L"wall08"));
+				wall->GetComponent<Transform>()->SetPosition(Vector2(posX, posY));
+				mObj.push_back(wall);
+				break;
+			}
+			case enums::eGameObjectType::Monster:
+			{
+				Monster* monster = object::Instantiate<Monster>(enums::eLayerType::Monster);
+				monster->AddComponent<MonsterScript>();
+				BoxCollider2D* moncollider = monster->AddComponent<BoxCollider2D>();
+				moncollider->Setoffset(Vector2(0.0f, 30.0f));
+
+				graphcis::Texture* ObjectTexture = Resources::Find<graphcis::Texture>(L"Monster");
+				MonsterAnimator = monster->AddComponent<Animator>();
+				MonsterAnimator->CreateAnimation(L"MonsterIdle", ObjectTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 220.0f),
+					Vector2::Zero, 12, 0.1f);
+				MonsterAnimator->CreateAnimation(L"Monstergetkicked", ObjectTexture, Vector2(0.0f, 220.0f), Vector2(100.0f, 220.0f),
+					Vector2::Zero, 6, 0.1f);
+
+				MonsterAnimator->PlayAnimation(L"MonsterIdle", true);
+				monster->GetComponent<Transform>()->SetPosition(Vector2(posX, posY));
+				mObj.push_back(monster);
+				break;
+			}
+			}
 		}
 	}
 }

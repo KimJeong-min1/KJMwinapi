@@ -2,6 +2,20 @@
 
 namespace jm::enums
 {
+	enum class eGameObjectType
+	{
+		None,
+		Player,
+		Monster,
+		NPC,
+		Wall01,
+		Wall03,
+		Wall04,
+		Wall08,
+		Niddle,
+		Max = 128
+	};
+	
 	enum class eLayerType
 	{
 		None,
@@ -10,6 +24,7 @@ namespace jm::enums
 		Monster,
 		NPC,
 		Object,
+		Fire,
 		Character,
 		Max = 16
 	};

@@ -63,6 +63,8 @@ namespace jm
 
 		void SetLayerType(eLayerType type) { mLayerType = type; }
 		eLayerType GetLayerType() { return mLayerType; }
+		eGameObjectType GetObjectType() { return mGameObjectType; }
+		void SetGameObjectType(eGameObjectType type) { mGameObjectType = type; }
 	private:
 		void initializeTransform();
 
@@ -70,6 +72,7 @@ namespace jm
 		eState mState;
 		std::vector<Component*> mComponents;
 		eLayerType mLayerType;
+		eGameObjectType mGameObjectType;
 	};
 }
 

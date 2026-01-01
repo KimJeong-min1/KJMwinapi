@@ -5,6 +5,10 @@
 
 namespace jm
 {
+	Player::Player()
+	{
+		SetGameObjectType(eGameObjectType::Player);
+	}
 	void Player::Initialize()
 	{
 		GameObject::Initialize();

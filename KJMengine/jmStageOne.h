@@ -6,7 +6,7 @@ namespace jm
 	class StageOne : public Scene
 	{
 	public:
-		enum class eGameObjectType
+		enum class PickGameObjectType
 		{
 			Player,
 			Monster,
@@ -39,7 +39,10 @@ namespace jm
 		
 		class NPC* Pandemonica;
 		
-		class Wall* mWall;
+		class Wall* Wall01;
+		class Wall* Wall03;
+		class Wall* Wall04;
+		class Wall* Wall08;
 
 		class Fire* mFire01;
 		class Fire* mFire02;
@@ -53,7 +56,7 @@ namespace jm
 		class Animator* NPCAnimator;
 		class Animator* FireAnimator;
 
-		eGameObjectType mPickObjectType;
+		PickGameObjectType mPickObjectType;
 
 		Vector2 mMousePosition;
 
