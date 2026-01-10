@@ -1,18 +1,16 @@
 #pragma once
 #include "..\\KJMengine_SOURCE\\jmGameObject.h"
-
 namespace jm
 {
-	class Player : public GameObject
+	class ClearWall : public GameObject
 	{
 	public:
-		Player();
+		ClearWall();
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
-		int TileX;
-		int TileY;
 	private:
 	};
 }
+

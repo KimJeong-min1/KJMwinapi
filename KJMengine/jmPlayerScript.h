@@ -44,6 +44,7 @@ namespace jm
 		int mdir;
 		class Vector2 Prevpos;
 		class Vector2 Pos;
+		
 	};
 
 }

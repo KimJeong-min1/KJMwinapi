@@ -13,6 +13,7 @@ namespace jm::enums
 		Wall04,
 		Wall08,
 		Niddle,
+		ClearWall,
 		Max = 128
 	};
 	

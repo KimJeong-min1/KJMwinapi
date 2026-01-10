@@ -23,17 +23,46 @@
 #include "jmKeyBox.h"
 #include "jmFire.h"
 #include "jmWall.h"
+#include "jmClearWall.h"
 
 namespace jm
 {
+	StageOne::mMapdata;
+
 	StageOne::StageOne()
 	{
+		mMapdata.resize(8, std::vector<GameObject*>(9, nullptr));
 	}
 	StageOne::~StageOne()
 	{
 	}
 	void StageOne::Initialize()
 	{
+		char mapsetting[8][10] =
+		{
+			"#########",
+			"#####  ##",
+			"##     ##",
+			"##    ###",
+			"#  ######",
+			"#      ##",
+			"#########",
+		};
+
+		for (int y = 0; y < 8; y++)
+		{
+			for (int x = 0; x < 10; x++)
+			{
+				if (mapsetting[y][x] == '#')
+				{
+					mMapdata[y][x] = mClearWall = 
+					object::Instantiate<ClearWall>(enums::eLayerType::Object, Vector2(0, 0));
+				}
+			}
+		}
+
+		mMapdata[1][6] = mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(344.0f, 442.0f));
@@ -47,7 +76,6 @@ namespace jm
 		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BG01");
 		bgsr->SetTexture(bg);
 
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		object::DontDestroyOnLoad(mPlayer);
 		PlayerScript* plscript = mPlayer->AddComponent<PlayerScript>();
 		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();

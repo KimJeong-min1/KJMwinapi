@@ -30,6 +30,7 @@
     <ClCompile Include="jmChapterOne.cpp" />
     <ClCompile Include="jmChapterTwo.cpp" />
     <ClCompile Include="jmCharacter.cpp" />
+    <ClCompile Include="jmClearWall.cpp" />
     <ClCompile Include="jmCutScene.cpp" />
     <ClCompile Include="jmBadendScene.cpp" />
     <ClCompile Include="jmDeadScene.cpp" />
@@ -67,6 +68,7 @@
     <ClInclude Include="jmChapterOne.h" />
     <ClInclude Include="jmChapterTwo.h" />
     <ClInclude Include="jmCharacter.h" />
+    <ClInclude Include="jmClearWall.h" />
     <ClInclude Include="jmCutScene.h" />
     <ClInclude Include="jmBadendScene.h" />
     <ClInclude Include="jmDeadScene.h" />

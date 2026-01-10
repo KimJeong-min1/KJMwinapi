@@ -52,7 +52,6 @@ namespace jm
 			Dead();
 			break;
 		}
-
 	}
 	void PlayerScript::LateUpdate()
 	{

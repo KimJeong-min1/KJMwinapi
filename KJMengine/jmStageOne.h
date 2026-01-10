@@ -44,6 +44,8 @@ namespace jm
 		class Wall* Wall04;
 		class Wall* Wall08;
 
+		class ClearWall* mClearWall;
+
 		class Fire* mFire01;
 		class Fire* mFire02;
 		class Fire* mFlamebase0;
@@ -61,6 +63,7 @@ namespace jm
 		Vector2 mMousePosition;
 
 		std::vector<GameObject*> mObj;
+		static std::vector<std::vector<GameObject*>> mMapdata;
 	};
 }
 
