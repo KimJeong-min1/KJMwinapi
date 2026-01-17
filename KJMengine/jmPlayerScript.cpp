@@ -72,12 +72,17 @@ namespace jm
 	void PlayerScript::OnCollisionExit(Collider* other)
 	{
 	}
+	void PlayerScript::SetMapData(std::vector<std::vector<GameObject*>>& mapdata)
+	{
+		mMapdata = &mapdata;
+	}
 	void PlayerScript::RightMove()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Pos = tr->GetPosition();
 		mTime += Time::DeltaTime();
-
+		int prevtileX = (Prevpos.x / 84.0f);
+		int prevtileY = (Prevpos.y / 84.0f);
 		if (mdir == 1)
 		{
 			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x + 84.0f, Prevpos.y), 0.5f);
@@ -94,9 +99,23 @@ namespace jm
 			tr->SetPosition(Pos);
 		}
 
+		prevtileX = prevtileX - 5;
+		prevtileY = prevtileY - 1;
 
+		(*mMapdata)[prevtileY][prevtileX] = nullptr;
+		
 		if (mTime > 1.0f)
 		{
+			Vector2 finalPos = tr->GetPosition();
+
+			int tileX = (finalPos.x / 84.0f);
+			int tileY = (finalPos.y / 84.0f);
+
+			tileX = tileX - 5;
+			tileY = tileY - 1;
+		
+			(*mMapdata)[tileY][tileX] = GetOwner();
+			
 			mState = PlayerScript::eState::RightIdle;
 			mAnimator->PlayAnimation(L"RightIdle");
 			mTime = 0;
@@ -111,7 +130,9 @@ namespace jm
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Pos = tr->GetPosition();
 		mTime += Time::DeltaTime();
-		
+		int prevtileX = (Prevpos.x / 84.0f);
+		int prevtileY = (Prevpos.y / 84.0f);
+
 		if (mdir == 2)
 		{
 			Pos = Vector2::Lerp(Pos, Vector2(Prevpos.x - 84.0f, Prevpos.y), 0.5f);
@@ -128,8 +149,23 @@ namespace jm
 			tr->SetPosition(Pos);
 		}
 
+		prevtileX = prevtileX - 5;
+		prevtileY = prevtileY - 1;
+
+		(*mMapdata)[prevtileY][prevtileX] = nullptr;
+
 		if (mTime > 1.0f)
 		{
+			Vector2 finalPos = tr->GetPosition();
+
+			int tileX = (finalPos.x / 84.0f);
+			int tileY = (finalPos.y / 84.0f);
+
+			tileX = tileX - 5;
+			tileY = tileY - 1;
+
+			(*mMapdata)[tileY][tileX] = GetOwner();
+
 			mState = PlayerScript::eState::LeftIdle;
 			mAnimator->PlayAnimation(L"LeftIdle");
 			mTime = 0;

@@ -27,8 +27,6 @@
 
 namespace jm
 {
-	StageOne::mMapdata;
-
 	StageOne::StageOne()
 	{
 		mMapdata.resize(8, std::vector<GameObject*>(9, nullptr));
@@ -41,11 +39,12 @@ namespace jm
 		char mapsetting[8][10] =
 		{
 			"#########",
-			"#####  ##",
-			"##     ##",
-			"##    ###",
+			"##### !##",
+			"##  $  ##",
+			"## $ $###",
 			"#  ######",
-			"#      ##",
+			"# %  % ##",
+			"# % %  @#",
 			"#########",
 		};
 
@@ -58,10 +57,24 @@ namespace jm
 					mMapdata[y][x] = mClearWall = 
 					object::Instantiate<ClearWall>(enums::eLayerType::Object, Vector2(0, 0));
 				}
+				if (mapsetting[y][x] == '!')
+				{
+					mMapdata[y][x] = mPlayer =
+					object::Instantiate<Player>(enums::eLayerType::Player, Vector2(0, 0));
+				}
+				if (mapsetting[y][x] == '@')
+				{
+					mMapdata[y][x] = Pandemonica =
+					object::Instantiate<NPC>(enums::eLayerType::NPC, Vector2(0, 0));
+				}
+				if (mapsetting[y][x] == '$')
+				{
+					mMapdata[y][x] = mMonster =
+					object::Instantiate<Monster>(enums::eLayerType::Monster, Vector2(0, 0));
+				}
 			}
 		}
 
-		mMapdata[1][6] = mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
@@ -78,6 +91,7 @@ namespace jm
 
 		object::DontDestroyOnLoad(mPlayer);
 		PlayerScript* plscript = mPlayer->AddComponent<PlayerScript>();
+		plscript->SetMapData(mMapdata);
 		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();
 		collider->Setoffset(Vector2(0.0f, 30.0f));
 
@@ -159,7 +173,6 @@ namespace jm
 		Flametr = mFlamebase3->GetComponent<Transform>();
 		Flametr->SetPosition(Vector2(1020.0f, 430.0f));
 
-		Pandemonica = object::Instantiate<NPC>(enums::eLayerType::NPC);
 		graphcis::Texture* NPCTexture = Resources::Find<graphcis::Texture>(L"Pandemonica");
 		NPCAnimator = Pandemonica->AddComponent<Animator>();
 		collider = Pandemonica->AddComponent<BoxCollider2D>();
@@ -277,7 +290,6 @@ namespace jm
 			}
 			else if (mPickObjectType == PickGameObjectType::Monster)
 			{
-				mMonster = object::Instantiate<Monster>(enums::eLayerType::Monster);
 				mMonster->AddComponent<MonsterScript>();
 				BoxCollider2D* moncollider = mMonster->AddComponent<BoxCollider2D>();
 				moncollider->Setoffset(Vector2(0.0f, 30.0f));

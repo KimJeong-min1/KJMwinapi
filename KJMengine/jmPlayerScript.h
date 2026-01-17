@@ -28,6 +28,8 @@ namespace jm
 		void OnCollisionEnter(Collider* other) override;
 		void OnCollisionStay(Collider* other) override;
 		void OnCollisionExit(Collider* other) override;
+
+		void SetMapData(std::vector<std::vector<GameObject*>>& mapdata);
 	private:
 		void RightMove();
 		void LeftMove();
@@ -44,7 +46,7 @@ namespace jm
 		int mdir;
 		class Vector2 Prevpos;
 		class Vector2 Pos;
-		
+		std::vector<std::vector<GameObject*>>* mMapdata = nullptr;
 	};
 
 }

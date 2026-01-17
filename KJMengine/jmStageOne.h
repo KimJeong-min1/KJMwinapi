@@ -63,7 +63,7 @@ namespace jm
 		Vector2 mMousePosition;
 
 		std::vector<GameObject*> mObj;
-		static std::vector<std::vector<GameObject*>> mMapdata;
+		std::vector<std::vector<GameObject*>> mMapdata;
 	};
 }
 
