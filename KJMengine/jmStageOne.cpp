@@ -47,34 +47,13 @@ namespace jm
 			"# % %  @#",
 			"#########",
 		};
-
-		for (int y = 0; y < 8; y++)
-		{
-			for (int x = 0; x < 10; x++)
-			{
-				if (mapsetting[y][x] == '#')
-				{
-					mMapdata[y][x] = mClearWall = 
-					object::Instantiate<ClearWall>(enums::eLayerType::Object, Vector2(0, 0));
-				}
-				if (mapsetting[y][x] == '!')
-				{
-					mMapdata[y][x] = mPlayer =
-					object::Instantiate<Player>(enums::eLayerType::Player, Vector2(0, 0));
-				}
-				if (mapsetting[y][x] == '@')
-				{
-					mMapdata[y][x] = Pandemonica =
-					object::Instantiate<NPC>(enums::eLayerType::NPC, Vector2(0, 0));
-				}
-				if (mapsetting[y][x] == '$')
-				{
-					mMapdata[y][x] = mMonster =
-					object::Instantiate<Monster>(enums::eLayerType::Monster, Vector2(0, 0));
-				}
-			}
-		}
-
+		int Xpixel = 84;
+		int Ypixel = 84;
+		int StartXpos = Xpixel * 5;
+		int StartYpos = Ypixel * 1;
+		mMonster = object::Instantiate<Monster>(enums::eLayerType::Monster, Vector2(0, 0));
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player, Vector2(0, 0));
+		Pandemonica = object::Instantiate<NPC>(enums::eLayerType::NPC, Vector2(0, 0));
 		
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
@@ -91,7 +70,7 @@ namespace jm
 
 		object::DontDestroyOnLoad(mPlayer);
 		PlayerScript* plscript = mPlayer->AddComponent<PlayerScript>();
-		plscript->SetMapData(mMapdata);
+		plscript->SetMapData(mMapdata); 
 		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();
 		collider->Setoffset(Vector2(0.0f, 30.0f));
 
@@ -117,7 +96,26 @@ namespace jm
 		PlayerAnimator->GetCompleteEvent(L"RightKick") = std::bind(&PlayerScript::AttackEffect, plscript);
 
 		Transform* pltr = mPlayer->GetComponent<Transform>();
-		pltr->SetPosition(Vector2(924.0f, 168.0f));
+		pltr->SetPosition(Vector2(StartXpos+(Xpixel * 6), StartYpos + (Ypixel * 1))); // 1,6
+
+		mMonster->AddComponent<MonsterScript>();
+		MonsterScript* moscript = mMonster->AddComponent<MonsterScript>();
+		moscript->SetMapData(mMapdata);
+		BoxCollider2D* moncollider = mMonster->AddComponent<BoxCollider2D>();
+		moncollider->Setoffset(Vector2(0.0f, 30.0f));
+
+		MonsterAnimator = mMonster->AddComponent<Animator>();
+		graphcis::Texture* MonsterTexture = Resources::Find<graphcis::Texture>(L"Monster");
+		MonsterAnimator->CreateAnimation(L"MonsterIdle", MonsterTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 220.0f),
+			Vector2::Zero, 12, 0.1f);
+		MonsterAnimator->CreateAnimation(L"Monstergetkicked", MonsterTexture, Vector2(0.0f, 220.0f), Vector2(100.0f, 220.0f),
+			Vector2::Zero, 6, 0.1f);
+
+		MonsterAnimator->PlayAnimation(L"MonsterIdle", true);
+		mObj.push_back(mMonster);
+		
+		Transform* Montr = mMonster->GetComponent<Transform>();
+		Montr->SetPosition(Vector2(StartXpos + (Xpixel * 4), StartYpos + (Ypixel * 2)));
 		
 		mFire01 = object::Instantiate<Fire>(enums::eLayerType::Fire);
 		graphcis::Texture* ObjectTexture = Resources::Find<graphcis::Texture>(L"Fire");
@@ -291,6 +289,8 @@ namespace jm
 			else if (mPickObjectType == PickGameObjectType::Monster)
 			{
 				mMonster->AddComponent<MonsterScript>();
+				MonsterScript* moscript = mMonster->AddComponent<MonsterScript>();
+				moscript->SetMapData(mMapdata);
 				BoxCollider2D* moncollider = mMonster->AddComponent<BoxCollider2D>();
 				moncollider->Setoffset(Vector2(0.0f, 30.0f));
 
@@ -335,8 +335,8 @@ namespace jm
 			}
 			if (mPickObjectType == PickGameObjectType::Monster)
 			{
-				Transform* Montr = mMonster->GetComponent<Transform>();
-				Montr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84))));
+				/*Transform* Montr = mMonster->GetComponent<Transform>();
+				Montr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84))));*/
 			}
 		}
 
@@ -501,6 +501,8 @@ namespace jm
 			{
 				Monster* monster = object::Instantiate<Monster>(enums::eLayerType::Monster);
 				monster->AddComponent<MonsterScript>();
+				MonsterScript* moscript = mMonster->AddComponent<MonsterScript>();
+				moscript->SetMapData(mMapdata);
 				BoxCollider2D* moncollider = monster->AddComponent<BoxCollider2D>();
 				moncollider->Setoffset(Vector2(0.0f, 30.0f));
 

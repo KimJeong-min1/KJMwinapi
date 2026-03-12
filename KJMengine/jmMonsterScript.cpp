@@ -7,7 +7,7 @@ namespace jm
 {
 	MonsterScript::MonsterScript()
 		:mState(MonsterScript::eState::Idle)
-		,mAnimator(nullptr)
+		, mAnimator(nullptr)
 	{
 	}
 	MonsterScript::~MonsterScript()
@@ -39,20 +39,27 @@ namespace jm
 	void MonsterScript::Render(HDC hdc)
 	{
 	}
+	void MonsterScript::SetMapData(std::vector<std::vector<GameObject*>>& mapdata)
+	{
+		mMapdata = &mapdata;
+	}
+	void MonsterScript::OnKicked()
+	{
+		if (mState == eState::Getkick)
+			return;
+
+		mState = eState::Getkick;
+		mTime = 0.1f;
+
+		mAnimator->PlayAnimation(L"Monstergetkicked", true);
+	}
 	void MonsterScript::Idle()
 	{
-		if (Input::GetKeyDown(eKeyCode::I))
-		{
-			mState = MonsterScript::eState::Getkick;
-			mAnimator->PlayAnimation(L"Monstergetkicked", true);
-		}
+
 	}
 	void MonsterScript::Getkick()
 	{
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			mState = MonsterScript::eState::Idle;
-			mAnimator->PlayAnimation(L"MonsterIdle", true);
-		}
+		mState = MonsterScript::eState::Getkick;
+		mAnimator->PlayAnimation(L"Monstergetkicked", true);
 	}
 }

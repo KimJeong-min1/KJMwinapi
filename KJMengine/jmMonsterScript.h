@@ -18,6 +18,8 @@ namespace jm
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void SetMapData(std::vector<std::vector<GameObject*>>& mapdata);
+		void OnKicked();
 	private:
 		void Idle();
 		void Getkick();
@@ -25,7 +27,10 @@ namespace jm
 	private:
 		eState mState;
 		class Animator* mAnimator;
-		class Time* mTime;
+		float mTime;
+		class Vector2 Prevpos;
+		class Vector2 Pos;
+		std::vector<std::vector<GameObject*>>* mMapdata = nullptr;
 	};
 }
 

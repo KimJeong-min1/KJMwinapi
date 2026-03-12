@@ -4,6 +4,7 @@
 #include "jmTime.h"
 #include "jmGameObject.h"
 #include "jmAnimator.h"
+#include "jmMonsterScript.h"
 
 namespace jm
 {
@@ -113,6 +114,18 @@ namespace jm
 
 			tileX = tileX - 5;
 			tileY = tileY - 1;
+
+			GameObject* target = (*mMapdata)[tileY][tileX];
+
+			if (target != nullptr)
+			{
+				MonsterScript* monster =
+					target->GetComponent<MonsterScript>();
+				if (monster)
+				{
+					monster->Gettype();
+				}
+			}
 		
 			(*mMapdata)[tileY][tileX] = GetOwner();
 			
