@@ -59,7 +59,7 @@ namespace jm
 	}
 	void MonsterScript::Getkick()
 	{
-		mState = MonsterScript::eState::Getkick;
-		mAnimator->PlayAnimation(L"Monstergetkicked", true);
+		/*mState = MonsterScript::eState::Getkick;
+		mAnimator->PlayAnimation(L"Monstergetkicked", true);*/
 	}
 }

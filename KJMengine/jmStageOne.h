@@ -31,11 +31,11 @@ namespace jm
 		void Save();
 		void Load();
 	private:
-		class BackGround* mBG;
-		
 		class Player* mPlayer;
 		
-		class Monster* mMonster;
+		class Monster* Monster01;
+		class Monster* Monster02;
+		class Monster* Monster03;
 		
 		class NPC* Pandemonica;
 		
@@ -45,13 +45,6 @@ namespace jm
 		class Wall* Wall08;
 
 		class ClearWall* mClearWall;
-
-		class Fire* mFire01;
-		class Fire* mFire02;
-		class Fire* mFlamebase0;
-		class Fire* mFlamebase1;
-		class Fire* mFlamebase2;
-		class Fire* mFlamebase3;
 		
 		class Animator* PlayerAnimator;
 		class Animator* MonsterAnimator;

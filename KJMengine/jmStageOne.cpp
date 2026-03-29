@@ -36,154 +36,187 @@ namespace jm
 	}
 	void StageOne::Initialize()
 	{
+		Scene::Initialize();
+
+		BackGround* bg = object::Instantiate<BackGround>(enums::eLayerType::BackGround);
+		SpriteRenderer* bgSR = bg->AddComponent<SpriteRenderer>();
+		bgSR->SetSize(Vector2(1.0f, 1.0f));
+
+		graphcis::Texture* bgTexture = Resources::Find<graphcis::Texture>(L"BG01");
+		bgSR->SetTexture(bgTexture);
+
 		char mapsetting[8][10] =
 		{
 			"#########",
 			"##### !##",
 			"##  $  ##",
-			"## $ $###",
+			"## % ^###",
 			"#  ######",
-			"# %  % ##",
-			"# % %  @#",
+			"# 1  8 ##",
+			"# 3 4  @#",
 			"#########",
 		};
 		int Xpixel = 84;
 		int Ypixel = 84;
 		int StartXpos = Xpixel * 5;
 		int StartYpos = Ypixel * 1;
-		mMonster = object::Instantiate<Monster>(enums::eLayerType::Monster, Vector2(0, 0));
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player, Vector2(0, 0));
-		Pandemonica = object::Instantiate<NPC>(enums::eLayerType::NPC, Vector2(0, 0));
-		
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+		for (int y = 0; y < 8; y++)
+		{
+			for (int x = 0; x < 10; x++)
+			{
+				if (mapsetting[y][x] == '!')
+				{
+					mPlayer = object::Instantiate <Player>(enums::eLayerType::Player, Vector2(0, 0));
+					mPlayer->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y)));
+					graphcis::Texture* PlayerTexture = Resources::Find<graphcis::Texture>(L"PlayerRight");
+					mPlayer->AddComponent<Animator>();
+					Animator* playerAnimator = mPlayer->GetComponent<Animator>();
+					playerAnimator->CreateAnimationByFolder(L"RightIdle", L"..\\Resources\\HelltakerRightIdle", Vector2::Zero, 0.05f);
+					playerAnimator->CreateAnimationByFolder(L"LeftIdle", L"..\\Resources\\HelltakerLeftIdle", Vector2::Zero, 0.05f);
+					playerAnimator->CreateAnimationByFolder(L"RightKick", L"..\\Resources\\HelltakerRightKick", Vector2::Zero, 0.05f);
+					playerAnimator->PlayAnimation(L"RightIdle", true);
+					mMapdata[y][x] = mPlayer;
+					mPlayer->AddComponent<PlayerScript>();
+					mPlayer->GetComponent<PlayerScript>()->SetMapData(mMapdata);
+				}
+				if (mapsetting[y][x] == '1')
+				{
+					Wall* wall01 = object::Instantiate<Wall>(enums::eLayerType::Object);
+					wall01->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y) + 30));
+					graphcis::Texture* wallTexture = Resources::Find<graphcis::Texture>(L"wall01");
+					SpriteRenderer* wallSR = wall01->AddComponent<SpriteRenderer>();
+					wallSR->SetTexture(wallTexture);
+					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					mMapdata[y][x] = wall01;
+				}
+				if (mapsetting[y][x] == '8')
+				{
+					Wall* wall08 = object::Instantiate<Wall>(enums::eLayerType::Object);
+					wall08->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y) + 30));
+					graphcis::Texture* wallTexture = Resources::Find<graphcis::Texture>(L"wall08");
+					SpriteRenderer* wallSR = wall08->AddComponent<SpriteRenderer>();
+					wallSR->SetTexture(wallTexture);
+					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					mMapdata[y][x] = wall08;
+				}
+				if (mapsetting[y][x] == '3')
+				{
+					Wall* wall03 = object::Instantiate<Wall>(enums::eLayerType::Object);
+					wall03->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y) + 30));
+					graphcis::Texture* wallTexture = Resources::Find<graphcis::Texture>(L"wall03");
+					SpriteRenderer* wallSR = wall03->AddComponent<SpriteRenderer>();
+					wallSR->SetTexture(wallTexture);
+					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					mMapdata[y][x] = wall03;
+				}
+				if (mapsetting[y][x] == '4')
+				{
+					Wall* wall04 = object::Instantiate<Wall>(enums::eLayerType::Object);
+					wall04->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y) + 30));
+					graphcis::Texture* wallTexture = Resources::Find<graphcis::Texture>(L"wall04");
+					SpriteRenderer* wallSR = wall04->AddComponent<SpriteRenderer>();
+					wallSR->SetTexture(wallTexture);
+					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					mMapdata[y][x] = wall04;
+				}
+				if (mapsetting[y][x] == '$')
+				{
+					Monster* monster01 = object::Instantiate<Monster>(enums::eLayerType::Monster, Vector2(0, 0));
+					monster01->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y)));
+					graphcis::Texture* monsterTexture = Resources::Find<graphcis::Texture>(L"Monster");
+					Animator* monsterAnimator = monster01->AddComponent<Animator>();
+					monsterAnimator->CreateAnimationByFolder(L"MonsterIdle", L"..\\Resources\\MonsterIdle", Vector2::Zero, 0.05f);
+					monsterAnimator->PlayAnimation(L"MonsterIdle", true);
+					mMapdata[y][x] = monster01;
+				}
+				if (mapsetting[y][x] == '%')
+				{
+					Monster* monster02 = object::Instantiate<Monster>(enums::eLayerType::Monster, Vector2(0, 0));
+					monster02->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y)));
+					graphcis::Texture* monsterTexture = Resources::Find<graphcis::Texture>(L"Monster");
+					Animator* monsterAnimator = monster02->AddComponent<Animator>();
+					monsterAnimator->CreateAnimationByFolder(L"MonsterIdle", L"..\\Resources\\MonsterIdle", Vector2::Zero, 0.05f);
+					monsterAnimator->PlayAnimation(L"MonsterIdle", true);
+					mMapdata[y][x] = monster02;
+				}
+				if (mapsetting[y][x] == '^')
+				{
+					Monster* monster03 = object::Instantiate<Monster>(enums::eLayerType::Monster, Vector2(0, 0));
+					monster03->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y)));
+					graphcis::Texture* monsterTexture = Resources::Find<graphcis::Texture>(L"Monster");
+					Animator* monsterAnimator = monster03->AddComponent<Animator>();
+					monsterAnimator->CreateAnimationByFolder(L"MonsterIdle", L"..\\Resources\\MonsterIdle", Vector2::Zero, 0.05f);
+					monsterAnimator->PlayAnimation(L"MonsterIdle", true);
+					mMapdata[y][x] = monster03;
+				}
+				if (mapsetting[y][x] == '@')
+				{
+					NPC* pandemonica = object::Instantiate<NPC>(enums::eLayerType::NPC, Vector2(0, 0));
+					pandemonica->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y) + 30));
+					graphcis::Texture* pandemonicaTexture = Resources::Find<graphcis::Texture>(L"Pandemonica");
+					Animator* pandemonicaAnimator = pandemonica->AddComponent<Animator>();
+					pandemonicaAnimator->CreateAnimation(L"PandemonicaIdle", pandemonicaTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
+						Vector2::Zero, 12, 0.05f, Vector2(1.0f, 1.0f));
+					pandemonicaAnimator->PlayAnimation(L"PandemonicaIdle", true);
+					mMapdata[y][x] = pandemonica;
+				}
+			}
+		}
 
-		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(344.0f, 442.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		renderer::mainCamera = cameraComp;
-
-		mBG = object::Instantiate<BackGround>(enums::eLayerType::BackGround);
-		SpriteRenderer* bgsr = mBG->AddComponent<SpriteRenderer>();
-		bgsr->SetSize(Vector2(1.0f, 1.0f));
-
-		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"BG01");
-		bgsr->SetTexture(bg);
-
-		object::DontDestroyOnLoad(mPlayer);
-		PlayerScript* plscript = mPlayer->AddComponent<PlayerScript>();
-		plscript->SetMapData(mMapdata); 
-		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();
-		collider->Setoffset(Vector2(0.0f, 30.0f));
-
-		graphcis::Texture* HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerRight");
-		PlayerAnimator = mPlayer->AddComponent<Animator>();
-		PlayerAnimator->CreateAnimationByFolder(L"RightIdle", L"..\\Resources\\HelltakerRightIdle", Vector2::Zero, 0.1f);
-		PlayerAnimator->PlayAnimation(L"RightIdle", true);
-
-		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerRightKick");
-		PlayerAnimator->CreateAnimationByFolder(L"RightKick", L"..\\Resources\\HelltakerRightKick", Vector2::Zero, 0.1f);
-		PlayerAnimator->PlayAnimation(L"RightKick", true);
-		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerLeft");
-		PlayerAnimator->CreateAnimation(L"LeftIdle", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 148.0f),
-			Vector2::Zero, 12, 0.1f);
-		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerLeftKick");
-		PlayerAnimator->CreateAnimation(L"LeftKick", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 148.0f),
-			Vector2::Zero, 13, 0.1f);
-		HelltakerTexture = Resources::Find<graphcis::Texture>(L"PlayerDeath");
-		PlayerAnimator->CreateAnimation(L"PlayerDead", HelltakerTexture, Vector2(0.0f, 0.0f), Vector2(720.0f, 1232.0f),
-			Vector2::Half, 18, 0.1f);
-		PlayerAnimator->PlayAnimation(L"RightIdle", true);
-
-		PlayerAnimator->GetCompleteEvent(L"RightKick") = std::bind(&PlayerScript::AttackEffect, plscript);
-
-		Transform* pltr = mPlayer->GetComponent<Transform>();
-		pltr->SetPosition(Vector2(StartXpos+(Xpixel * 6), StartYpos + (Ypixel * 1))); // 1,6
-
-		mMonster->AddComponent<MonsterScript>();
-		MonsterScript* moscript = mMonster->AddComponent<MonsterScript>();
-		moscript->SetMapData(mMapdata);
-		BoxCollider2D* moncollider = mMonster->AddComponent<BoxCollider2D>();
-		moncollider->Setoffset(Vector2(0.0f, 30.0f));
-
-		MonsterAnimator = mMonster->AddComponent<Animator>();
-		graphcis::Texture* MonsterTexture = Resources::Find<graphcis::Texture>(L"Monster");
-		MonsterAnimator->CreateAnimation(L"MonsterIdle", MonsterTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 220.0f),
-			Vector2::Zero, 12, 0.1f);
-		MonsterAnimator->CreateAnimation(L"Monstergetkicked", MonsterTexture, Vector2(0.0f, 220.0f), Vector2(100.0f, 220.0f),
-			Vector2::Zero, 6, 0.1f);
-
-		MonsterAnimator->PlayAnimation(L"MonsterIdle", true);
-		mObj.push_back(mMonster);
-		
-		Transform* Montr = mMonster->GetComponent<Transform>();
-		Montr->SetPosition(Vector2(StartXpos + (Xpixel * 4), StartYpos + (Ypixel * 2)));
-		
-		mFire01 = object::Instantiate<Fire>(enums::eLayerType::Fire);
+		Fire* fire01 = object::Instantiate<Fire>(enums::eLayerType::Fire);
 		graphcis::Texture* ObjectTexture = Resources::Find<graphcis::Texture>(L"Fire");
-		FireAnimator = mFire01->AddComponent<Animator>();
-		FireAnimator->CreateAnimationByFolder(L"Fire", L"..\\Resources\\HelltakerFire", Vector2::Zero, 0.1f, Vector2(0.5f, 0.5f));
+		FireAnimator = fire01->AddComponent<Animator>();
+		FireAnimator->CreateAnimationByFolder(L"Fire", L"..\\Resources\\HelltakerFire", Vector2::Zero, 0.05f, Vector2(0.5f, 0.5f));
 		FireAnimator->PlayAnimation(L"Fire", true);
 
-		Transform* Firetr = mFire01->GetComponent<Transform>();
-		Firetr->SetPosition(Vector2(530.0f, 200.0f));
+		Transform* fireTransform = fire01->GetComponent<Transform>();
+		fireTransform->SetPosition(Vector2(530.0f, 200.0f));
 
-		mFire02 = object::Instantiate<Fire>(enums::eLayerType::Fire);
+		Fire* fire02 = object::Instantiate<Fire>(enums::eLayerType::Fire);
 		ObjectTexture = Resources::Find<graphcis::Texture>(L"Fire");
-		FireAnimator = mFire02->AddComponent<Animator>();
-		FireAnimator->CreateAnimationByFolder(L"Fire", L"..\\Resources\\HelltakerFire", Vector2::Zero, 0.1f,Vector2(0.5f, 0.5f));
+		FireAnimator = fire02->AddComponent<Animator>();
+		FireAnimator->CreateAnimationByFolder(L"Fire", L"..\\Resources\\HelltakerFire", Vector2::Zero, 0.05f, Vector2(0.5f, 0.5f));
 		FireAnimator->PlayAnimation(L"Fire", true);
 
-		Firetr = mFire02->GetComponent<Transform>();
-		Firetr->SetPosition(Vector2(1030.0f, 410.0f));
+		fireTransform = fire02->GetComponent<Transform>();
+		fireTransform->SetPosition(Vector2(1030.0f, 410.0f));
 
-		mFlamebase0 = object::Instantiate<Fire>(enums::eLayerType::Object);
-		SpriteRenderer* Flamesr = mFlamebase0->AddComponent<SpriteRenderer>();
-		Flamesr->SetSize(Vector2(1.0f, 1.0f));
+		Fire* flamebase01 = object::Instantiate<Fire>(enums::eLayerType::Object);
+		SpriteRenderer* flameSR = flamebase01->AddComponent<SpriteRenderer>();
+		flameSR->SetSize(Vector2(1.0f, 1.0f));
 		ObjectTexture = Resources::Find<graphcis::Texture>(L"flamebase0");
-		Flamesr->SetTexture(ObjectTexture);
+		flameSR->SetTexture(ObjectTexture);
 
-		Transform* Flametr = mFlamebase0->GetComponent<Transform>();
-		Flametr->SetPosition(Vector2(765.0f, 130.0f));
+		Transform* flameTR = flamebase01->GetComponent<Transform>();
+		flameTR->SetPosition(Vector2(765.0f, 130.0f));
 
-		mFlamebase1 = object::Instantiate<Fire>(enums::eLayerType::Object);
-		Flamesr = mFlamebase1->AddComponent<SpriteRenderer>();
-		Flamesr->SetSize(Vector2(1.0f, 1.0f));
+		Fire* flamebase02 = object::Instantiate<Fire>(enums::eLayerType::Object);
+		flameSR = flamebase02->AddComponent<SpriteRenderer>();
+		flameSR->SetSize(Vector2(1.0f, 1.0f));
 		ObjectTexture = Resources::Find<graphcis::Texture>(L"flamebase1");
-		Flamesr->SetTexture(ObjectTexture);
+		flameSR->SetTexture(ObjectTexture);
 
-		Flametr = mFlamebase1->GetComponent<Transform>();
-		Flametr->SetPosition(Vector2(520.0f, 220.0f));
+		flameTR = flamebase02->GetComponent<Transform>();
+		flameTR->SetPosition(Vector2(520.0f, 220.0f));
 
-		mFlamebase2 = object::Instantiate<Fire>(enums::eLayerType::Object);
-		Flamesr = mFlamebase2->AddComponent<SpriteRenderer>();
-		Flamesr->SetSize(Vector2(1.0f, 1.0f));
+		flamebase02 = object::Instantiate<Fire>(enums::eLayerType::Object);
+		flameSR = flamebase02->AddComponent<SpriteRenderer>();
+		flameSR->SetSize(Vector2(1.0f, 1.0f));
 		ObjectTexture = Resources::Find<graphcis::Texture>(L"flamebase0");
-		Flamesr->SetTexture(ObjectTexture);
+		flameSR->SetTexture(ObjectTexture);
 
-		Flametr = mFlamebase2->GetComponent<Transform>();
-		Flametr->SetPosition(Vector2(430.0f, 465.0f));
+		flameTR = flamebase02->GetComponent<Transform>();
+		flameTR->SetPosition(Vector2(430.0f, 465.0f));
 
-		mFlamebase3 = object::Instantiate<Fire>(enums::eLayerType::Object);
-		Flamesr = mFlamebase3->AddComponent<SpriteRenderer>();
-		Flamesr->SetSize(Vector2(1.0f, 1.0f));
+		Fire* flamebase03 = object::Instantiate<Fire>(enums::eLayerType::Object);
+		flameSR = flamebase03->AddComponent<SpriteRenderer>();
+		flameSR->SetSize(Vector2(1.0f, 1.0f));
 		ObjectTexture = Resources::Find<graphcis::Texture>(L"flamebase1");
-		Flamesr->SetTexture(ObjectTexture);
+		flameSR->SetTexture(ObjectTexture);
 
-		Flametr = mFlamebase3->GetComponent<Transform>();
-		Flametr->SetPosition(Vector2(1020.0f, 430.0f));
+		flameTR = flamebase03->GetComponent<Transform>();
+		flameTR->SetPosition(Vector2(1020.0f, 430.0f));
 
-		graphcis::Texture* NPCTexture = Resources::Find<graphcis::Texture>(L"Pandemonica");
-		NPCAnimator = Pandemonica->AddComponent<Animator>();
-		collider = Pandemonica->AddComponent<BoxCollider2D>();
-		collider->Setoffset(Vector2(0.0f, 0.0f));
-		NPCAnimator->CreateAnimation(L"PandemonicaIdle", NPCTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
-			Vector2::Zero, 12, 0.1f, Vector2(1.0f,1.0f));
-
-		NPCAnimator->PlayAnimation(L"PandemonicaIdle", true);
-
-		Transform* npctr = Pandemonica->GetComponent<Transform>();
-		npctr->SetPosition(Vector2(1000.0f, 600.0f));
-
-		Scene::Initialize();
 	}
 	void StageOne::Update()
 	{
@@ -192,10 +225,6 @@ namespace jm
 	void StageOne::LateUpdate()
 	{
 		Scene::LateUpdate();
-
-		graphcis::Texture* ObjectTexture = nullptr;
-		SpriteRenderer* Wallsr = nullptr;
-		SpriteRenderer* Flamesr = nullptr;
 
 		if (Input::GetKeyDown(eKeyCode::U))
 		{
@@ -209,137 +238,6 @@ namespace jm
 		{
 			SceneManager::LoadScene(L"BadendScene");
 		}
-
-		if (Input::GetKeyDown(eKeyCode::S))
-		{
-			Save();
-		}
-		if (Input::GetKeyDown(eKeyCode::L))
-		{
-			Load();
-		}
-
-		if (Input::GetKeyDown(eKeyCode::One))
-		{
-			mPickObjectType = PickGameObjectType::Wall01;
-		}
-		else if (Input::GetKeyDown(eKeyCode::Two))
-		{
-			mPickObjectType = PickGameObjectType::Wall03;
-		}
-		else if (Input::GetKeyDown(eKeyCode::Three))
-		{
-			mPickObjectType = PickGameObjectType::Wall04;
-		}
-		else if (Input::GetKeyDown(eKeyCode::Four))
-		{
-			mPickObjectType = PickGameObjectType::Wall08;
-		}
-		else if (Input::GetKeyDown(eKeyCode::Five))
-		{
-			mPickObjectType = PickGameObjectType::Monster;
-		}
-		
-		if (Input::GetKeyDown(eKeyCode::LButton))
-		{
-			if (mPickObjectType == PickGameObjectType::Wall01)
-			{
-				Wall01 = object::Instantiate<Wall>(enums::eLayerType::Object);
-				eGameObjectType Wall01Type = enums::eGameObjectType::Wall01;
-				Wall01->SetGameObjectType(Wall01Type);
-				Wallsr = Wall01->AddComponent<SpriteRenderer>();
-				Wallsr->SetSize(Vector2(1.0f, 1.0f));
-				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall01");
-				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(Wall01);
-			}
-			else if (mPickObjectType == PickGameObjectType::Wall03)
-			{
-				Wall03 = object::Instantiate<Wall>(enums::eLayerType::Object);
-				eGameObjectType Wall03Type = enums::eGameObjectType::Wall03;
-				Wall03->SetGameObjectType(Wall03Type);
-				Wallsr = Wall03->AddComponent<SpriteRenderer>();
-				Wallsr->SetSize(Vector2(1.0f, 1.0f));
-				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall03");
-				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(Wall03);
-			}
-			else if (mPickObjectType == PickGameObjectType::Wall04)
-			{
-				Wall04 = object::Instantiate<Wall>(enums::eLayerType::Object);
-				eGameObjectType Wall04Type = enums::eGameObjectType::Wall04;
-				Wall04->SetGameObjectType(Wall04Type);
-				Wallsr = Wall04->AddComponent<SpriteRenderer>();
-				Wallsr->SetSize(Vector2(1.0f, 1.0f));
-				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall04");
-				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(Wall04);
-			}
-			else if (mPickObjectType == PickGameObjectType::Wall08)
-			{
-				Wall08 = object::Instantiate<Wall>(enums::eLayerType::Object);
-				eGameObjectType Wall08Type = enums::eGameObjectType::Wall08;
-				Wall08->SetGameObjectType(Wall08Type);
-				Wallsr = Wall08->AddComponent<SpriteRenderer>();
-				Wallsr->SetSize(Vector2(1.0f, 1.0f));
-				ObjectTexture = Resources::Find<graphcis::Texture>(L"wall08");
-				Wallsr->SetTexture(ObjectTexture);
-				mObj.push_back(Wall08);
-			}
-			else if (mPickObjectType == PickGameObjectType::Monster)
-			{
-				mMonster->AddComponent<MonsterScript>();
-				MonsterScript* moscript = mMonster->AddComponent<MonsterScript>();
-				moscript->SetMapData(mMapdata);
-				BoxCollider2D* moncollider = mMonster->AddComponent<BoxCollider2D>();
-				moncollider->Setoffset(Vector2(0.0f, 30.0f));
-
-				ObjectTexture = Resources::Find<graphcis::Texture>(L"Monster");
-				MonsterAnimator = mMonster->AddComponent<Animator>();
-				MonsterAnimator->CreateAnimation(L"MonsterIdle", ObjectTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 220.0f),
-					Vector2::Zero, 12, 0.1f);
-				MonsterAnimator->CreateAnimation(L"Monstergetkicked", ObjectTexture, Vector2(0.0f, 220.0f), Vector2(100.0f, 220.0f),
-					Vector2::Zero, 6, 0.1f);
-
-				MonsterAnimator->PlayAnimation(L"MonsterIdle", true);
-				mObj.push_back(mMonster);
-			}
-			
-			mMousePosition = Input::GetMousePosition();
-			int mMousepositionX = 0;
-			int mMousepositionY = 0;
-			mMousepositionX = mMousePosition.x / 84;
-			mMousepositionY = mMousePosition.y / 84;
-
-			mMousePosition.x = mMousepositionX;
-			mMousePosition.y = mMousepositionY;
-			if (mPickObjectType == PickGameObjectType::Wall01)
-			{
-				Transform* Walltr = Wall01->GetComponent<Transform>();
-				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
-			}
-			if (mPickObjectType == PickGameObjectType::Wall03)
-			{
-				Transform* Walltr = Wall03->GetComponent<Transform>();
-				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
-			}
-			if (mPickObjectType == PickGameObjectType::Wall04)
-			{
-				Transform* Walltr = Wall04->GetComponent<Transform>();
-				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
-			}
-			if (mPickObjectType == PickGameObjectType::Wall08)
-			{
-				Transform* Walltr = Wall08->GetComponent<Transform>();
-				Walltr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84 + 30))));
-			}
-			if (mPickObjectType == PickGameObjectType::Monster)
-			{
-				/*Transform* Montr = mMonster->GetComponent<Transform>();
-				Montr->SetPosition(Vector2((mMousePosition.x * 84), ((mMousePosition.y * 84))));*/
-			}
-		}
-
 	}
 	void StageOne::Render(HDC hdc)
 	{
@@ -501,7 +399,7 @@ namespace jm
 			{
 				Monster* monster = object::Instantiate<Monster>(enums::eLayerType::Monster);
 				monster->AddComponent<MonsterScript>();
-				MonsterScript* moscript = mMonster->AddComponent<MonsterScript>();
+				MonsterScript* moscript = Monster01->AddComponent<MonsterScript>();
 				moscript->SetMapData(mMapdata);
 				BoxCollider2D* moncollider = monster->AddComponent<BoxCollider2D>();
 				moncollider->Setoffset(Vector2(0.0f, 30.0f));
