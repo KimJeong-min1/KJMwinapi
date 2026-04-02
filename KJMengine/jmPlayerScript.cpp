@@ -9,7 +9,7 @@
 namespace jm
 {
 	PlayerScript::PlayerScript()
-		:mState(PlayerScript::eState::RightIdle)
+		:mState(PlayerScript::eState::LeftIdle)
 		, mAnimator(nullptr)
 		, mdir(0)
 		, mTime(0.0f)
@@ -105,7 +105,7 @@ namespace jm
 
 		(*mMapdata)[prevtileY][prevtileX] = nullptr;
 		
-		if (mTime > 1.0f)
+		if (mTime > 0.2f)
 		{
 			Vector2 finalPos = tr->GetPosition();
 
@@ -167,7 +167,7 @@ namespace jm
 
 		(*mMapdata)[prevtileY][prevtileX] = nullptr;
 
-		if (mTime > 1.0f)
+		if (mTime > 0.2f)
 		{
 			Vector2 finalPos = tr->GetPosition();
 
@@ -199,7 +199,7 @@ namespace jm
 			mdir = 1;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::RightMove;
-			mAnimator->PlayAnimation(L"RightKick");
+			mAnimator->PlayAnimation(L"RightMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Left))
 		{
@@ -207,7 +207,44 @@ namespace jm
 			mdir = 2;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::LeftMove;
-			mAnimator->PlayAnimation(L"LeftKick");
+			mAnimator->PlayAnimation(L"LeftMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Up))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 3;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Down))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 4;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Zero))
+		{
+			mState = PlayerScript::eState::Dead;
+			mAnimator->PlayAnimation(L"PlayerDead");
+		}
+		/*if (Input::GetKeyDown(eKeyCode::Right))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 1;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Left))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 2;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Up))
 		{
@@ -216,7 +253,7 @@ namespace jm
 			mdir = 3;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::LeftMove;
-			mAnimator->PlayAnimation(L"LeftKick");
+			mAnimator->PlayAnimation(L"LeftMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Down))
 		{
@@ -224,13 +261,13 @@ namespace jm
 			mdir = 4;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::LeftMove;
-			mAnimator->PlayAnimation(L"LeftKick");
+			mAnimator->PlayAnimation(L"LeftMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Zero))
 		{
 			mState = PlayerScript::eState::Dead;
 			mAnimator->PlayAnimation(L"PlayerDead");
-		}
+		}*/
 	}
 	void PlayerScript::RightIdle()
 	{
@@ -240,7 +277,7 @@ namespace jm
 			mdir = 1;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::RightMove;
-			mAnimator->PlayAnimation(L"RightKick");
+			mAnimator->PlayAnimation(L"RightMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Left))
 		{
@@ -248,7 +285,44 @@ namespace jm
 			mdir = 2;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::LeftMove;
-			mAnimator->PlayAnimation(L"LeftKick");
+			mAnimator->PlayAnimation(L"LeftMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Up))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 3;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Down))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 4;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Zero))
+		{
+			mState = PlayerScript::eState::Dead;
+			mAnimator->PlayAnimation(L"PlayerDead");
+		}
+		/*if (Input::GetKeyDown(eKeyCode::Right))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 1;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::RightMove;
+			mAnimator->PlayAnimation(L"RightMove");
+		}
+		else if (Input::GetKeyDown(eKeyCode::Left))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			mdir = 2;
+			Prevpos = tr->GetPosition();
+			mState = PlayerScript::eState::LeftMove;
+			mAnimator->PlayAnimation(L"LeftMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Up))
 		{
@@ -257,7 +331,7 @@ namespace jm
 			mdir = 3;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::RightMove;
-			mAnimator->PlayAnimation(L"RightKick");
+			mAnimator->PlayAnimation(L"RightMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Down))
 		{
@@ -265,13 +339,13 @@ namespace jm
 			mdir = 4;
 			Prevpos = tr->GetPosition();
 			mState = PlayerScript::eState::RightMove;
-			mAnimator->PlayAnimation(L"RightKick");
+			mAnimator->PlayAnimation(L"RightMove");
 		}
 		else if (Input::GetKeyDown(eKeyCode::Zero))
 		{
 			mState = PlayerScript::eState::Dead;
 			mAnimator->PlayAnimation(L"PlayerDead");
-		}
+		}*/
 	}
 	void PlayerScript::Dead()
 	{

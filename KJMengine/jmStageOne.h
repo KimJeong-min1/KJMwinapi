@@ -6,15 +6,14 @@ namespace jm
 	class StageOne : public Scene
 	{
 	public:
-		enum class PickGameObjectType
+		enum class TileType
 		{
+			Empty,
 			Player,
 			Monster,
-			Wall01,
-			Wall03,
-			Wall04,
-			Wall08,
-			End,
+			Rock,
+			NPC,
+			ClearWall,
 		};
 		
 		StageOne();
@@ -24,6 +23,8 @@ namespace jm
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
+		void StageSetup();
+		
 
 		void OnEnter() override;
 		void OnExit() override;
@@ -50,8 +51,6 @@ namespace jm
 		class Animator* MonsterAnimator;
 		class Animator* NPCAnimator;
 		class Animator* FireAnimator;
-
-		PickGameObjectType mPickObjectType;
 
 		Vector2 mMousePosition;
 

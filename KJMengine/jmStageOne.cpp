@@ -37,13 +37,68 @@ namespace jm
 	void StageOne::Initialize()
 	{
 		Scene::Initialize();
+		
+		StageSetup();
+	}
+	void StageOne::Update()
+	{
+		Scene::Update();
+	}
+	void StageOne::LateUpdate()
+	{
+		Scene::LateUpdate();
 
+		if (Input::GetKeyDown(eKeyCode::U))
+		{
+			SceneManager::LoadScene(L"MenuScene");
+		}
+		else if (Input::GetKeyDown(eKeyCode::I))
+		{
+			SceneManager::LoadScene(L"CutScene");
+		}
+		else if (Input::GetKeyDown(eKeyCode::O))
+		{
+			SceneManager::LoadScene(L"BadendScene");
+		}
+	}
+	void StageOne::Render(HDC hdc)
+	{
+		Scene::Render(hdc);
+
+		HPEN mPen = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+		HPEN oldpen = (HPEN)SelectObject(hdc, mPen);
+
+		const int cellsize = 84;
+
+
+		const int width = 1600;
+		const int height = 900;
+
+		int startoffsetx = 30;
+		int startoffsety = 30;
+
+		for (int x = 0; x <= 1600; x += cellsize)
+		{
+			MoveToEx(hdc, x, 0, NULL);
+			LineTo(hdc, x, height);
+		}
+
+		for (int y = startoffsety; y <= 900; y += cellsize)
+		{
+			MoveToEx(hdc, 0, y, NULL);
+			LineTo(hdc, width, y);
+		}
+
+		DeleteObject(oldpen);
+	}
+	void StageOne::StageSetup()
+	{
 		BackGround* bg = object::Instantiate<BackGround>(enums::eLayerType::BackGround);
 		SpriteRenderer* bgSR = bg->AddComponent<SpriteRenderer>();
-		bgSR->SetSize(Vector2(1.0f, 1.0f));
-
 		graphcis::Texture* bgTexture = Resources::Find<graphcis::Texture>(L"BG01");
 		bgSR->SetTexture(bgTexture);
+		bgSR->SetSize(Vector2(1.0f, 1.0f));
+
 
 		char mapsetting[8][10] =
 		{
@@ -66,18 +121,21 @@ namespace jm
 			{
 				if (mapsetting[y][x] == '!')
 				{
-					mPlayer = object::Instantiate <Player>(enums::eLayerType::Player, Vector2(0, 0));
+					mPlayer = object::Instantiate<Player>(enums::eLayerType::Player, Vector2(0, 0));
 					mPlayer->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y)));
-					graphcis::Texture* PlayerTexture = Resources::Find<graphcis::Texture>(L"PlayerRight");
 					mPlayer->AddComponent<Animator>();
 					Animator* playerAnimator = mPlayer->GetComponent<Animator>();
 					playerAnimator->CreateAnimationByFolder(L"RightIdle", L"..\\Resources\\HelltakerRightIdle", Vector2::Zero, 0.05f);
-					playerAnimator->CreateAnimationByFolder(L"LeftIdle", L"..\\Resources\\HelltakerLeftIdle", Vector2::Zero, 0.05f);
 					playerAnimator->CreateAnimationByFolder(L"RightKick", L"..\\Resources\\HelltakerRightKick", Vector2::Zero, 0.05f);
-					playerAnimator->PlayAnimation(L"RightIdle", true);
+					playerAnimator->CreateAnimationByFolder(L"LeftIdle", L"..\\Resources\\HelltakerLeftIdle", Vector2::Zero, 0.05f);
+					playerAnimator->CreateAnimationByFolder(L"RightMove", L"..\\Resources\\HelltakerRightMove", Vector2::Zero, 1.0f);
+					playerAnimator->CreateAnimationByFolder(L"LeftMove", L"..\\Resources\\HelltakerLeftMove", Vector2::Zero, 1.0f);
+					playerAnimator->PlayAnimation(L"LeftIdle", true);
 					mMapdata[y][x] = mPlayer;
 					mPlayer->AddComponent<PlayerScript>();
 					mPlayer->GetComponent<PlayerScript>()->SetMapData(mMapdata);
+					//mPlayer->AddComponent<TileType>();
+					//mPlayer->GetComponent<TileType>()->SetType(TileType::Player);
 				}
 				if (mapsetting[y][x] == '1')
 				{
@@ -160,6 +218,12 @@ namespace jm
 					pandemonicaAnimator->PlayAnimation(L"PandemonicaIdle", true);
 					mMapdata[y][x] = pandemonica;
 				}
+				if (mapsetting[y][x] == '#')
+				{
+					ClearWall* clearwall = object::Instantiate<ClearWall>(enums::eLayerType::Object);
+					clearwall->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y) + 30));
+					mMapdata[y][x] = clearwall;
+				}
 			}
 		}
 
@@ -216,58 +280,6 @@ namespace jm
 
 		flameTR = flamebase03->GetComponent<Transform>();
 		flameTR->SetPosition(Vector2(1020.0f, 430.0f));
-
-	}
-	void StageOne::Update()
-	{
-		Scene::Update();
-	}
-	void StageOne::LateUpdate()
-	{
-		Scene::LateUpdate();
-
-		if (Input::GetKeyDown(eKeyCode::U))
-		{
-			SceneManager::LoadScene(L"MenuScene");
-		}
-		else if (Input::GetKeyDown(eKeyCode::I))
-		{
-			SceneManager::LoadScene(L"CutScene");
-		}
-		else if (Input::GetKeyDown(eKeyCode::O))
-		{
-			SceneManager::LoadScene(L"BadendScene");
-		}
-	}
-	void StageOne::Render(HDC hdc)
-	{
-		Scene::Render(hdc);
-
-		HPEN mPen = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
-		HPEN oldpen = (HPEN)SelectObject(hdc, mPen);
-
-		const int cellsize = 84;
-
-
-		const int width = 1600;
-		const int height = 900;
-
-		int startoffsetx = 30;
-		int startoffsety = 30;
-
-		for (int x = 0; x <= 1600; x += cellsize)
-		{
-			MoveToEx(hdc, x, 0, NULL);
-			LineTo(hdc, x, height);
-		}
-
-		for (int y = startoffsety; y <= 900; y += cellsize)
-		{
-			MoveToEx(hdc, 0, y, NULL);
-			LineTo(hdc, width, y);
-		}
-
-		DeleteObject(oldpen);
 	}
 	void StageOne::OnEnter()
 	{
