@@ -6,16 +6,6 @@ namespace jm
 	class StageOne : public Scene
 	{
 	public:
-		enum class TileType
-		{
-			Empty,
-			Player,
-			Monster,
-			Rock,
-			NPC,
-			ClearWall,
-		};
-		
 		StageOne();
 		~StageOne();
 
@@ -24,6 +14,7 @@ namespace jm
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 		void StageSetup();
+		void ProcessInput(int dx, int dy);
 		
 
 		void OnEnter() override;
@@ -52,10 +43,14 @@ namespace jm
 		class Animator* NPCAnimator;
 		class Animator* FireAnimator;
 
+		class TileType* mTileType;
+
 		Vector2 mMousePosition;
 
 		std::vector<GameObject*> mObj;
 		std::vector<std::vector<GameObject*>> mMapdata;
+
+		int stamina = 40;
 	};
 }
 

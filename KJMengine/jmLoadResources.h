@@ -61,5 +61,6 @@ namespace jm
 		Resources::Load<graphcis::Texture>(L"wall11", L"..\\Resources\\Texture2D\\wall11.bmp");
 		Resources::Load<graphcis::Texture>(L"flamebase0", L"..\\Resources\\Texture2D\\FLAMEbase0002.png");
 		Resources::Load<graphcis::Texture>(L"flamebase1", L"..\\Resources\\Texture2D\\FLAMEbase0001.png");
+		Resources::Load<graphcis::Texture>(L"ClearWall", L"..\\Resources\\Texture2D\\labGenerator0001.png");
 	}
 }

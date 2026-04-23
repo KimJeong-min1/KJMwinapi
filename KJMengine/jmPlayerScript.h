@@ -24,6 +24,7 @@ namespace jm
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 		void AttackEffect();
+		void ProcessInput(int dx, int dy);
 
 		void OnCollisionEnter(Collider* other) override;
 		void OnCollisionStay(Collider* other) override;
@@ -46,6 +47,8 @@ namespace jm
 		int mdir;
 		class Vector2 Prevpos;
 		class Vector2 Pos;
+		class Player* mPlayer;
+		int stamina;
 		std::vector<std::vector<GameObject*>>* mMapdata = nullptr;
 	};
 

@@ -53,6 +53,7 @@
     <ClCompile Include="jmStageThree.cpp" />
     <ClCompile Include="jmStageTwo.cpp" />
     <ClCompile Include="jmTestScene.cpp" />
+    <ClCompile Include="jmTileType.cpp" />
     <ClCompile Include="jmTrap.cpp" />
     <ClCompile Include="jmWall.cpp" />
   </ItemGroup>
@@ -93,6 +94,7 @@
     <ClInclude Include="jmStageThree.h" />
     <ClInclude Include="jmStageTwo.h" />
     <ClInclude Include="jmTestScene.h" />
+    <ClInclude Include="jmTileType.h" />
     <ClInclude Include="jmTrap.h" />
     <ClInclude Include="jmWall.h" />
   </ItemGroup>

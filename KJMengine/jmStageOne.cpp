@@ -24,6 +24,7 @@
 #include "jmFire.h"
 #include "jmWall.h"
 #include "jmClearWall.h"
+#include "jmTileType.h"
 
 namespace jm
 {
@@ -115,6 +116,7 @@ namespace jm
 		int Ypixel = 84;
 		int StartXpos = Xpixel * 5;
 		int StartYpos = Ypixel * 1;
+
 		for (int y = 0; y < 8; y++)
 		{
 			for (int x = 0; x < 10; x++)
@@ -128,14 +130,16 @@ namespace jm
 					playerAnimator->CreateAnimationByFolder(L"RightIdle", L"..\\Resources\\HelltakerRightIdle", Vector2::Zero, 0.05f);
 					playerAnimator->CreateAnimationByFolder(L"RightKick", L"..\\Resources\\HelltakerRightKick", Vector2::Zero, 0.05f);
 					playerAnimator->CreateAnimationByFolder(L"LeftIdle", L"..\\Resources\\HelltakerLeftIdle", Vector2::Zero, 0.05f);
-					playerAnimator->CreateAnimationByFolder(L"RightMove", L"..\\Resources\\HelltakerRightMove", Vector2::Zero, 1.0f);
-					playerAnimator->CreateAnimationByFolder(L"LeftMove", L"..\\Resources\\HelltakerLeftMove", Vector2::Zero, 1.0f);
+					playerAnimator->CreateAnimationByFolder(L"RightMove", L"..\\Resources\\HelltakerRightMove", Vector2::Zero, 0.05f);
+					playerAnimator->CreateAnimationByFolder(L"LeftMove", L"..\\Resources\\HelltakerLeftMove", Vector2::Zero, 0.05f);
 					playerAnimator->PlayAnimation(L"LeftIdle", true);
-					mMapdata[y][x] = mPlayer;
 					mPlayer->AddComponent<PlayerScript>();
 					mPlayer->GetComponent<PlayerScript>()->SetMapData(mMapdata);
-					//mPlayer->AddComponent<TileType>();
-					//mPlayer->GetComponent<TileType>()->SetType(TileType::Player);
+					mPlayer->AddComponent<TileType>();
+					mPlayer->GetComponent<TileType>()->SetTileType(eTileType::Player);
+					mPlayer->TileX = x;
+					mPlayer->TileY = y;
+					mMapdata[y][x] = mPlayer;
 				}
 				if (mapsetting[y][x] == '1')
 				{
@@ -145,6 +149,10 @@ namespace jm
 					SpriteRenderer* wallSR = wall01->AddComponent<SpriteRenderer>();
 					wallSR->SetTexture(wallTexture);
 					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					wall01->AddComponent<TileType>();
+					wall01->GetComponent<TileType>()->SetTileType(eTileType::Wall);
+					wall01->TileX = x;
+					wall01->TileY = y;
 					mMapdata[y][x] = wall01;
 				}
 				if (mapsetting[y][x] == '8')
@@ -155,7 +163,12 @@ namespace jm
 					SpriteRenderer* wallSR = wall08->AddComponent<SpriteRenderer>();
 					wallSR->SetTexture(wallTexture);
 					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					wall08->AddComponent<TileType>();
+					wall08->GetComponent<TileType>()->SetTileType(eTileType::Wall);
+					wall08->TileX = x;
+					wall08->TileY = y;
 					mMapdata[y][x] = wall08;
+					
 				}
 				if (mapsetting[y][x] == '3')
 				{
@@ -165,7 +178,12 @@ namespace jm
 					SpriteRenderer* wallSR = wall03->AddComponent<SpriteRenderer>();
 					wallSR->SetTexture(wallTexture);
 					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					wall03->AddComponent<TileType>();
+					wall03->GetComponent<TileType>()->SetTileType(eTileType::Wall);
+					wall03->TileX = x;
+					wall03->TileY = y;
 					mMapdata[y][x] = wall03;
+					
 				}
 				if (mapsetting[y][x] == '4')
 				{
@@ -175,7 +193,12 @@ namespace jm
 					SpriteRenderer* wallSR = wall04->AddComponent<SpriteRenderer>();
 					wallSR->SetTexture(wallTexture);
 					wallSR->SetSize(Vector2(1.0f, 1.0f));
+					wall04->AddComponent<TileType>();
+					wall04->GetComponent<TileType>()->SetTileType(eTileType::Wall);
+					wall04->TileX = x;
+					wall04->TileY = y;
 					mMapdata[y][x] = wall04;
+					
 				}
 				if (mapsetting[y][x] == '$')
 				{
@@ -185,6 +208,10 @@ namespace jm
 					Animator* monsterAnimator = monster01->AddComponent<Animator>();
 					monsterAnimator->CreateAnimationByFolder(L"MonsterIdle", L"..\\Resources\\MonsterIdle", Vector2::Zero, 0.05f);
 					monsterAnimator->PlayAnimation(L"MonsterIdle", true);
+					monster01->AddComponent<TileType>();
+					monster01->GetComponent<TileType>()->SetTileType(eTileType::Monster);
+					monster01->TileX = x;
+					monster01->TileY = y;
 					mMapdata[y][x] = monster01;
 				}
 				if (mapsetting[y][x] == '%')
@@ -195,7 +222,12 @@ namespace jm
 					Animator* monsterAnimator = monster02->AddComponent<Animator>();
 					monsterAnimator->CreateAnimationByFolder(L"MonsterIdle", L"..\\Resources\\MonsterIdle", Vector2::Zero, 0.05f);
 					monsterAnimator->PlayAnimation(L"MonsterIdle", true);
+					monster02->AddComponent<TileType>();
+					monster02->GetComponent<TileType>()->SetTileType(eTileType::Monster);
+					monster02->TileX = x;
+					monster02->TileY = y;
 					mMapdata[y][x] = monster02;
+					
 				}
 				if (mapsetting[y][x] == '^')
 				{
@@ -205,6 +237,10 @@ namespace jm
 					Animator* monsterAnimator = monster03->AddComponent<Animator>();
 					monsterAnimator->CreateAnimationByFolder(L"MonsterIdle", L"..\\Resources\\MonsterIdle", Vector2::Zero, 0.05f);
 					monsterAnimator->PlayAnimation(L"MonsterIdle", true);
+					monster03->AddComponent<TileType>();
+					monster03->GetComponent<TileType>()->SetTileType(eTileType::Monster);
+					monster03->TileX = x;
+					monster03->TileY = y;
 					mMapdata[y][x] = monster03;
 				}
 				if (mapsetting[y][x] == '@')
@@ -216,12 +252,22 @@ namespace jm
 					pandemonicaAnimator->CreateAnimation(L"PandemonicaIdle", pandemonicaTexture, Vector2(0.0f, 0.0f), Vector2(100.0f, 100.0f),
 						Vector2::Zero, 12, 0.05f, Vector2(1.0f, 1.0f));
 					pandemonicaAnimator->PlayAnimation(L"PandemonicaIdle", true);
+					pandemonica->AddComponent<TileType>();
+					pandemonica->GetComponent<TileType>()->SetTileType(eTileType::NPC);
+					pandemonica->TileX = x;
+					pandemonica->TileY = y;
 					mMapdata[y][x] = pandemonica;
 				}
 				if (mapsetting[y][x] == '#')
 				{
 					ClearWall* clearwall = object::Instantiate<ClearWall>(enums::eLayerType::Object);
 					clearwall->GetComponent<Transform>()->SetPosition(Vector2(StartXpos + (Xpixel * x), StartYpos + (Ypixel * y) + 30));
+					SpriteRenderer* clearwallSR = clearwall->AddComponent<SpriteRenderer>();
+					clearwallSR->SetSize(Vector2(1.0f, 0.5f));
+					graphcis::Texture* clearwallTexture = Resources::Find<graphcis::Texture>(L"ClearWall");
+					clearwallSR->SetTexture(clearwallTexture);
+					clearwall->AddComponent<TileType>();
+					clearwall->GetComponent<TileType>()->SetTileType(eTileType::ClearWall);
 					mMapdata[y][x] = clearwall;
 				}
 			}
@@ -289,7 +335,7 @@ namespace jm
 	{
 
 	}
-	void StageOne::Save()
+	/*void StageOne::Save()
 	{
 		OPENFILENAME ofn = {};
 
@@ -430,5 +476,5 @@ namespace jm
 			}
 			}
 		}
-	}
+	}*/
 }

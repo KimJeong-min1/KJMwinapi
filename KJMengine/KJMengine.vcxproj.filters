@@ -114,6 +114,9 @@
     <ClCompile Include="jmClearWall.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
+    <ClCompile Include="jmTileType.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jmCutScene.h">
@@ -228,6 +231,9 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jmClearWall.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jmTileType.h">
       <Filter>Contents</Filter>
     </ClInclude>
   </ItemGroup>

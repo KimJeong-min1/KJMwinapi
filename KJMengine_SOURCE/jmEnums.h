@@ -54,6 +54,7 @@ namespace jm::enums
 		Script,
 		Camera,
 		Collider,
+		TileType,
 		End,
 	};
 }

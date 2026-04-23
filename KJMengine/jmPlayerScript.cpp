@@ -5,6 +5,8 @@
 #include "jmGameObject.h"
 #include "jmAnimator.h"
 #include "jmMonsterScript.h"
+#include "jmPlayer.h"
+#include "jmTileType.h"
 
 namespace jm
 {
@@ -63,6 +65,27 @@ namespace jm
 	void PlayerScript::AttackEffect()
 	{
 	}
+	void PlayerScript::ProcessInput(int dx, int dy)
+	{
+		stamina = 40;
+
+		if (stamina <= 0)
+			return;
+		int PlayerX = GetOwner()->GetComponent<Transform>()->GetPosition().x / 84.0f;
+		int PlayerY = GetOwner()->GetComponent<Transform>()->GetPosition().y / 84.0f;
+		PlayerY = PlayerY - 1;
+		PlayerX = PlayerX - 5;
+		int nextX = PlayerX + dx;
+		int nextY = PlayerY + dy;
+
+		if (nextX < 0 || nextX >= 9 || nextY < 0 || nextY >= 8)
+			return;
+
+		/*GameObject* targetTile = (*mMapdata)[nextY][nextX];
+		eTileType presenttile = targetTile->GetComponent<TileType>()->GetTileType();
+		if (presenttile == eTileType::ClearWall)
+			return;*/
+	}
 	void PlayerScript::OnCollisionEnter(Collider* other)
 	{
 		
@@ -79,6 +102,7 @@ namespace jm
 	}
 	void PlayerScript::RightMove()
 	{
+		//ProcessInput(1, 0);
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Pos = tr->GetPosition();
 		mTime += Time::DeltaTime();
